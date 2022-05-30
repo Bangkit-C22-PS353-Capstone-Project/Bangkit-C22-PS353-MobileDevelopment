@@ -6,15 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".ui.home.HomeFragment">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <com.denzcoskun.imageslider.ImageSlider
+        android:id="@+id/imgSliderHome"
         android:layout_width="match_parent"
         android:layout_height="210dp"
+        app:iss_auto_cycle="true"
+        app:iss_placeholder="@color/white"
+        app:iss_error_image="@color/white"
+        app:iss_selected_dot="@drawable/img_selected"
+        app:iss_unselected_dot="@drawable/image_unselected"
+        app:iss_delay="0"
+        app:iss_period="1000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:background="@drawable/farm2"
-        />
+        app:layout_constraintTop_toTopOf="parent"/>
+
+<!--    <ImageView-->
+<!--        android:id="@+id/imageView"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="210dp"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        android:background="@drawable/farm2"-->
+<!--        />-->
 
     <ImageButton
         android:id="@+id/imageButton"
@@ -39,7 +54,6 @@
         android:background="@drawable/search_background"
         app:layout_constraintEnd_toStartOf="@+id/imageButton"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

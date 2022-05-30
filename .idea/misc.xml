@@ -14,6 +14,7 @@
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/home_fill_dot.xml" value="0.1" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/home_icon.xml" value="0.1755" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/home_outline.xml" value="0.1" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/image_unselected.xml" value="0.1" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/price_icon.xml" value="0.1" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/profile_fill_dot.xml" value="0.1755" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/profile_icon.xml" value="0.162" />
@@ -32,7 +33,7 @@
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_X" project-jdk-name="11" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_17_PREVIEW" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>
 </project>

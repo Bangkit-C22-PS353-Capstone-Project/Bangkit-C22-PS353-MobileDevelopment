@@ -42,18 +42,18 @@ class MainFragment : Fragment() {
         val bottomNavigationView = binding.bottomNavigation
         setupWithNavController(bottomNavigationView, navController)
 
-        bottomNavigationView.setOnNavigationItemSelectedListener {
-            when(it.itemId) {
-
-                R.id.profileFragment -> {
-                    findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
-                }
-
-            }
-
-            true
-
-        }
+//        bottomNavigationView.setOnNavigationItemSelectedListener {
+//            when(it.itemId) {
+//
+//                R.id.profileFragment -> {
+//                    findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+//                }
+//
+//            }
+//
+//            true
+//
+//        }
 
     }
 
