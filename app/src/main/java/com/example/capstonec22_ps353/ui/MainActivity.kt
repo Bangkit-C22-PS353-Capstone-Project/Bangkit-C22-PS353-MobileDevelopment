@@ -29,8 +29,7 @@ class MainActivity : AppCompatActivity() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
         navController = navHostFragment.navController
 
-        val bottomNavigationView = binding.bottomNavigation
-        setupWithNavController(bottomNavigationView, navController)
+//        setupWithNavController(navController)
 
 //        NavigationBarView.OnItemSelectedListener { item ->
 //            when(item.itemId) {
