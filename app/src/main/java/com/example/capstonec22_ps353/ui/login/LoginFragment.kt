@@ -1,26 +1,27 @@
-package com.example.capstonec22_ps353.ui.home
+package com.example.capstonec22_ps353.ui.login
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.OnBackPressedCallback
 import androidx.navigation.Navigation
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentHomeBinding
-import com.example.capstonec22_ps353.databinding.FragmentProfileBinding
+import com.example.capstonec22_ps353.databinding.FragmentLoginBinding
 
 
-class HomeFragment : Fragment() {
+class LoginFragment : Fragment() {
 
-    private var _binding: FragmentHomeBinding?=null
+    private var _binding: FragmentLoginBinding?=null
     private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentLoginBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
     }
@@ -28,14 +29,15 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        binding.tvHome.setOnClickListener {
-////            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_loginFragment)
-//        }
+        binding.tvback.setOnClickListener {
+//            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
+        }
     }
 
-    override fun onDestroy() {
-        super.onDestroy()
+    override fun onDestroyView() {
+        super.onDestroyView()
         _binding = null
     }
+
 
 }
