@@ -31,11 +31,6 @@ class PriceFragment : Fragment() {
         return binding.root
     }
 
-    override fun onResume() {
-        super.onResume()
-        setDropdown()
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -83,10 +78,16 @@ class PriceFragment : Fragment() {
 
     }
 
+    override fun onResume() {
+        super.onResume()
+        setDropdown()
+    }
+
     private fun setDropdown() {
         val category = resources.getStringArray(R.array.data_category)
         val arrayAdapter = ArrayAdapter(requireContext(), R.layout.item_dropdown, category)
         binding.autoCompleteTV.setAdapter(arrayAdapter)
+
     }
 
     override fun onDestroy() {

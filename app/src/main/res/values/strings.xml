@@ -16,5 +16,16 @@
 
 <!--    for image content description-->
     <string name="back">back button</string>
+    <string name="beras">Beras</string>
+
+
+    <string-array name="data_category">
+        <item>Beras</item>
+        <item>Bawang Merah</item>
+        <item>Bawang Putih</item>
+        <item>Cabe Merah</item>
+        <item>Cabe Rawit</item>
+    </string-array>
+
 
 </resources>
