@@ -5,15 +5,16 @@
     <string name="home">Home</string>
     <string name="price">Price</string>
     <string name="profile">Profile</string>
-    <string name="beras">Beras</string>
 
-    <string-array name="data_category">
-        <item>Beras</item>
-        <item>Bawang Merah</item>
-        <item>Bawang Putih</item>
-        <item>Cabai Merah</item>
-        <item>Cabai Rawit</item>
-    </string-array>
+<!--    login page-->
+    <string name="username">Username / No. Telp</string>
+    <string name="password">Password</string>
+    <string name="login">Masuk</string>
+    <string name="welcome">Selamat datang di BumiTani</string>
+    <string name="account">Belum punya akun?</string>
+    <string name="register">Daftar</string>
 
+<!--    for image content description-->
+    <string name="back">back button</string>
 
 </resources>
