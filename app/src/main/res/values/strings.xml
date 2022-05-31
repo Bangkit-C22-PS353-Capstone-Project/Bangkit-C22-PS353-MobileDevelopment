@@ -5,4 +5,15 @@
     <string name="home">Home</string>
     <string name="price">Price</string>
     <string name="profile">Profile</string>
+    <string name="beras">Beras</string>
+
+    <string-array name="data_category">
+        <item>Beras</item>
+        <item>Bawang Merah</item>
+        <item>Bawang Putih</item>
+        <item>Cabai Merah</item>
+        <item>Cabai Rawit</item>
+    </string-array>
+
+
 </resources>
