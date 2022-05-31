@@ -2,6 +2,7 @@ package com.example.capstonec22_ps353.ui
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -39,6 +40,8 @@ class MainFragment : Fragment() {
 //            supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
         navController = navHostFragment.navController
 
+
+
         val bottomNavigationView = binding.bottomNavigation
         setupWithNavController(bottomNavigationView, navController)
 
@@ -57,21 +60,28 @@ class MainFragment : Fragment() {
 
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-//        return super.onOptionsItemSelected(item)
-        when(item.itemId) {
-            R.id.profileFragment -> {
-                findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
-            }
-
-        }
-        return false
-    }
-
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.bottom_nav_menu ,menu)
+        super.onCreateOptionsMenu(menu, inflater)
+
+        Toast.makeText(activity, "TES", Toast.LENGTH_SHORT).show()
     }
+
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+////        return super.onOptionsItemSelected(item)
+//        when(item.itemId) {
+//            R.id.profileFragment -> {
+//                findNavController().navigate(R.id.action_mainFragment_to_loginFragment)
+//            }
+//
+//        }
+//        return false
+//    }
+//
+
+
+
+
 
 
 

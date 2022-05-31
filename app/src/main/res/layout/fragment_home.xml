@@ -32,7 +32,7 @@
 <!--        />-->
 
     <ImageButton
-        android:id="@+id/imageButton"
+        android:id="@+id/btnCart"
         android:layout_width="48dp"
         android:layout_height="48dp"
         android:layout_marginStart="12dp"
@@ -52,7 +52,7 @@
         android:layout_marginStart="12dp"
         android:layout_marginTop="16dp"
         android:background="@drawable/search_background"
-        app:layout_constraintEnd_toStartOf="@+id/imageButton"
+        app:layout_constraintEnd_toStartOf="@+id/btnCart"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

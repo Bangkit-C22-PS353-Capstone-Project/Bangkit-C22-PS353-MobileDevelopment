@@ -3,6 +3,7 @@ package com.example.capstonec22_ps353.ui
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -16,6 +17,8 @@ import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
 
+    private val sharedViewModel by viewModels<SharedViewModel>()
+
     private var _binding: ActivityMainBinding?=null
     private val binding get() = _binding!!
 
@@ -28,6 +31,13 @@ class MainActivity : AppCompatActivity() {
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.mainContainer) as NavHostFragment
         navController = navHostFragment.navController
+
+
+        sharedViewModel.setNavController(navController)
+
+//        sharedViewModel.navController = navController
+
+
 
 //        setupWithNavController(navController)
 
@@ -54,10 +64,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 
-    private fun moveIntent() {
-        startActivity(Intent(this, LoginActivity::class.java))
-
-    }
+    
 
     override fun onDestroy() {
         super.onDestroy()
