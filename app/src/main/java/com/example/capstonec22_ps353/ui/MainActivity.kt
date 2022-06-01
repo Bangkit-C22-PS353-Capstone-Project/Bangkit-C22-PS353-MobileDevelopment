@@ -1,19 +1,12 @@
 package com.example.capstonec22_ps353.ui
 
-import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.ui.NavigationUI.setupWithNavController
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.ActivityMainBinding
-import com.example.capstonec22_ps353.databinding.FragmentProfileBinding
-import com.example.capstonec22_ps353.ui.login.LoginActivity
-import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.navigation.NavigationBarView
 
 class MainActivity : AppCompatActivity() {
 

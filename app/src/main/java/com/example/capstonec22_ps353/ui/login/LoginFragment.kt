@@ -33,17 +33,20 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
         lifecycleScope.launch {
             sharedViewModel.navController.observe(viewLifecycleOwner) {
                 val navController = it
                 val callback = object : OnBackPressedCallback(true) {
                     override fun handleOnBackPressed() {
-
                         navController.navigate(R.id.action_loginFragment_to_mainFragment)
                     }
                 }
                 requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,callback)
-
+                binding.btnBack.setOnClickListener {
+                    navController.navigate(R.id.action_loginFragment_to_mainFragment)
+                }
             }
         }
 //        binding.tvback.setOnClickListener {

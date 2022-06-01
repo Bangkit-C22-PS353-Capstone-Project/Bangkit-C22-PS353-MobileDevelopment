@@ -22,6 +22,13 @@
     <!--    for image content description-->
     <string name="back">back button</string>
     <string name="beras">Beras</string>
+    <string name="kategori">Kategori</string>
+    <string name="prediksi_harga_esok">Prediksi Harga Esok</string>
+    <string name="bawang_merah">Bawang Merah</string>
+    <string name="bawang_putih">Bawang Putih</string>
+    <string name="cabai_merah">Cabai Merah</string>
+    <string name="cabai_rawit">Cabai Rawit</string>
+    <string name="produk_pilihan">Produk Pilihan</string>
 
 
     <string-array name="data_category">
@@ -31,6 +38,34 @@
         <item>Cabe Merah</item>
         <item>Cabe Rawit</item>
     </string-array>
+
+    <string-array name="dummy_label">
+        <item>Sen</item>
+        <item>Sel</item>
+        <item>Rab</item>
+        <item>Kam</item>
+        <item>Jum</item>
+        <item>Sab</item>
+        <item>Min</item>
+    </string-array>
+
+<!--    <array name="dummy_price">-->
+<!--        <item>10500</item>-->
+<!--        <item>10200</item>-->
+<!--        <item>Rab</item>-->
+<!--        <item>Kam</item>-->
+<!--        <item>Jum</item>-->
+<!--        <item>Sab</item>-->
+<!--        <item>Min</item>-->
+<!--    </int-array>-->
+
+<!--    10000))-->
+<!--    priceList.add(PriceList("Sel", 10500))-->
+<!--    priceList.add(PriceList("Rab", 10200))-->
+<!--    priceList.add(PriceList("Kam", 11000))-->
+<!--    priceList.add(PriceList("Jum", 11400))-->
+<!--    priceList.add(PriceList("Sab", 11100))-->
+<!--    priceList.add(PriceList("Min", 12000))-->
 
 
 </resources>

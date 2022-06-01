@@ -11,6 +11,7 @@
     <color name="transparent">#00000000</color>
 
     <color name="label_primer">#427F15</color>
+    <color name="label_green">#27AE60</color>
 
     <color name="blue">#51A0D5</color>
 </resources>
