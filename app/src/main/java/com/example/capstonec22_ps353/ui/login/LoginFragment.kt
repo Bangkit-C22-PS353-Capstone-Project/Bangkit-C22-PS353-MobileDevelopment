@@ -49,9 +49,9 @@ class LoginFragment : Fragment() {
                 }
             }
         }
-//        binding.tvback.setOnClickListener {
-////            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
-//        }
+//       binding.btnBack.setOnClickListener {
+//            Navigation.findNavController(view).navigate(R.id.action_loginFragment_to_homeFragment)
+//       }
     }
 
     override fun onDestroyView() {

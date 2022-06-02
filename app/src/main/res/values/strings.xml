@@ -7,17 +7,18 @@
     <string name="profile">Profile</string>
 
     <!--    login page-->
-    <string name="username">Username / No. Telp</string>
+    <string name="username_tlp">Username / No. Telp</string>
     <string name="password">Password</string>
     <string name="login">Masuk</string>
     <string name="welcome">Selamat datang di BumiTani</string>
-    <string name="account">Belum punya akun?</string>
+    <string name="no_account">Belum punya akun?</string>
     <string name="register">Daftar</string>
 
-<!--    register page-->
+    <!--    register page-->
     <string name="name">Nama</string>
-    <string name="username2">Username</string>
-
+    <string name="username">Username</string>
+    <string name="phone_number">Nomor Ponsel</string>
+    <string name="have_account">Sudah punya akun?</string>
 
     <!--    for image content description-->
     <string name="back">back button</string>
@@ -30,7 +31,7 @@
     <string name="cabai_rawit">Cabai Rawit</string>
     <string name="produk_pilihan">Produk Pilihan</string>
 
-
+    <!--    drop down category di price page-->
     <string-array name="data_category">
         <item>Beras</item>
         <item>Bawang Merah</item>
