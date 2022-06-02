@@ -30,6 +30,10 @@
     <string name="cabai_merah">Cabai Merah</string>
     <string name="cabai_rawit">Cabai Rawit</string>
     <string name="produk_pilihan">Produk Pilihan</string>
+    <string name="button_cart">Button_Cart</string>
+    <string name="title">Title</string>
+    <string name="location">Location</string>
+    <string name="button_back">button_back</string>
 
     <!--    drop down category di price page-->
     <string-array name="data_category">
@@ -38,6 +42,50 @@
         <item>Bawang Putih</item>
         <item>Cabe Merah</item>
         <item>Cabe Rawit</item>
+    </string-array>
+
+    <string-array name="data_title_product">
+        <item>Beras Raja Lele SUPER</item>
+        <item>Cabai Merah Keriting</item>
+        <item>Bawang Merah Jawa</item>
+        <item>Beras Maknyus</item>
+        <item>Beras Anak Daro SUPER</item>
+        <item>Cabai Rawit Hijau</item>
+        <item>Bawang Putih</item>
+        <item>Cabai Merah Besar</item>
+    </string-array>
+
+    <string-array name="data_price_product">
+        <item>Rp 11.500/kg</item>
+        <item>Rp 47.000/kg</item>
+        <item>Rp 37.600/kg</item>
+        <item>Rp 10.100/kg</item>
+        <item>Rp 13.000/kg</item>
+        <item>Rp 70.000/kg</item>
+        <item>Rp 31.000/kg</item>
+        <item>Rp 71.000/kg</item>
+    </string-array>
+
+    <string-array name="data_location_product">
+        <item>Kota Bandung</item>
+        <item>Kab. Sidoarjo</item>
+        <item>Kota Surabaya</item>
+        <item>Kab. Cirebon</item>
+        <item>Kab. Kampar</item>
+        <item>Bandung</item>
+        <item>Kab. Kampar</item>
+        <item>Semarang</item>
+    </string-array>
+
+    <string-array name="data_image_product">
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981950549513625680/sample_beras.jpg</item>
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981949741426409492/sample_cabai_cropped.jpg</item>
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981950006489657354/sample_bawangmerah.jpg</item>
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981950045219881000/sample_beras_harumas.jpg</item>
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981949933215162438/sample_beras_anakdaro.jpg</item>
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981958109083865129/sample_cabai_rawit.jpg</item>
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981949972587085955/sample_bawang_putih.jpg</item>
+        <item>https://cdn.discordapp.com/attachments/981949351750422589/981960527989309440/sample_cabai_besar.jpg</item>
     </string-array>
 
     <string-array name="dummy_label">
@@ -50,23 +98,23 @@
         <item>Min</item>
     </string-array>
 
-<!--    <array name="dummy_price">-->
-<!--        <item>10500</item>-->
-<!--        <item>10200</item>-->
-<!--        <item>Rab</item>-->
-<!--        <item>Kam</item>-->
-<!--        <item>Jum</item>-->
-<!--        <item>Sab</item>-->
-<!--        <item>Min</item>-->
-<!--    </int-array>-->
+    <!--    <array name="dummy_price">-->
+    <!--        <item>10500</item>-->
+    <!--        <item>10200</item>-->
+    <!--        <item>Rab</item>-->
+    <!--        <item>Kam</item>-->
+    <!--        <item>Jum</item>-->
+    <!--        <item>Sab</item>-->
+    <!--        <item>Min</item>-->
+    <!--    </int-array>-->
 
-<!--    10000))-->
-<!--    priceList.add(PriceList("Sel", 10500))-->
-<!--    priceList.add(PriceList("Rab", 10200))-->
-<!--    priceList.add(PriceList("Kam", 11000))-->
-<!--    priceList.add(PriceList("Jum", 11400))-->
-<!--    priceList.add(PriceList("Sab", 11100))-->
-<!--    priceList.add(PriceList("Min", 12000))-->
+    <!--    10000))-->
+    <!--    priceList.add(PriceList("Sel", 10500))-->
+    <!--    priceList.add(PriceList("Rab", 10200))-->
+    <!--    priceList.add(PriceList("Kam", 11000))-->
+    <!--    priceList.add(PriceList("Jum", 11400))-->
+    <!--    priceList.add(PriceList("Sab", 11100))-->
+    <!--    priceList.add(PriceList("Min", 12000))-->
 
 
 </resources>

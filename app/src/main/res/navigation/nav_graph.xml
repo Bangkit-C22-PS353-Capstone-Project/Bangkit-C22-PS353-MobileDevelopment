@@ -13,15 +13,28 @@
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_categoryFragment"
+            app:destination="@id/categoryFragment" />
+
     </fragment>
     <fragment
         android:id="@+id/loginFragment"
         android:name="com.example.capstonec22_ps353.ui.login.LoginFragment"
         android:label="fragment_login"
-        tools:layout="@layout/fragment_login" >
+        tools:layout="@layout/fragment_login" />
+    <fragment
+        android:id="@+id/categoryFragment"
+        android:name="com.example.capstonec22_ps353.ui.category.CategoryFragment"
+        android:label="fragment_category"
+        tools:layout="@layout/fragment_category" >
         <action
-            android:id="@+id/action_loginFragment_to_mainFragment"
-            app:destination="@id/mainFragment" />
+            android:id="@+id/action_categoryFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <argument
+            android:name="category"
+            app:argType="string"
+            android:defaultValue="Beras" />
     </fragment>
 
 </navigation>

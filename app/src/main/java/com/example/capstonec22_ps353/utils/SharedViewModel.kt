@@ -1,18 +1,14 @@
-package com.example.capstonec22_ps353.ui
+package com.example.capstonec22_ps353.utils
 
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.navigation.NavController
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.update
 
 class SharedViewModel : ViewModel() {
     private val _navController = MutableLiveData<NavController>()
     val navController: LiveData<NavController> = _navController
-
 
     fun setNavController(navController2: NavController) {
         _navController.value = navController2
@@ -22,7 +18,7 @@ class SharedViewModel : ViewModel() {
     }
 
     companion object {
-        private val TAG = "SharedViewModel"
+        const val TAG = "SharedViewModel"
     }
 
 

@@ -21,6 +21,32 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
+    <ImageButton
+        android:id="@+id/btnCart"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="6dp"
+        android:layout_marginEnd="12dp"
+        android:background="@drawable/search_background"
+        android:contentDescription="@string/button_cart"
+        android:src="@drawable/ic_cart"
+        app:layout_constraintBottom_toBottomOf="@id/searchView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@id/searchView"
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/searchView"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="12dp"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/search_background"
+        app:layout_constraintEnd_toStartOf="@id/btnCart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <TextView
         android:id="@+id/tvKategori"
         android:layout_width="wrap_content"
@@ -33,72 +59,76 @@
 
     <LinearLayout
         android:id="@+id/layKategori"
-        android:layout_marginTop="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:gravity="center_horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvKategori">
 
         <TextView
+            android:id="@+id/tvBeras"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="11sp"
             android:drawablePadding="5dp"
-            android:text="@string/beras"
             android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/beras"
             android:textColor="@color/black"
-            app:drawableTopCompat="@drawable/ic_beras"
-             />
+            android:textSize="11sp"
+            app:drawableTopCompat="@drawable/ic_beras" />
 
         <TextView
+            android:id="@+id/tvBawangMerah"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginStart="20dp"
             android:drawablePadding="5dp"
-            android:textSize="11sp"
-            android:text="@string/bawang_merah"
             android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/bawang_merah"
             android:textColor="@color/black"
+            android:textSize="11sp"
             app:drawableTopCompat="@drawable/ic_bawang_merah" />
 
         <TextView
+            android:id="@+id/tvBawangPutih"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginStart="20dp"
             android:drawablePadding="5dp"
-            android:textSize="11sp"
-            android:text="@string/bawang_putih"
             android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/bawang_putih"
             android:textColor="@color/black"
+            android:textSize="11sp"
             app:drawableTopCompat="@drawable/ic_bawang_putih" />
 
         <TextView
+            android:id="@+id/tvCabaiMerah"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginStart="20dp"
             android:drawablePadding="5dp"
-            android:textSize="11sp"
-            android:text="@string/cabai_merah"
             android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/cabai_merah"
             android:textColor="@color/black"
+            android:textSize="11sp"
             app:drawableTopCompat="@drawable/ic_cabai_merah" />
 
         <TextView
+            android:id="@+id/tvCabaiRawit"
             android:layout_width="50dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
             android:layout_marginStart="20dp"
             android:drawablePadding="5dp"
-            android:textSize="11sp"
-            android:text="@string/cabai_rawit"
             android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:text="@string/cabai_rawit"
             android:textColor="@color/black"
+            android:textSize="11sp"
             app:drawableTopCompat="@drawable/ic_cabai_rawit" />
 
     </LinearLayout>
@@ -111,50 +141,18 @@
         android:text="@string/produk_pilihan"
         android:textAppearance="@style/TextCategory"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/layKategori" />
+        app:layout_constraintTop_toBottomOf="@id/layKategori" />
 
-    <!--    <ImageView-->
-    <!--        android:id="@+id/imageView"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="210dp"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent"-->
-    <!--        android:background="@drawable/farm2"-->
-    <!--        />-->
-
-    <ImageButton
-        android:id="@+id/btnCart"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="6dp"
-        android:layout_marginEnd="12dp"
-        android:background="@drawable/search_background"
-        android:src="@drawable/ic_cart"
-        app:layout_constraintBottom_toBottomOf="@id/searchView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/searchView"
-        app:layout_constraintTop_toTopOf="@id/searchView" />
-
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/searchView"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProduct"
         android:layout_width="0dp"
-        android:layout_height="45dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="12dp"
-        android:background="@drawable/search_background"
-        app:layout_constraintEnd_toStartOf="@+id/btnCart"
-        app:layout_constraintHorizontal_bias="0.5"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/tvProdukPilihan"
+        tools:listitem="@layout/item_product"/>
 
 
-    <!--    <TextView-->
-    <!--        android:id="@+id/tvHome"-->
-    <!--        android:gravity="center"-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="match_parent"-->
-    <!--        android:text="@string/home" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

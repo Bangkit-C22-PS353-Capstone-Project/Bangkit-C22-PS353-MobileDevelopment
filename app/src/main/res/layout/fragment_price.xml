@@ -4,24 +4,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.price.PriceFragment"
-    >
-
-<!--    <Spinner-->
-<!--        -->
-<!--        android:id="@+id/spinCategory"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:layout_margin="16dp"-->
-<!--        style="@style/TextCategory"-->
-<!--        app:layout_constraintStart_toStartOf="parent"-->
-<!--        app:layout_constraintTop_toTopOf="parent" />-->
+    tools:context=".ui.price.PriceFragment">
 
     <com.google.android.material.textfield.TextInputLayout
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginStart="16dp"
         app:endIconTint="@color/black"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -32,8 +22,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@color/transparent"
-            android:paddingTop="8dp"
-            android:paddingBottom="8dp"
+            android:paddingTop="6dp"
+            android:paddingBottom="6dp"
             android:inputType="none"
             android:labelFor="@id/autoCompleteTV"
             android:text="@string/beras"
@@ -41,21 +31,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
-
-    <!--    <TextView-->
-    <!--        android:id="@+id/spinner"-->
-    <!--        android:layout_width="wrap_content"-->
-    <!--        android:layout_height="wrap_content"-->
-    <!--        android:layout_margin="16dp"-->
-    <!--        android:text="Beras"-->
-    <!--        android:fontFamily="@font/poppins_bold"-->
-    <!--        android:textColor="@color/black"-->
-    <!--        android:drawableEnd=""-->
-    <!--        android:textSize="18sp"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
-
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
@@ -74,8 +49,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginStart="50dp"
         android:layout_marginEnd="50dp"
-
         app:layout_constraintTop_toBottomOf="@+id/lineChart">
+
         <TextView
             android:layout_marginStart="16dp"
             android:layout_width="wrap_content"
@@ -84,7 +59,6 @@
             android:text="@string/prediksi_harga_esok"
             android:textColor="@color/white"
             android:textAppearance="@style/TextTitle"/>
-
 
     </androidx.cardview.widget.CardView>
 

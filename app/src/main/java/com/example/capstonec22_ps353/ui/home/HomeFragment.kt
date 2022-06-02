@@ -5,23 +5,25 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Toast
 import androidx.fragment.app.activityViewModels
-import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.NavController
-import androidx.navigation.Navigation
-import androidx.navigation.fragment.NavHostFragment
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentHomeBinding
-import com.example.capstonec22_ps353.databinding.FragmentProfileBinding
-import com.example.capstonec22_ps353.ui.SharedViewModel
+import com.example.capstonec22_ps353.model.Product
+import com.example.capstonec22_ps353.ui.MainFragmentDirections
+import com.example.capstonec22_ps353.ui.adapter.ListProductAdapter
+import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
 
 
 class HomeFragment : Fragment() {
+    private lateinit var rvProduct: RecyclerView
+    private val list = ArrayList<Product>()
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
@@ -33,7 +35,7 @@ class HomeFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
         // Inflate the layout for this fragment
         return binding.root
@@ -41,18 +43,10 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        lifecycleScope.launch{
-            sharedViewModel.navController.observe(viewLifecycleOwner) {
-                navController = it
-                binding.btnCart.setOnClickListener {
-                    navController.navigate(R.id.action_mainFragment_to_loginFragment)
-                }
 
-            }
-        }
+        rvProduct = binding.rvProduct
 
-
-
+        setupActionButton()
 
         val imageList = ArrayList<SlideModel>()
 
@@ -60,30 +54,97 @@ class HomeFragment : Fragment() {
         imageList.add(SlideModel(R.drawable.farm2))
         imageList.add(SlideModel(R.drawable.farm3))
 
-//        val navHostFragment = childFragmentManager.findFragmentById(R.id.mainFragmentContainer) as NavHostFragment
-
-
-//            sharedViewModel.navController
-
-//        if (navController==null) {
-//        }
-        
         binding.imgSliderHome.setImageList(imageList, ScaleTypes.FIT)
 
-//        binding.btnCart.setOnClickListener {
-//            navController.navigate(R.id.action_mainFragment_to_loginFragment)
-////            navController.navigate(R.id.action_mainFragment_to_loginFragment)
-////            Navigation.findNavController(activity, R.id.action_mainFragment_to_loginFragment)
-////            Navigation.findNavController(view).navigate(R.id.action_mainFragment_to_loginFragment)
-//        }
-    }
-
-    private fun setNav(navController: NavController) {
-
-
-        Toast.makeText(activity, "ADA", Toast.LENGTH_SHORT).show()
+        showRecyclerList()
 
     }
+
+    private fun showRecyclerList() {
+        rvProduct.layoutManager = GridLayoutManager(activity, 2)
+
+        val listProductAdapter = ListProductAdapter()
+        listProductAdapter.setListProduct(listProduct)
+        rvProduct.adapter = listProductAdapter
+
+
+    }
+
+    private val listProduct: ArrayList<Product>
+        get() {
+            val dataImage = resources.getStringArray(R.array.data_image_product)
+            val dataTitle = resources.getStringArray(R.array.data_title_product)
+            val dataPrice = resources.getStringArray(R.array.data_price_product)
+            val dataLocation = resources.getStringArray(R.array.data_location_product)
+            val listProduct = ArrayList<Product>()
+            for (i in dataImage.indices) {
+                val product = Product(dataImage[i], dataTitle[i], dataPrice[i], dataLocation[i])
+                listProduct.add(product)
+            }
+
+            return listProduct
+        }
+
+    private fun setupActionButton() {
+        lifecycleScope.launch{
+            sharedViewModel.navController.observe(viewLifecycleOwner) {
+                navController = it
+
+                binding.apply {
+                    btnCart.setOnClickListener {
+                        navController.navigate(R.id.action_mainFragment_to_loginFragment)
+                    }
+
+                    tvBeras.apply {
+                        setOnClickListener {
+                            val text = text.toString()
+                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            navController.navigate(action)
+                        }
+                    }
+
+                    tvBawangMerah.apply {
+                        setOnClickListener {
+                            val text = text.toString()
+                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            navController.navigate(action)
+                        }
+                    }
+
+                    tvBawangPutih.apply {
+                        setOnClickListener {
+                            val text = text.toString()
+                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            navController.navigate(action)
+                        }
+                    }
+
+                    tvCabaiMerah.apply {
+                        setOnClickListener {
+                            val text = text.toString()
+                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            navController.navigate(action)
+                        }
+                    }
+
+                    tvCabaiRawit.apply {
+                        setOnClickListener {
+                            val text = text.toString()
+                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            navController.navigate(action)
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+//    private fun setNav(navController: NavController) {
+//
+//
+//        Toast.makeText(activity, "ADA", Toast.LENGTH_SHORT).show()
+//
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

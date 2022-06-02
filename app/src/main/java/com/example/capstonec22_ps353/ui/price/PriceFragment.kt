@@ -99,12 +99,14 @@ class PriceFragment : Fragment() {
 
         lineDataSet.apply {
             color = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
-            valueTextColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
+//            valueTextColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
             lineWidth = 2f
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setDrawValues(false)
-            setDrawHighlightIndicators(false)
+//            setDrawHighlightIndicators(false)
             setDrawCircles(false)
+
+            setDrawHorizontalHighlightIndicator(true)
 
         }
 
@@ -127,12 +129,20 @@ class PriceFragment : Fragment() {
                 valueFormatter = AxisFormatter()
                 position = XAxis.XAxisPosition.BOTTOM
                 textSize = 12f
-                textColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
+//                textColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
             }
+            isAutoScaleMinMaxEnabled = true
 
             axisRight.isEnabled = false
+//            axisLeft.textColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
             axisLeft.setDrawAxisLine(false)
-            legend.isEnabled = false
+            axisLeft.gridLineWidth = 0.9f
+//            axisLeft.gridColor =
+            axisLeft.setDrawGridLinesBehindData(true)
+            axisLeft.granularity = 6f
+//            axisLeft.mAxisMaximum = 15000f
+//            axisLeft.mAxisMinimum = 10000f
+            axisLeft.enableGridDashedLine(20f, 20f, 5f)
             description = null
 
         }
@@ -162,7 +172,6 @@ class PriceFragment : Fragment() {
 
     }
 
-
     override fun onResume() {
         super.onResume()
         setDropdown()
@@ -178,7 +187,7 @@ class PriceFragment : Fragment() {
         priceList.add(PriceList("Sen", 10000))
         priceList.add(PriceList("Sel", 10500))
         priceList.add(PriceList("Rab", 10200))
-        priceList.add(PriceList("Kam", 11000))
+        priceList.add(PriceList("Kam", 14000))
         priceList.add(PriceList("Jum", 11400))
         priceList.add(PriceList("Sab", 11100))
         priceList.add(PriceList("Min", 12000))

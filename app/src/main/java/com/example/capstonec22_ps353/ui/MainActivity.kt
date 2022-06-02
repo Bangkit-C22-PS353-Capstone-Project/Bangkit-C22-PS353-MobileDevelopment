@@ -7,6 +7,7 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.ActivityMainBinding
+import com.example.capstonec22_ps353.utils.SharedViewModel
 
 class MainActivity : AppCompatActivity() {
 
