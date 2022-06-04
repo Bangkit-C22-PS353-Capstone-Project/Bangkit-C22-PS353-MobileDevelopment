@@ -10,9 +10,12 @@
         android:name="com.example.capstonec22_ps353.ui.MainFragment"
         android:label="fragment_main"
         tools:layout="@layout/fragment_main">
+<!--        <action-->
+<!--            android:id="@+id/action_mainFragment_to_loginFragment"-->
+<!--            app:destination="@id/loginFragment" />-->
         <action
-            android:id="@+id/action_mainFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
+            android:id="@+id/action_mainFragment_to_cartFragment"
+            app:destination="@id/cartFragment"/>
         <action
             android:id="@+id/action_mainFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
@@ -31,10 +34,18 @@
         <action
             android:id="@+id/action_categoryFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_categoryFragment_to_cartFragment"
+            app:destination="@id/cartFragment"/>
         <argument
             android:name="category"
             app:argType="string"
             android:defaultValue="Beras" />
     </fragment>
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.capstonec22_ps353.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart"/>
 
 </navigation>

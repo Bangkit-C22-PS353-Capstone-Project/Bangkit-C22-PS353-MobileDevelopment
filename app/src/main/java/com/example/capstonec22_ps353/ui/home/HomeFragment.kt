@@ -92,7 +92,7 @@ class HomeFragment : Fragment() {
 
                 binding.apply {
                     btnCart.setOnClickListener {
-                        navController.navigate(R.id.action_mainFragment_to_loginFragment)
+                        navController.navigate(R.id.action_mainFragment_to_cartFragment)
                     }
 
                     tvBeras.apply {

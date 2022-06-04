@@ -57,6 +57,17 @@ class CategoryFragment : Fragment() {
                     navController.navigate(R.id.action_categoryFragment_to_loginFragment)
 //                    navController.navigate(R.id.action_loginFragment_to_mainFragment)
                 }
+
+                //navigation on clicked Cart button to Cart Fragment
+                requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,callback)
+                binding.btnCart.setOnClickListener {
+                    navController.navigate(R.id.action_categoryFragment_to_cartFragment)
+                }
+
+                requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner,callback)
+                binding.btnBack.setOnClickListener {
+                    navController.popBackStack()
+                }
             }
         }
 
