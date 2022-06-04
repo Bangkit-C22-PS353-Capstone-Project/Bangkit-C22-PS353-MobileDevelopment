@@ -12,13 +12,13 @@
         android:layout_height="45dp"
         android:layout_marginEnd="4dp"
         android:background="@drawable/ic_arrow_left"
+        android:contentDescription="@string/button_back"
         app:layout_constraintBottom_toBottomOf="@+id/searchView"
         app:layout_constraintEnd_toStartOf="@id/searchView"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/searchView"
-        android:contentDescription="@string/button_back" />
-    
+        app:layout_constraintTop_toTopOf="@+id/searchView" />
+
     <ImageButton
         android:id="@+id/btnCart"
         android:layout_width="45dp"
@@ -54,6 +54,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tbLayCategory"
+        android:layout_width="0dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/search_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvCategory"
+        app:tabIndicatorAnimationMode="elastic" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

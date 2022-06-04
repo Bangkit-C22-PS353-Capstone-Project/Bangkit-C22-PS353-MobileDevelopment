@@ -34,6 +34,17 @@
     <string name="title">Title</string>
     <string name="location">Location</string>
     <string name="button_back">button_back</string>
+    <string name="image_avatar">Image Avatar</string>
+    <string name="email">Email</string>
+
+    <string name="sample_profile">https://cdn.discordapp.com/attachments/981949351750422589/982182745079959582/sampleProfile.png</string>
+    <string name="sample_username">John Kennedy</string>
+    <string name="sampe_email">johnkennedy@gmail.com</string>
+    <string name="general">General</string>
+    <string name="pengaturan">Pengaturan</string>
+    <string name="arrow_right">Arrow Right</string>
+    <string name="riwayat">Riwayat</string>
+    <string name="personal">Personal</string>
 
     <!--    drop down category di price page-->
     <string-array name="data_category">
@@ -65,6 +76,8 @@
         <item>Rp 31.000/kg</item>
         <item>Rp 71.000/kg</item>
     </string-array>
+
+
 
     <string-array name="data_location_product">
         <item>Kota Bandung</item>
