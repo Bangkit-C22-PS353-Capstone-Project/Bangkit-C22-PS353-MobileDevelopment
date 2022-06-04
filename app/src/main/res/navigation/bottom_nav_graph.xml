@@ -22,5 +22,11 @@
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile"/>
 
+    <fragment
+        android:id="@+id/cartFragment"
+        android:name="com.example.capstonec22_ps353.ui.cart.CartFragment"
+        android:label="fragment_cart"
+        tools:layout="@layout/fragment_cart" />
+
 
 </navigation>

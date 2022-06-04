@@ -36,6 +36,10 @@
     <string name="button_back">button_back</string>
     <string name="image_avatar">Image Avatar</string>
     <string name="email">Email</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="checkout">Checkout</string>
+    <string name="minus">kurangi item</string>
+    <string name="plus">tambah item</string>
 
     <string name="sample_profile">https://cdn.discordapp.com/attachments/981949351750422589/982182745079959582/sampleProfile.png</string>
     <string name="sample_username">John Kennedy</string>
@@ -76,7 +80,6 @@
         <item>Rp 31.000/kg</item>
         <item>Rp 71.000/kg</item>
     </string-array>
-
 
 
     <string-array name="data_location_product">
@@ -129,5 +132,10 @@
     <!--    priceList.add(PriceList("Sab", 11100))-->
     <!--    priceList.add(PriceList("Min", 12000))-->
 
+    <string name="cart">Cart</string>
+    <string name="select_all">Pilih Semua</string>
+    <string name="edit">Edit</string>
+    <string name="total">Total :</string>
+    <string name="value">Jumlah</string>
 
 </resources>

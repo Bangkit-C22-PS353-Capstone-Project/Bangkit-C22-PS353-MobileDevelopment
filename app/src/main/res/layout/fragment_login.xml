@@ -40,7 +40,7 @@
         android:textColor="@color/black"
         android:textSize="16sp"
         android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="@+id/edt_username"
+        app:layout_constraintStart_toStartOf="@+id/edtEmail"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
 
     <EditText
