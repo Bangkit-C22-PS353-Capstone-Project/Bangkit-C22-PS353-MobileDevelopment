@@ -31,13 +31,13 @@
         app:layout_constraintTop_toTopOf="@+id/btnBack" />
 
     <ImageButton
-        android:id="@+id/btnUnchecked"
+        android:id="@+id/btnCheckedAll"
         android:contentDescription="@string/checkbox"
         android:layout_width="30dp"
         android:layout_height="30dp"
         android:layout_marginStart="10dp"
         android:layout_marginTop="16dp"
-        android:src="@drawable/ic_unchecked"
+        android:background="@drawable/ic_unchecked"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
 
@@ -49,9 +49,9 @@
         android:text="@string/select_all"
         android:fontFamily="@font/poppins_medium"
         android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btnUnchecked"
-        app:layout_constraintStart_toEndOf="@+id/btnUnchecked"
-        app:layout_constraintTop_toTopOf="@+id/btnUnchecked" />
+        app:layout_constraintBottom_toBottomOf="@+id/btnCheckedAll"
+        app:layout_constraintStart_toEndOf="@+id/btnCheckedAll"
+        app:layout_constraintTop_toTopOf="@+id/btnCheckedAll" />
 
     <TextView
         android:id="@+id/tvEdit"

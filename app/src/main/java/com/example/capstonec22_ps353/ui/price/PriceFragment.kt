@@ -6,26 +6,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.core.content.ContextCompat
+import androidx.fragment.app.activityViewModels
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentPriceBinding
 import com.example.capstonec22_ps353.model.PriceList
-import com.github.mikephil.charting.charts.LineChart
-import com.github.mikephil.charting.components.AxisBase
-import com.github.mikephil.charting.components.XAxis
-import com.github.mikephil.charting.data.Entry
-import com.github.mikephil.charting.data.LineData
-import com.github.mikephil.charting.data.LineDataSet
-import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import com.example.capstonec22_ps353.ui.adapter.SectionPagerAdapter
+import com.example.capstonec22_ps353.ui.category.DetailCategoryFragment
+import com.example.capstonec22_ps353.utils.SharedViewModel
+import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 
 class PriceFragment : Fragment() {
 
-    private lateinit var lineChart: LineChart
-//    private lateinit var lineList: ArrayList<Entry>
-//    private lateinit var lineData: LineData
-    private var priceList = ArrayList<PriceList>()
+    private val sharedViewModel: SharedViewModel by activityViewModels()
 
-    private var _binding: FragmentPriceBinding?=null
+    //    private lateinit var lineChart: LineChart
+//    private var priceList = ArrayList<PriceList>()
+
+    //    private lateinit var lineList: ArrayList<Entry>
+//    private lateinit var lineData: LineData
+
+    private var _binding: FragmentPriceBinding? = null
     private val binding get() = _binding!!
 
     override fun onCreateView(
@@ -42,10 +43,15 @@ class PriceFragment : Fragment() {
 
         setDropdown()
 
-        lineChart = binding.lineChart
+        setupTabLayout()
 
-        initLineChart()
-        setDataLineChart()
+        val text = binding.autoCompleteTV.text.toString()
+        sharedViewModel.setTitlePrice(text)
+
+//        lineChart = binding.lineChart
+
+//        initLineChart()
+//        setDataLineChart()
 
 //        lineList = ArrayList()
 
@@ -68,113 +74,244 @@ class PriceFragment : Fragment() {
 //        lineList.add(Entry(7f, 500f))
 
 
-
-
-
     }
 
-    private fun setDataLineChart() {
-        val entries: ArrayList<Entry> = ArrayList()
+    private fun setupTabLayout() {
+        binding.apply {
 
-        priceList = getScoreList()
+            val fragmentBeras = mutableListOf<Fragment>(
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS1),
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS2),
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS3)
+            )
 
-        for (i in priceList.indices) {
-            val price = priceList[i]
-            entries.add(Entry(i.toFloat(), price.PriceY.toFloat()))
-        }
+            val fragmentBawangM = mutableListOf<Fragment>(
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.BAWANGMERAH)
+            )
 
-        val lineDataSet = LineDataSet(entries,"")
+            val fragmentBawangP = mutableListOf<Fragment>(
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.BAWANGPUTIH)
+            )
 
-        val data = LineData(lineDataSet)
-        lineChart.data = data
-        lineChart.invalidate()
+            val fragmentCabaiM = mutableListOf<Fragment>(
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIM1),
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIM2)
+            )
 
-//        lineDataSet = LineDataSet(lineList, null)
-//        lineData = LineData(lineDataSet)
-//        lineChart.data = lineData
+            val fragmentCabaiR = mutableListOf<Fragment>(
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIR1),
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIR2)
+            )
+
+            val fragmentTitleBeras = mutableListOf(
+                getString(R.string.beras1),
+                getString(R.string.beras2),
+                getString(R.string.beras3)
+            )
+
+            val fragmentTitleBawangM = mutableListOf(
+                getString(R.string.bawangM)
+            )
+
+            val fragmentTitleBawangP = mutableListOf(
+                getString(R.string.bawangP)
+            )
+
+            val fragmentTitleCabaiM = mutableListOf(
+                getString(R.string.cabaiM1),
+                getString(R.string.cabaiM2)
+            )
+
+            val fragmentTitleCabaiR = mutableListOf(
+                getString(R.string.cabaiR1),
+                getString(R.string.cabaiR2)
+            )
 
 
 
-//        lineChart.setBackgroundColor(Color.TRANSPARENT)
+            when (autoCompleteTV.text.toString()) {
+                "Beras" -> {
+                    viewPagerCategory.adapter =
+                        SectionPagerAdapter(requireActivity(), fragmentBeras)
+                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
+                        tab.text = fragmentTitleBeras[position]
+                    }.attach()
 
-        lineDataSet.apply {
-            color = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
-//            valueTextColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
-            lineWidth = 2f
-            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-            setDrawValues(false)
-//            setDrawHighlightIndicators(false)
-            setDrawCircles(false)
+                    tbCategory.addOnTabSelectedListener(object :
+                        TabLayout.OnTabSelectedListener {
+                        override fun onTabSelected(tab: TabLayout.Tab?) {
+                            when (tab?.position) {
+                                DetailCategoryFragment.BERAS1 -> {
+                                    sharedViewModel.setTitle(getString(R.string.beras1))
+                                }
 
-            setDrawHorizontalHighlightIndicator(true)
+                                DetailCategoryFragment.BERAS2 -> {
+                                    sharedViewModel.setTitle(getString(R.string.beras2))
+                                }
 
-        }
+                                DetailCategoryFragment.BERAS3 -> {
+                                    sharedViewModel.setTitle(getString(R.string.beras3))
+                                }
+                            }
+                        }
 
-//        lineDataSet.color = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
-//        lineDataSet.valueTextColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
-//        lineDataSet.valueTextSize = 15f
-//        lineDataSet.lineWidth = 2f
-//        lineDataSet.mode = LineDataSet.Mode.HORIZONTAL_BEZIER
-//        lineDataSet.yMax
-//        lineDataSet.setDrawValues(false)
-//        lineDataSet.setDrawHighlightIndicators(false)
-//        lineDataSet.setDrawCircles(false)
+                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                        override fun onTabReselected(tab: TabLayout.Tab?) {}
+                    })
+                    sharedViewModel.setTitle(getString(R.string.beras1))
+                }
 
-    }
+                "Bawang Merah" -> {
+                    viewPagerCategory.adapter =
+                        SectionPagerAdapter(requireActivity(), fragmentBawangM)
+                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
+                        tab.text = fragmentTitleBawangM[position]
+                    }.attach()
 
-    private fun initLineChart() {
-        lineChart.apply {
-            xAxis.apply {
-                setDrawGridLines(false)
-                valueFormatter = AxisFormatter()
-                position = XAxis.XAxisPosition.BOTTOM
-                textSize = 12f
-//                textColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
+                    sharedViewModel.setTitle(getString(R.string.bawangM))
+                }
+
+                "Bawang Putih" -> {
+                    viewPagerCategory.adapter =
+                        SectionPagerAdapter(requireActivity(), fragmentBawangP)
+                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
+                        tab.text = fragmentTitleBawangP[position]
+                    }.attach()
+
+                    sharedViewModel.setTitle(getString(R.string.bawangP))
+                }
+
+                "Cabai Merah" -> {
+                    viewPagerCategory.adapter =
+                        SectionPagerAdapter(requireActivity(), fragmentCabaiM)
+                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
+                        tab.text = fragmentTitleCabaiM[position]
+                    }.attach()
+
+                    tbCategory.addOnTabSelectedListener(object :
+                        TabLayout.OnTabSelectedListener {
+                        override fun onTabSelected(tab: TabLayout.Tab?) {
+                            when (tab?.position) {
+                                DetailCategoryFragment.CABAIM1 -> {
+                                    sharedViewModel.setTitle(getString(R.string.cabaiM1))
+                                }
+
+                                DetailCategoryFragment.CABAIM2 -> {
+                                    sharedViewModel.setTitle(getString(R.string.cabaiM2))
+                                }
+                            }
+                        }
+
+                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                        override fun onTabReselected(tab: TabLayout.Tab?) {}
+                    })
+                    sharedViewModel.setTitle(getString(R.string.cabaiM1))
+                }
+
+                "Cabai Rawit" -> {
+                    viewPagerCategory.adapter =
+                        SectionPagerAdapter(requireActivity(), fragmentCabaiR)
+                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
+                        tab.text = fragmentTitleCabaiR[position]
+                    }.attach()
+
+                    tbCategory.addOnTabSelectedListener(object :
+                        TabLayout.OnTabSelectedListener {
+                        override fun onTabSelected(tab: TabLayout.Tab?) {
+                            when (tab?.position) {
+                                DetailCategoryFragment.CABAIR1 -> {
+                                    sharedViewModel.setTitle(getString(R.string.cabaiR1))
+                                }
+
+                                DetailCategoryFragment.CABAIR2 -> {
+                                    sharedViewModel.setTitle(getString(R.string.cabaiR2))
+                                }
+                            }
+                        }
+
+                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                        override fun onTabReselected(tab: TabLayout.Tab?) {}
+                    })
+                    sharedViewModel.setTitle(getString(R.string.cabaiR1))
+
+                }
             }
-            isAutoScaleMinMaxEnabled = true
-
-            axisRight.isEnabled = false
-//            axisLeft.textColor = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
-            axisLeft.setDrawAxisLine(false)
-            axisLeft.gridLineWidth = 0.9f
-//            axisLeft.gridColor =
-            axisLeft.setDrawGridLinesBehindData(true)
-            axisLeft.granularity = 6f
-//            axisLeft.mAxisMaximum = 15000f
-//            axisLeft.mAxisMinimum = 10000f
-            axisLeft.enableGridDashedLine(20f, 20f, 5f)
-            description = null
 
         }
-
-
-//        lineChart.xAxis.setDrawGridLines(false)
-//        lineChart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-//        lineChart.xAxis.valueFormatter
-        lineChart.legend.isEnabled = false
-        lineChart.axisRight.isEnabled = false
-
-//        lineChart.axisLeft.maxWidth = 100f
-//        lineChart.axisLeft.setDrawAxisLine(false)
-//        lineChart.axisLeft.setDrawLabels(false)
-        lineChart.description = null
     }
 
-    inner class AxisFormatter : IndexAxisValueFormatter() {
-        override fun getAxisLabel(value: Float, axis: AxisBase?): String {
-            val index = value.toInt()
-            return if (index < priceList.size) {
-                priceList[index].labelX
-            } else {
-                ""
-            }
-        }
-
-    }
+//    private fun setDataLineChart() {
+//        val entries: ArrayList<Entry> = ArrayList()
+//
+//        priceList = getPriceList()
+//
+//        for (i in priceList.indices) {
+//            val price = priceList[i]
+//            entries.add(Entry(i.toFloat(), price.PriceY.toFloat()))
+//        }
+//
+//        val lineDataSet = LineDataSet(entries, "")
+//
+//        val data = LineData(lineDataSet)
+//        lineChart.data = data
+//        lineChart.invalidate()
+//
+//        lineDataSet.apply {
+//            color = activity?.let { ContextCompat.getColor(it, R.color.label_primer) }!!
+//            lineWidth = 2f
+//            mode = LineDataSet.Mode.HORIZONTAL_BEZIER
+//            setDrawValues(false)
+//            setDrawCircles(false)
+//
+//            setDrawHorizontalHighlightIndicator(true)
+//
+//        }
+//
+//
+//    }
+//
+//    private fun initLineChart() {
+//        lineChart.apply {
+//            xAxis.apply {
+//                setDrawGridLines(false)
+//                valueFormatter = AxisFormatter()
+//                position = XAxis.XAxisPosition.BOTTOM
+//                textSize = 12f
+//            }
+//            isAutoScaleMinMaxEnabled = true
+//
+//            axisRight.isEnabled = false
+//            axisLeft.setDrawAxisLine(false)
+//            axisLeft.gridLineWidth = 0.9f
+//            axisLeft.setDrawGridLinesBehindData(true)
+//            axisLeft.granularity = 6f
+//            axisLeft.enableGridDashedLine(20f, 20f, 5f)
+//            description = null
+//
+//        }
+//
+//
+//        lineChart.legend.isEnabled = false
+//        lineChart.axisRight.isEnabled = false
+//
+//        lineChart.description = null
+//    }
+//
+//    inner class AxisFormatter : IndexAxisValueFormatter() {
+//        override fun getAxisLabel(value: Float, axis: AxisBase?): String {
+//            val index = value.toInt()
+//            return if (index < priceList.size) {
+//                priceList[index].labelX
+//            } else {
+//                ""
+//            }
+//        }
+//    }
 
     override fun onResume() {
         super.onResume()
         setDropdown()
+        setupTabLayout()
     }
 
     private fun setDropdown() {
@@ -183,17 +320,17 @@ class PriceFragment : Fragment() {
         binding.autoCompleteTV.setAdapter(arrayAdapter)
     }
 
-    private fun getScoreList(): ArrayList<PriceList> {
-        priceList.add(PriceList("Sen", 10000))
-        priceList.add(PriceList("Sel", 10500))
-        priceList.add(PriceList("Rab", 10200))
-        priceList.add(PriceList("Kam", 14000))
-        priceList.add(PriceList("Jum", 11400))
-        priceList.add(PriceList("Sab", 11100))
-        priceList.add(PriceList("Min", 12000))
-
-        return priceList
-    }
+//    private fun getPriceList(): ArrayList<PriceList> {
+//        priceList.add(PriceList("Sen", 10000))
+//        priceList.add(PriceList("Sel", 10500))
+//        priceList.add(PriceList("Rab", 10200))
+//        priceList.add(PriceList("Kam", 14000))
+//        priceList.add(PriceList("Jum", 11400))
+//        priceList.add(PriceList("Sab", 11100))
+//        priceList.add(PriceList("Min", 12000))
+//
+//        return priceList
+//    }
 
     override fun onDestroy() {
         super.onDestroy()

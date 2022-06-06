@@ -27,7 +27,7 @@ class HomeFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
-    private var _binding: FragmentHomeBinding?=null
+    private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var navController: NavController
@@ -66,8 +66,6 @@ class HomeFragment : Fragment() {
         val listProductAdapter = ListProductAdapter()
         listProductAdapter.setListProduct(listProduct)
         rvProduct.adapter = listProductAdapter
-
-
     }
 
     private val listProduct: ArrayList<Product>
@@ -81,12 +79,11 @@ class HomeFragment : Fragment() {
                 val product = Product(dataImage[i], dataTitle[i], dataPrice[i], dataLocation[i])
                 listProduct.add(product)
             }
-
             return listProduct
         }
 
     private fun setupActionButton() {
-        lifecycleScope.launch{
+        lifecycleScope.launch {
             sharedViewModel.navController.observe(viewLifecycleOwner) {
                 navController = it
 
@@ -98,7 +95,8 @@ class HomeFragment : Fragment() {
                     tvBeras.apply {
                         setOnClickListener {
                             val text = text.toString()
-                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            val action =
+                                MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
                         }
                     }
@@ -106,7 +104,8 @@ class HomeFragment : Fragment() {
                     tvBawangMerah.apply {
                         setOnClickListener {
                             val text = text.toString()
-                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            val action =
+                                MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
                         }
                     }
@@ -114,7 +113,8 @@ class HomeFragment : Fragment() {
                     tvBawangPutih.apply {
                         setOnClickListener {
                             val text = text.toString()
-                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            val action =
+                                MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
                         }
                     }
@@ -122,7 +122,8 @@ class HomeFragment : Fragment() {
                     tvCabaiMerah.apply {
                         setOnClickListener {
                             val text = text.toString()
-                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            val action =
+                                MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
                         }
                     }
@@ -130,7 +131,8 @@ class HomeFragment : Fragment() {
                     tvCabaiRawit.apply {
                         setOnClickListener {
                             val text = text.toString()
-                            val action = MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
+                            val action =
+                                MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
                         }
                     }

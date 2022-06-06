@@ -55,15 +55,30 @@
         app:layout_constraintTop_toBottomOf="@+id/searchView" />
 
     <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tbLayCategory"
+        android:id="@+id/tbCategory"
         android:layout_width="0dp"
-        android:layout_height="40dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
-        android:background="@drawable/search_background"
+        android:layout_marginEnd="18dp"
+        android:background="@drawable/tab_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCategory"
-        app:tabIndicatorAnimationMode="elastic" />
+        app:tabIndicator="@color/label_primer"
+        app:tabIndicatorAnimationMode="elastic"
+        app:tabMode="fixed"
+        app:tabSelectedTextColor="@color/label_primer"
+        app:tabTextAppearance="@style/TextIndicator"
+        app:tabTextColor="@color/black" />
+
+    <androidx.viewpager2.widget.ViewPager2
+        android:id="@+id/viewPagerCategory"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbCategory" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

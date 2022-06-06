@@ -50,13 +50,26 @@
     <string name="riwayat">Riwayat</string>
     <string name="personal">Personal</string>
 
+    <string name="beras1">Beras Kualitas 1</string>
+    <string name="beras2">Beras Kualitas 2</string>
+    <string name="beras3">Beras Kualitas 3</string>
+
+    <string name="bawangM">Bawang Merah Ukuran Sedang</string>
+
+    <string name="bawangP">Bawang Putih Ukuran Sedang</string>
+
+    <string name="cabaiM1">Cabai Merah Besar</string>
+    <string name="cabaiM2">Cabai Merah Keriting</string>
+
+    <string name="cabaiR1">Cabai Rawit Hijau</string>
+    <string name="cabaiR2">Cabai Rawit Merah</string>
     <!--    drop down category di price page-->
     <string-array name="data_category">
         <item>Beras</item>
         <item>Bawang Merah</item>
         <item>Bawang Putih</item>
-        <item>Cabe Merah</item>
-        <item>Cabe Rawit</item>
+        <item>Cabai Merah</item>
+        <item>Cabai Rawit</item>
     </string-array>
 
     <string-array name="data_title_product">
@@ -137,5 +150,7 @@
     <string name="edit">Edit</string>
     <string name="total">Total :</string>
     <string name="value">Jumlah</string>
+    <string name="presentase">1% - Rp500</string>
+    <string name="test">test</string>
 
 </resources>

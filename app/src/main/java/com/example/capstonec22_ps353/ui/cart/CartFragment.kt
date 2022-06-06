@@ -52,14 +52,13 @@ class CartFragment : Fragment() {
                 }
             }
         }
+
+//        binding.btnCheckedAll.drawable = resources.getDrawable(R.drawable.)
+
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-
-    companion object {
-
     }
 }
