@@ -189,4 +189,10 @@
     <string name="lokasi">Lokasi</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus in commodo metus egestas libero adipiscing sit. Nisl magna vel adipiscing elementum morbi duis tempor dictum.</string>
 
+    <!--    History page-->
+    <string name="history">Riwayat Pesanan</string>
+    <string name="qty">Quantity</string>
+    <string name="buy_again">Beli Lagi</string>
+    <string name="history_date">Tanggal</string>
+
 </resources>
