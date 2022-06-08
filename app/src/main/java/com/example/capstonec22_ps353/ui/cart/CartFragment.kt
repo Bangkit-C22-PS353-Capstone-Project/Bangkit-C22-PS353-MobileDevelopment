@@ -37,6 +37,10 @@ class CartFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        binding.btnCheckedAll.setOnClickListener {
+            binding.tvTotalPrice.text = "10000"
+        }
+
         lifecycleScope.launch{
             sharedViewModel.navController.observe(viewLifecycleOwner) {
                 val navController = it

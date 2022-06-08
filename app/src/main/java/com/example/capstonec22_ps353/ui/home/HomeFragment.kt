@@ -23,12 +23,14 @@ import kotlinx.coroutines.launch
 
 class HomeFragment : Fragment() {
     private lateinit var rvProduct: RecyclerView
-    private val list = ArrayList<Product>()
+//    private val list = ArrayList<Product>()
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    private lateinit var listProductAdapter: ListProductAdapter
 
     private lateinit var navController: NavController
 
@@ -45,6 +47,7 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         rvProduct = binding.rvProduct
+        listProductAdapter = ListProductAdapter()
 
         setupActionButton()
 
@@ -62,8 +65,7 @@ class HomeFragment : Fragment() {
 
     private fun showRecyclerList() {
         rvProduct.layoutManager = GridLayoutManager(activity, 2)
-
-        val listProductAdapter = ListProductAdapter()
+        rvProduct.setHasFixedSize(true)
         listProductAdapter.setListProduct(listProduct)
         rvProduct.adapter = listProductAdapter
     }
@@ -86,6 +88,15 @@ class HomeFragment : Fragment() {
         lifecycleScope.launch {
             sharedViewModel.navController.observe(viewLifecycleOwner) {
                 navController = it
+
+                listProductAdapter.setOnItemClickCallback(object :
+                    ListProductAdapter.OnItemClickCallback {
+                    override fun onItemClicked(item: Product) {
+                        val action = MainFragmentDirections.actionMainFragmentToDetailFragment(item)
+                        navController.navigate(action)
+                    }
+
+                })
 
                 binding.apply {
                     btnCart.setOnClickListener {

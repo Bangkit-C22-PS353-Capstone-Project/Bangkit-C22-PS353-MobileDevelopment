@@ -9,10 +9,10 @@ class SharedViewModel : ViewModel() {
     private val _navController = MutableLiveData<NavController>()
     val navController: LiveData<NavController> = _navController
 
-    private val _titleCategory = MutableLiveData<String>()
-    val titleCategory: LiveData<String> = _titleCategory
+    private val _title = MutableLiveData<String>()
+    val title: LiveData<String> = _title
 
-    private val _titlePrice = MutableLiveData<String>()
+    private val _titlePrice = MutableLiveData("Beras")
     val titlePrice: LiveData<String> = _titlePrice
 
     fun setNavController(navController2: NavController) {
@@ -20,7 +20,7 @@ class SharedViewModel : ViewModel() {
     }
 
     fun setTitle(title: String) {
-        _titleCategory.value = title
+        _title.value = title
     }
 
     fun setTitlePrice(titlePrice: String) {

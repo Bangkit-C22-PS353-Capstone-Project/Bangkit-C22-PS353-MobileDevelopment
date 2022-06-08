@@ -12,6 +12,12 @@ import com.example.capstonec22_ps353.utils.ProductDiffCallback
 class ListProductAdapter : RecyclerView.Adapter<ListProductAdapter.ListViewHolder>() {
     private val listProduct = ArrayList<Product>()
 
+    private lateinit var onItemClickCallback: OnItemClickCallback
+
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
+        this.onItemClickCallback = onItemClickCallback
+    }
+
     fun setListProduct(items: List<Product>){
         val diffProductDiffCallback = ProductDiffCallback(this.listProduct, items)
         val diffProductResult = DiffUtil.calculateDiff(diffProductDiffCallback)
@@ -27,11 +33,13 @@ class ListProductAdapter : RecyclerView.Adapter<ListProductAdapter.ListViewHolde
 
     override fun onBindViewHolder(holder: ListProductAdapter.ListViewHolder, position: Int) = holder.bind(listProduct[position])
 
-
     override fun getItemCount(): Int = listProduct.size
 
     inner class ListViewHolder(private var binding: ItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: Product) {
+            binding.root.setOnClickListener {
+                onItemClickCallback.onItemClicked(item)
+            }
             binding.apply {
                 Glide.with(itemView)
                     .load(item.Image)
@@ -44,6 +52,8 @@ class ListProductAdapter : RecyclerView.Adapter<ListProductAdapter.ListViewHolde
         }
     }
 
-
+    interface OnItemClickCallback {
+        fun onItemClicked(item: Product)
+    }
 
 }

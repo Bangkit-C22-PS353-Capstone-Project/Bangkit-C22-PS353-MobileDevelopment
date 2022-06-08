@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_mainFragment_to_categoryFragment"
             app:destination="@id/categoryFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
 
     </fragment>
     <fragment
@@ -23,6 +26,7 @@
         android:name="com.example.capstonec22_ps353.ui.login.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
+
     <fragment
         android:id="@+id/categoryFragment"
         android:name="com.example.capstonec22_ps353.ui.category.CategoryFragment"
@@ -44,5 +48,14 @@
         android:name="com.example.capstonec22_ps353.ui.cart.CartFragment"
         android:label="fragment_cart"
         tools:layout="@layout/fragment_cart"/>
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.capstonec22_ps353.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" >
+        <argument
+            android:name="product"
+            app:argType="com.example.capstonec22_ps353.model.Product" />
+    </fragment>
 
 </navigation>

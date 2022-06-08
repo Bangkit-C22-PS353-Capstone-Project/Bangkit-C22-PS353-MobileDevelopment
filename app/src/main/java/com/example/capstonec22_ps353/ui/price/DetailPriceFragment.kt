@@ -5,12 +5,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.activityViewModels
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentDetailPriceBinding
+import com.example.capstonec22_ps353.model.PriceDate
 import com.example.capstonec22_ps353.model.PriceList
-import com.example.capstonec22_ps353.ui.category.DetailCategoryFragment
+import com.example.capstonec22_ps353.ui.adapter.ListPriceDateAdapter
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import com.github.mikephil.charting.charts.LineChart
 import com.github.mikephil.charting.components.AxisBase
@@ -19,16 +24,20 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import kotlin.math.roundToInt
 
 
 class DetailPriceFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
+
     private var _binding: FragmentDetailPriceBinding? = null
     private val binding get() = _binding!!
 
     private lateinit var lineChart: LineChart
+    private lateinit var rvPriceDate: RecyclerView
+
     private var priceList = ArrayList<PriceList>()
 
     private var position = 0
@@ -45,11 +54,95 @@ class DetailPriceFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        rvPriceDate = binding.rvPriceDate
+        showRecyclerList()
+
         lineChart = binding.lineChart
+
+        setupViewmodel()
 
         initLineChart()
         setDataLineChart()
 
+    }
+
+    private fun showRecyclerList() {
+        rvPriceDate.layoutManager = LinearLayoutManager(activity)
+        rvPriceDate.setHasFixedSize(true)
+        val listPriceDateAdapter = ListPriceDateAdapter()
+        listPriceDateAdapter.setListPriceDate(listPriceDate)
+        rvPriceDate.adapter = listPriceDateAdapter
+    }
+
+    private val listPriceDate: ArrayList<PriceDate>
+        get() {
+            val dataTitle = resources.getStringArray(R.array.dummy_day)
+            val dataPrice = resources.getIntArray(R.array.dummy_price)
+            val dataDate = resources.getStringArray(R.array.dummy_date)
+            val imgDown = ResourcesCompat.getDrawable(resources, R.drawable.price_down, null)
+            val imgUp = ResourcesCompat.getDrawable(resources, R.drawable.price_up, null)
+            val imgStable = ResourcesCompat.getDrawable(resources, R.drawable.price_stable, null)
+
+            val listPriceDate = ArrayList<PriceDate>()
+            for (i in 6 downTo 0) {
+                if (i != 0) {
+                    if (dataPrice[i] > dataPrice[i - 1]) {
+                        val selisih: Float = dataPrice[i] - dataPrice[i - 1].toFloat()
+                        val presentase: Int = ((selisih / dataPrice[i]) * 100).roundToInt()
+                        val angka = "%.0f".format(selisih)
+                        val priceDate = PriceDate(
+                            dataTitle[i],
+                            dataDate[i],
+                            "Rp ${dataPrice[i]}",
+                            "Rp $angka ($presentase%)",
+                            imgUp,
+                            i
+                        )
+                        listPriceDate.add(priceDate)
+                    } else if (dataPrice[i] < dataPrice[i - 1]) {
+                        val selisih: Float = dataPrice[i - 1] - dataPrice[i].toFloat()
+                        val presentase: Int = ((selisih / dataPrice[i - 1]) * 100).roundToInt()
+                        val angka = "%.0f".format(selisih)
+                        val priceDate = PriceDate(
+                            dataTitle[i],
+                            dataDate[i],
+                            "Rp ${dataPrice[i]}",
+                            "Rp $angka ($presentase%)",
+                            imgDown,
+                            i
+                        )
+                        listPriceDate.add(priceDate)
+                    }
+                } else if (i == 0) {
+                    val priceDate = PriceDate(
+                        dataTitle[i],
+                        dataDate[i],
+                        "Rp ${dataPrice[i]}",
+                        "Harga Awal",
+                        imgStable,
+                        i
+                    )
+                    listPriceDate.add(priceDate)
+                } else {
+                    val priceDate = PriceDate(
+                        dataTitle[i],
+                        dataDate[i],
+                        "Rp ${dataPrice[i]}",
+                        "Harga Stabil",
+                        imgStable,
+                        i
+                    )
+                    listPriceDate.add(priceDate)
+                }
+            }
+            return listPriceDate
+        }
+
+    private fun setupViewmodel() {
+        sharedViewModel.title.observe(viewLifecycleOwner) {
+            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+            binding.tvtesprice.text = it
+        }
     }
 
     private fun setDataLineChart() {
@@ -123,6 +216,7 @@ class DetailPriceFragment : Fragment() {
     override fun onResume() {
         super.onResume()
         setDropdown()
+        setupViewmodel()
     }
 
     private fun setDropdown() {
@@ -132,13 +226,23 @@ class DetailPriceFragment : Fragment() {
     }
 
     private fun getPriceList(): ArrayList<PriceList> {
-        priceList.add(PriceList("Sen", 10000))
-        priceList.add(PriceList("Sel", 10500))
-        priceList.add(PriceList("Rab", 10200))
-        priceList.add(PriceList("Kam", 14000))
-        priceList.add(PriceList("Jum", 11400))
-        priceList.add(PriceList("Sab", 11100))
-        priceList.add(PriceList("Min", 12000))
+
+        val labelX = resources.getStringArray(R.array.dummy_day_label)
+        val labelY = resources.getIntArray(R.array.dummy_price)
+
+        for (i in labelX.indices) {
+            val label = PriceList(labelX[i], labelY[i])
+            priceList.add(label)
+        }
+
+
+//        priceList.add(PriceList("Sen", 10000))
+//        priceList.add(PriceList("Sel", 10500))
+//        priceList.add(PriceList("Rab", 10200))
+//        priceList.add(PriceList("Kam", 14000))
+//        priceList.add(PriceList("Jum", 11400))
+//        priceList.add(PriceList("Sab", 11100))
+//        priceList.add(PriceList("Min", 12000))
 
         return priceList
     }

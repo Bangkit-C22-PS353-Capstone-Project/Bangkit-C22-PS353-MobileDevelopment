@@ -1,11 +1,13 @@
 package com.example.capstonec22_ps353.ui.price
 
+import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentPriceBinding
@@ -44,63 +46,41 @@ class PriceFragment : Fragment() {
         setDropdown()
 
         setupTabLayout()
+        binding.autoCompleteTV.setOnItemClickListener { adapterView, _, i, _ ->
+            val item = adapterView.getItemAtPosition(i).toString()
+            sharedViewModel.setTitlePrice(item)
+            setDropdown()
+            setupTabLayout()
+            Toast.makeText(activity, item, Toast.LENGTH_SHORT).show()
 
-        val text = binding.autoCompleteTV.text.toString()
-        sharedViewModel.setTitlePrice(text)
-
-//        lineChart = binding.lineChart
-
-//        initLineChart()
-//        setDataLineChart()
-
-//        lineList = ArrayList()
-
-//        labelChart.add()
-
-//        labelChart.add("w", 1)
-//        xValue.add("Sel")
-//        xValue.add("Rab")
-//        xValue.add("Kam")
-//        xValue.add("Jum")
-//        xValue.add("Sab")
-//        xValue.add("Min")
-
-//        lineList.add(Entry(1f, 100f))
-//        lineList.add(Entry(2f, 300f))
-//        lineList.add(Entry(3f, 200f))
-//        lineList.add(Entry(4f, 600f))
-//        lineList.add(Entry(5f, 500f))
-//        lineList.add(Entry(6f, 500f))
-//        lineList.add(Entry(7f, 500f))
-
-
+        }
     }
 
     private fun setupTabLayout() {
         binding.apply {
 
             val fragmentBeras = mutableListOf<Fragment>(
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS1),
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS2),
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS3)
+                DetailPriceFragment.newInstance(DetailPriceFragment.BERAS1),
+                DetailPriceFragment.newInstance(DetailPriceFragment.BERAS2),
+                DetailPriceFragment.newInstance(DetailPriceFragment.BERAS3)
             )
 
             val fragmentBawangM = mutableListOf<Fragment>(
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.BAWANGMERAH)
+                DetailPriceFragment.newInstance(DetailPriceFragment.BAWANGMERAH)
             )
 
             val fragmentBawangP = mutableListOf<Fragment>(
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.BAWANGPUTIH)
+                DetailPriceFragment.newInstance(DetailPriceFragment.BAWANGPUTIH)
             )
 
             val fragmentCabaiM = mutableListOf<Fragment>(
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIM1),
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIM2)
+                DetailPriceFragment.newInstance(DetailPriceFragment.CABAIM1),
+                DetailPriceFragment.newInstance(DetailPriceFragment.CABAIM2)
             )
 
             val fragmentCabaiR = mutableListOf<Fragment>(
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIR1),
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.CABAIR2)
+                DetailPriceFragment.newInstance(DetailPriceFragment.CABAIR1),
+                DetailPriceFragment.newInstance(DetailPriceFragment.CABAIR2)
             )
 
             val fragmentTitleBeras = mutableListOf(
@@ -128,115 +108,118 @@ class PriceFragment : Fragment() {
             )
 
 
+            sharedViewModel.titlePrice.observe(viewLifecycleOwner) {
+                when (it) {
+                    "Beras" -> {
+                        viewPagerCategory.adapter =
+                            SectionPagerAdapter(requireActivity(), fragmentBeras)
+                        TabLayoutMediator(tbPrice, viewPagerCategory) { tab, position ->
+                            tab.text = fragmentTitleBeras[position]
+                        }.attach()
 
-            when (autoCompleteTV.text.toString()) {
-                "Beras" -> {
-                    viewPagerCategory.adapter =
-                        SectionPagerAdapter(requireActivity(), fragmentBeras)
-                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
-                        tab.text = fragmentTitleBeras[position]
-                    }.attach()
+                        tbPrice.addOnTabSelectedListener(object :
+                            TabLayout.OnTabSelectedListener {
+                            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                                Toast.makeText(activity, tab?.text.toString(), Toast.LENGTH_SHORT).show()
+                                when (tab?.position) {
+                                    DetailPriceFragment.BERAS1 -> {
+                                        sharedViewModel.setTitle(getString(R.string.beras1))
+                                    }
 
-                    tbCategory.addOnTabSelectedListener(object :
-                        TabLayout.OnTabSelectedListener {
-                        override fun onTabSelected(tab: TabLayout.Tab?) {
-                            when (tab?.position) {
-                                DetailCategoryFragment.BERAS1 -> {
-                                    sharedViewModel.setTitle(getString(R.string.beras1))
-                                }
+                                    DetailPriceFragment.BERAS2 -> {
+                                        sharedViewModel.setTitle(getString(R.string.beras2))
+                                    }
 
-                                DetailCategoryFragment.BERAS2 -> {
-                                    sharedViewModel.setTitle(getString(R.string.beras2))
-                                }
-
-                                DetailCategoryFragment.BERAS3 -> {
-                                    sharedViewModel.setTitle(getString(R.string.beras3))
-                                }
-                            }
-                        }
-
-                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                        override fun onTabReselected(tab: TabLayout.Tab?) {}
-                    })
-                    sharedViewModel.setTitle(getString(R.string.beras1))
-                }
-
-                "Bawang Merah" -> {
-                    viewPagerCategory.adapter =
-                        SectionPagerAdapter(requireActivity(), fragmentBawangM)
-                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
-                        tab.text = fragmentTitleBawangM[position]
-                    }.attach()
-
-                    sharedViewModel.setTitle(getString(R.string.bawangM))
-                }
-
-                "Bawang Putih" -> {
-                    viewPagerCategory.adapter =
-                        SectionPagerAdapter(requireActivity(), fragmentBawangP)
-                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
-                        tab.text = fragmentTitleBawangP[position]
-                    }.attach()
-
-                    sharedViewModel.setTitle(getString(R.string.bawangP))
-                }
-
-                "Cabai Merah" -> {
-                    viewPagerCategory.adapter =
-                        SectionPagerAdapter(requireActivity(), fragmentCabaiM)
-                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
-                        tab.text = fragmentTitleCabaiM[position]
-                    }.attach()
-
-                    tbCategory.addOnTabSelectedListener(object :
-                        TabLayout.OnTabSelectedListener {
-                        override fun onTabSelected(tab: TabLayout.Tab?) {
-                            when (tab?.position) {
-                                DetailCategoryFragment.CABAIM1 -> {
-                                    sharedViewModel.setTitle(getString(R.string.cabaiM1))
-                                }
-
-                                DetailCategoryFragment.CABAIM2 -> {
-                                    sharedViewModel.setTitle(getString(R.string.cabaiM2))
+                                    DetailPriceFragment.BERAS3 -> {
+                                        sharedViewModel.setTitle(getString(R.string.beras3))
+                                    }
                                 }
                             }
-                        }
 
-                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                        override fun onTabReselected(tab: TabLayout.Tab?) {}
-                    })
-                    sharedViewModel.setTitle(getString(R.string.cabaiM1))
-                }
+                            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                            override fun onTabReselected(tab: TabLayout.Tab?) {}
+                        })
+                        sharedViewModel.setTitle(getString(R.string.beras1))
+                    }
 
-                "Cabai Rawit" -> {
-                    viewPagerCategory.adapter =
-                        SectionPagerAdapter(requireActivity(), fragmentCabaiR)
-                    TabLayoutMediator(tbCategory, viewPagerCategory) { tab, position ->
-                        tab.text = fragmentTitleCabaiR[position]
-                    }.attach()
+                    "Bawang Merah" -> {
+                        viewPagerCategory.adapter =
+                            SectionPagerAdapter(requireActivity(), fragmentBawangM)
+                        TabLayoutMediator(tbPrice, viewPagerCategory) { tab, position ->
+                            tab.text = fragmentTitleBawangM[position]
+                        }.attach()
 
-                    tbCategory.addOnTabSelectedListener(object :
-                        TabLayout.OnTabSelectedListener {
-                        override fun onTabSelected(tab: TabLayout.Tab?) {
-                            when (tab?.position) {
-                                DetailCategoryFragment.CABAIR1 -> {
-                                    sharedViewModel.setTitle(getString(R.string.cabaiR1))
-                                }
+                        sharedViewModel.setTitle(getString(R.string.bawangM))
+                    }
 
-                                DetailCategoryFragment.CABAIR2 -> {
-                                    sharedViewModel.setTitle(getString(R.string.cabaiR2))
+                    "Bawang Putih" -> {
+                        viewPagerCategory.adapter =
+                            SectionPagerAdapter(requireActivity(), fragmentBawangP)
+                        TabLayoutMediator(tbPrice, viewPagerCategory) { tab, position ->
+                            tab.text = fragmentTitleBawangP[position]
+                        }.attach()
+
+                        sharedViewModel.setTitle(getString(R.string.bawangP))
+                    }
+
+                    "Cabai Merah" -> {
+                        viewPagerCategory.adapter =
+                            SectionPagerAdapter(requireActivity(), fragmentCabaiM)
+                        TabLayoutMediator(tbPrice, viewPagerCategory) { tab, position ->
+                            tab.text = fragmentTitleCabaiM[position]
+                        }.attach()
+
+                        tbPrice.addOnTabSelectedListener(object :
+                            TabLayout.OnTabSelectedListener {
+                            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                                Toast.makeText(activity, tab?.text.toString(), Toast.LENGTH_SHORT).show()
+                                when (tab?.position) {
+                                    DetailPriceFragment.CABAIM1 -> {
+                                        sharedViewModel.setTitle(getString(R.string.cabaiM1))
+                                    }
+
+                                    DetailPriceFragment.CABAIM2 -> {
+                                        sharedViewModel.setTitle(getString(R.string.cabaiM2))
+                                    }
                                 }
                             }
-                        }
 
-                        override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                        override fun onTabReselected(tab: TabLayout.Tab?) {}
-                    })
-                    sharedViewModel.setTitle(getString(R.string.cabaiR1))
+                            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                            override fun onTabReselected(tab: TabLayout.Tab?) {}
+                        })
+                        sharedViewModel.setTitle(getString(R.string.cabaiM1))
+                    }
 
+                    "Cabai Rawit" -> {
+                        viewPagerCategory.adapter =
+                            SectionPagerAdapter(requireActivity(), fragmentCabaiR)
+                        TabLayoutMediator(tbPrice, viewPagerCategory) { tab, position ->
+                            tab.text = fragmentTitleCabaiR[position]
+                        }.attach()
+
+                        tbPrice.addOnTabSelectedListener(object :
+                            TabLayout.OnTabSelectedListener {
+                            override fun onTabSelected(tab: TabLayout.Tab?) {
+//                                Toast.makeText(activity, tab?.text.toString(), Toast.LENGTH_SHORT).show()
+                                when (tab?.position) {
+                                    DetailPriceFragment.CABAIR1 -> {
+                                        sharedViewModel.setTitle(getString(R.string.cabaiR1))
+                                    }
+
+                                    DetailPriceFragment.CABAIR2 -> {
+                                        sharedViewModel.setTitle(getString(R.string.cabaiR2))
+                                    }
+                                }
+                            }
+
+                            override fun onTabUnselected(tab: TabLayout.Tab?) {}
+                            override fun onTabReselected(tab: TabLayout.Tab?) {}
+                        })
+                        sharedViewModel.setTitle(getString(R.string.cabaiR1))
+
+                    }
                 }
             }
-
         }
     }
 

@@ -44,7 +44,7 @@ class DetailCategoryFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        sharedViewModel.titleCategory.observe(viewLifecycleOwner) {
+        sharedViewModel.title.observe(viewLifecycleOwner) {
             binding.tvDetailCategory.text = it
         }
 
@@ -114,13 +114,21 @@ class DetailCategoryFragment : Fragment() {
     }
 
     private fun getPriceList(): ArrayList<PriceList> {
-        priceList.add(PriceList("Sen", 10000))
-        priceList.add(PriceList("Sel", 10500))
-        priceList.add(PriceList("Rab", 10200))
-        priceList.add(PriceList("Kam", 14000))
-        priceList.add(PriceList("Jum", 11400))
-        priceList.add(PriceList("Sab", 11100))
-        priceList.add(PriceList("Min", 12000))
+        val labelX = resources.getStringArray(R.array.dummy_day_label)
+        val labelY = resources.getIntArray(R.array.dummy_price)
+
+        for (i in labelX.indices) {
+            val label = PriceList(labelX[i], labelY[i])
+            priceList.add(label)
+        }
+
+//        priceList.add(PriceList("Sen", 10000))
+//        priceList.add(PriceList("Sel", 10500))
+//        priceList.add(PriceList("Rab", 10200))
+//        priceList.add(PriceList("Kam", 14000))
+//        priceList.add(PriceList("Jum", 11400))
+//        priceList.add(PriceList("Sab", 11100))
+//        priceList.add(PriceList("Min", 12000))
 
         return priceList
     }

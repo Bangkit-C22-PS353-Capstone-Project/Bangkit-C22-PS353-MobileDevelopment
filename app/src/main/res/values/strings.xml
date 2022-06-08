@@ -41,6 +41,7 @@
     <string name="minus">kurangi item</string>
     <string name="plus">tambah item</string>
 
+
     <string name="sample_profile">https://cdn.discordapp.com/attachments/981949351750422589/982182745079959582/sampleProfile.png</string>
     <string name="sample_username">John Kennedy</string>
     <string name="sampe_email">johnkennedy@gmail.com</string>
@@ -94,7 +95,6 @@
         <item>Rp 71.000/kg</item>
     </string-array>
 
-
     <string-array name="data_location_product">
         <item>Kota Bandung</item>
         <item>Kab. Sidoarjo</item>
@@ -117,7 +117,7 @@
         <item>https://cdn.discordapp.com/attachments/981949351750422589/981960527989309440/sample_cabai_besar.jpg</item>
     </string-array>
 
-    <string-array name="dummy_label">
+    <string-array name="dummy_day_label">
         <item>Sen</item>
         <item>Sel</item>
         <item>Rab</item>
@@ -126,6 +126,38 @@
         <item>Sab</item>
         <item>Min</item>
     </string-array>
+
+    <string-array name="dummy_day">
+        <item>Senin</item>
+        <item>Selasa</item>
+        <item>Rabu</item>
+        <item>Kamis</item>
+        <item>Jumat</item>
+        <item>Sabtu</item>
+        <item>Minggu</item>
+    </string-array>
+
+    <string-array name="dummy_date">
+        <item>06-06-2022</item>
+        <item>07-06-2022</item>
+        <item>08-06-2022</item>
+        <item>09-06-2022</item>
+        <item>10-06-2022</item>
+        <item>11-06-2022</item>
+        <item>12-06-2022</item>
+    </string-array>
+
+    <integer-array name="dummy_price">
+        <item>10000</item>
+        <item>10500</item>
+        <item>10200</item>
+        <item>12500</item>
+        <item>11400</item>
+        <item>11100</item>
+        <item>12000</item>
+    </integer-array>
+
+
 
     <!--    <array name="dummy_price">-->
     <!--        <item>10500</item>-->
@@ -152,5 +184,9 @@
     <string name="value">Jumlah</string>
     <string name="presentase">1% - Rp500</string>
     <string name="test">test</string>
+    <string name="appname">Bumi Tani</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="lokasi">Lokasi</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus in commodo metus egestas libero adipiscing sit. Nisl magna vel adipiscing elementum morbi duis tempor dictum.</string>
 
 </resources>

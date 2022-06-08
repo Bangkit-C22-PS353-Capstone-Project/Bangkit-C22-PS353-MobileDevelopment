@@ -20,6 +20,12 @@
         <item name="android:textColor">@color/black</item>
     </style>
 
+    <style name="TextTitleDate">
+        <item name="android:textSize">20sp</item>
+        <item name="fontFamily">@font/poppins_bold</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
+
     <style name="TextProfile">
         <item name="android:textSize">16sp</item>
         <item name="fontFamily">@font/poppins_medium</item>
@@ -52,6 +58,11 @@
     <style name="TextInfo">
         <item name="android:textSize">14sp</item>
         <item name="fontFamily">@font/poppins_medium</item>
+    </style>
+
+    <style name="TextInformation">
+        <item name="android:textSize">14sp</item>
+        <item name="fontFamily">@font/poppins_bold</item>
     </style>
 
     <style name="TextLoctProduct">
