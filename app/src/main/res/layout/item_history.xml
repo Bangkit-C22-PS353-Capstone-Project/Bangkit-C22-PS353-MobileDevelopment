@@ -34,7 +34,7 @@
             tools:layout_editor_absoluteX="204dp" />
 
         <TextView
-            android:id="@+id/tvCartTitle"
+            android:id="@+id/tvTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/title"
@@ -51,18 +51,18 @@
             android:text="@string/qty"
             android:textAppearance="@style/TextPriceProduct"
             android:textSize="12sp"
-            app:layout_constraintTop_toBottomOf="@id/tvCartTitle"
-            app:layout_constraintStart_toStartOf="@+id/tvCartTitle" />
+            app:layout_constraintTop_toBottomOf="@id/tvTitle"
+            app:layout_constraintStart_toStartOf="@+id/tvTitle" />
 
         <TextView
-            android:id="@+id/tvCartPrice"
+            android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/price"
             android:textAppearance="@style/TextPriceProduct"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@+id/img_product"
-            app:layout_constraintStart_toStartOf="@+id/tvCartTitle" />
+            app:layout_constraintStart_toStartOf="@+id/tvTitle" />
 
         <ImageView
             android:id="@+id/btnBuyAgain"
