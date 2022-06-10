@@ -17,6 +17,7 @@ import com.example.capstonec22_ps353.model.ListProductItem
 import com.example.capstonec22_ps353.ui.MainFragmentDirections
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
+import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 
@@ -52,16 +53,12 @@ class DetailFragment : Fragment() {
         product = args.listProduct
 
 
-
         activity?.let {
             Glide.with(it)
                 .load(product.imageUrl)
                 .into(binding.imgDetail)
         }
 
-        detailViewModel.listCart.observe(viewLifecycleOwner) { listCart ->
-            Toast.makeText(activity, listCart.toString(), Toast.LENGTH_SHORT).show()
-        }
 
         setupActionButton()
 
@@ -69,14 +66,13 @@ class DetailFragment : Fragment() {
             binding.tvMinimum.visibility = View.GONE
         }
 
-        val formatter = NumberFormat.getCurrencyInstance(Locale("in"))
-        val currency = formatter.format(product.price)
+        val df = DecimalFormat("#,###")
 
 //        val ribuan = product.price/1000
 //        val puluhan = (product.price%1000)
 
         binding.tvTittle.text = product.name
-        binding.tvPrice.text = currency
+        binding.tvPrice.text = "Rp ${df.format(product.price)}"
         binding.tvStok.text = "${product.stock}"
         binding.tvDeskripsi.text = product.description
         binding.tvLokasi.text = "Dikirim dari ${product.location}"
@@ -93,17 +89,12 @@ class DetailFragment : Fragment() {
                         navController.popBackStack()
                     }
 
-
-
                     btnAddToCart.setOnClickListener {
                         val product = args.listProduct
                         val action =
                             DetailFragmentDirections.actionDetailFragmentToBottomSheetDetailFragment(
                                 product
                             )
-                        sharedViewModel.cek.observe(viewLifecycleOwner) { cek ->
-                            Toast.makeText(activity, "Cek : $cek", Toast.LENGTH_SHORT).show()
-                        }
                         navController.navigate(action)
                     }
 

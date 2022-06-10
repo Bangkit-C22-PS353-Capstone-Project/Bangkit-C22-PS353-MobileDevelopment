@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.capstonec22_ps353.databinding.ItemProductBinding
 import com.example.capstonec22_ps353.model.ListProductItem
 import com.example.capstonec22_ps353.utils.ProductDiffCallback
+import java.text.DecimalFormat
 import java.text.NumberFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -49,9 +50,8 @@ class ListProductAdapter : RecyclerView.Adapter<ListProductAdapter.ListViewHolde
                     .load(item.imageUrl)
                     .into(imgProduct)
                 tvTitleProduct.text = item.name
-                val formatter = NumberFormat.getCurrencyInstance(Locale("in"))
-                val currency = formatter.format(item.price)
-                tvPriceProduct.text = currency
+                val df = DecimalFormat("#,###")
+                tvPriceProduct.text = "Rp ${df.format(item.price)}"
                 tvLoctProduct.text = item.location
 
             }

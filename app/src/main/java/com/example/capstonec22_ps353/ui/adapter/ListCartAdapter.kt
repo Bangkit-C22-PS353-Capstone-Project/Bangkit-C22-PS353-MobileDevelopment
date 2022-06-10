@@ -9,6 +9,7 @@ import com.example.capstonec22_ps353.databinding.ItemCartBinding
 import com.example.capstonec22_ps353.model.Cart
 import com.example.capstonec22_ps353.model.ListCartItem
 import com.example.capstonec22_ps353.utils.CartDiffCallBack
+import java.text.DecimalFormat
 import kotlin.collections.ArrayList
 
 class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
@@ -16,7 +17,7 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
     private val listCart = ArrayList<ListCartItem>()
 //    private var isEnable = false
 //    private val priceSelectedList = mutableListOf<Int>()
-    private lateinit var cart : MutableList<Cart>
+//    private lateinit var cart : MutableList<Cart>
 
     private val checked = true
 
@@ -45,6 +46,8 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
 
     inner class ListViewHolder(private var binding: ItemCartBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(item: ListCartItem, position: Int) {
+            val df = DecimalFormat("#,###")
+
 //            val itemCart = cart[position]
 
             var qty = item.qty
@@ -66,32 +69,41 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
 
             var price = item.price*qty
 
-            binding.tvCartPrice.text = "$price"
+            binding.tvCartPrice.text = "Rp ${df.format(price)}"
 
             binding.btnPlus.setOnClickListener {
-                qty += 1
-//                    if (product.categoryId < 4) {
-//                    5
-//                } else {
-//                    1
-//                }
-                binding.edQty.setText("$qty kg")
+                if (qty<item.stock){
+                    qty += if (item.categoryId < 4) {
 
-                price = item.price*qty
-
-                binding.tvCartPrice.text = "$price"
-            }
-
-            binding.btnMinus.setOnClickListener {
-                if (qty > 1) {
-                    qty -= 1
+                        5
+                    } else {
+                        1
+                    }
                 }
 
                 binding.edQty.setText("$qty kg")
 
                 price = item.price*qty
 
-                binding.tvCartPrice.text = "$price"
+                binding.tvCartPrice.text = "Rp ${df.format(price)}"
+            }
+
+            binding.btnMinus.setOnClickListener {
+                if (item.categoryId < 4) {
+                    if (qty > 5) {
+                        qty -= 5
+                    }
+                } else {
+                    if (qty > 1) {
+                        qty -= 1
+                    }
+                }
+
+                binding.edQty.setText("$qty kg")
+
+                price = item.price*qty
+
+                binding.tvCartPrice.text = "Rp ${df.format(price)}"
 
             }
 
@@ -103,7 +115,7 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
 //                val formatter = NumberFormat.getCurrencyInstance(Locale("in"))
 //                val currency = formatter.format(item.price)
 //                tvCartPrice.text = item.price.toString()
-                tvCartStock.text = "100"
+                tvCartStock.text = "Stok : ${item.stock}"
 
             }
 

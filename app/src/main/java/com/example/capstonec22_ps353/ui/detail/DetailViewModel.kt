@@ -18,6 +18,8 @@ class DetailViewModel @Inject constructor(private val marketRepository: MarketRe
 
     fun addToCart(addCart: AddCart) = marketRepository.addToCart(addCart)
 
+    fun getAllCart() = marketRepository.getAllCart()
+
 //
 //    fun getDetailProduct(product_id: Int) = marketRepository.getDetailProduct(product_id)
 

@@ -66,7 +66,7 @@ class MarketRepository @Inject constructor(private val apiService: ApiService) {
 //        }
 //    }
 
-    fun getAllCart() {
+    fun getAllCart() : LiveData<List<ListCartItem>> = liveData {
         val client = apiService.getAllCart()
         client.enqueue(object : Callback<MarketResponse> {
             override fun onResponse(

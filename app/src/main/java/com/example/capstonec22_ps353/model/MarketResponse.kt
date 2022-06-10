@@ -56,6 +56,9 @@ data class ListCartItem (
 	@field:SerializedName("product_id")
 	val productId: Int,
 
+	@field:SerializedName("category_id")
+	val categoryId: Int,
+
 	@field:SerializedName("name")
 	val name: String,
 

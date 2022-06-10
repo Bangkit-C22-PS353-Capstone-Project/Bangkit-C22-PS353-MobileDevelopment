@@ -15,6 +15,7 @@ import com.example.capstonec22_ps353.model.ListCartItem
 import com.example.capstonec22_ps353.ui.adapter.ListCartAdapter
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
+import java.text.DecimalFormat
 
 class CartFragment : Fragment() {
 
@@ -51,16 +52,16 @@ class CartFragment : Fragment() {
         rvCart = binding.rvCart
         binding
         listCartAdapter = ListCartAdapter()
-
+        val df = DecimalFormat("#,###")
 
         listCartAdapter.setOnItemClickCallback(object : ListCartAdapter.OnItemClickCallback {
             override fun onItemClicked(item: ListCartItem, checked: Boolean, price: Int) {
                 if (checked){
                     total += price
-                    binding.tvTotalPrice.text = total.toString()
+                    binding.tvTotalPrice.text = "Rp ${df.format(total)}"
                 } else {
                     total -= price
-                    binding.tvTotalPrice.text = total.toString()
+                    binding.tvTotalPrice.text = "Rp ${df.format(total)}"
                 }
             }
 

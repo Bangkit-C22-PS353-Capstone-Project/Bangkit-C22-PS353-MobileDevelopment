@@ -15,6 +15,7 @@ import com.example.capstonec22_ps353.model.AddCart
 import com.example.capstonec22_ps353.model.ListProductItem
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
+import java.text.DecimalFormat
 
 
 class BottomSheetDetailFragment : BottomSheetDialogFragment() {
@@ -43,33 +44,18 @@ class BottomSheetDetailFragment : BottomSheetDialogFragment() {
 
         product = args.listDetailProduct
 
-        var cek = false
+
+//        detailViewModel.getAllCart()
 
 
-
-        detailViewModel.listCart.observe(viewLifecycleOwner) { listCart ->
-            for (i in listCart.indices) {
-                if (product.productId == listCart[i].productId) {
-                    cek = true
-                    break
-                }
-            }
-
-            if (cek) {
-                Toast.makeText(activity, "Cek : $cek", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(activity, "Cek : $cek", Toast.LENGTH_SHORT).show()
-            }
-
-
-        }
 
         activity?.let {
             Glide.with(it)
                 .load(product.imageUrl)
                 .into(binding.imgProduct)
         }
-        binding.tvPrice.text = "Rp ${product.price}"
+        val df = DecimalFormat("#,###")
+        binding.tvPrice.text = "Rp ${df.format(product.price)}"
         binding.tvStok.text = "Stok: ${product.stock}"
 
         binding.btnClose.setOnClickListener {
@@ -87,6 +73,8 @@ class BottomSheetDetailFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupQuantity() {
+        var cek = false
+
         var qty: Int
         qty = 1
         if (product.categoryId < 4) {
@@ -117,19 +105,34 @@ class BottomSheetDetailFragment : BottomSheetDialogFragment() {
                 }
             }
 
-
             binding.tvQuantity.setText("$qty kg")
 
         }
 
-        binding.btnAddToCart.setOnClickListener {
-            val addCart = AddCart(1,product.productId, product.name, product.price, product.stock, product.imageUrl, qty)
-            detailViewModel.addToCart(addCart)
-            detailViewModel.resAdd.observe(viewLifecycleOwner) {
-                Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+        detailViewModel.getAllCart().observe(viewLifecycleOwner) { listCart ->
+            for (i in listCart.indices) {
+                if (product.productId == listCart[i].productId) {
+                    cek = true
+                    break
+                }
             }
-            dismiss()
+
+            if (cek) {
+                binding.tvJumlah.text = "ada"
+            } else {
+                binding.btnAddToCart.setOnClickListener {
+                    val addCart = AddCart(1,product.productId, product.name, product.price, product.stock, product.imageUrl, qty)
+                    detailViewModel.addToCart(addCart)
+                    detailViewModel.resAdd.observe(viewLifecycleOwner) {
+                        Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
+                    }
+                    dismiss()
+                }
+            }
+
         }
+
+
 
     }
 

@@ -67,13 +67,14 @@
         android:id="@+id/tvTotal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginStart="16dp"
         android:fontFamily="@font/poppins_medium"
         android:text="@string/total"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/tvTotalPrice"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/btnCheckout" />
+        app:layout_constraintTop_toBottomOf="@+id/rvCart" />
 
     <TextView
         android:id="@+id/tvTotalPrice"
@@ -83,8 +84,8 @@
         android:text="@string/price"
         android:textColor="@color/black"
         android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="@+id/tvTotal"
-        app:layout_constraintTop_toBottomOf="@+id/tvTotal" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvTotal" />
 
     <ImageView
         android:id="@+id/btnCheckout"
