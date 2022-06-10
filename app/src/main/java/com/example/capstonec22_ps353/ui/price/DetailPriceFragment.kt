@@ -156,7 +156,6 @@ class DetailPriceFragment : Fragment() {
         }
 
         val lineDataSet = LineDataSet(entries, "")
-
         val data = LineData(lineDataSet)
         lineChart.data = data
         lineChart.invalidate()
@@ -167,11 +166,9 @@ class DetailPriceFragment : Fragment() {
             mode = LineDataSet.Mode.HORIZONTAL_BEZIER
             setDrawValues(false)
             setDrawCircles(false)
-
             setDrawHorizontalHighlightIndicator(true)
 
         }
-
 
     }
 
@@ -234,7 +231,6 @@ class DetailPriceFragment : Fragment() {
             val label = PriceList(labelX[i], labelY[i])
             priceList.add(label)
         }
-
 
 //        priceList.add(PriceList("Sen", 10000))
 //        priceList.add(PriceList("Sel", 10500))

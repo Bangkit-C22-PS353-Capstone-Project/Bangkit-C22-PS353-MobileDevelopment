@@ -10,7 +10,6 @@ import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstonec22_ps353.databinding.FragmentHistoryBinding
-import com.example.capstonec22_ps353.ui.adapter.ListHistoryAdapter
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
 
@@ -23,7 +22,7 @@ class HistoryFragment : Fragment() {
     private var _binding : FragmentHistoryBinding?=null
     private val binding get() = _binding!!
 
-    private lateinit var listHistoryAdapter: ListHistoryAdapter
+//    private lateinit var listHistoryAdapter: ListHistoryAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +51,7 @@ class HistoryFragment : Fragment() {
     private fun showRecyclerList() {
         rvHistory.layoutManager = LinearLayoutManager(context)
         rvHistory.setHasFixedSize(true)
-        rvHistory.adapter = listHistoryAdapter
+//        rvHistory.adapter = listHistoryAdapter
     }
 
     override fun onDestroy() {

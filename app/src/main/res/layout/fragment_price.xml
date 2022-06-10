@@ -45,9 +45,12 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtCategory"
         app:tabIndicator="@drawable/tab_indicator"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/label_primer"
+        app:tabIndicatorGravity="stretch"
         app:tabIndicatorAnimationMode="elastic"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/label_primer"
+        app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/TextIndicator"
         app:tabTextColor="@color/black" />
 

@@ -5,26 +5,37 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentDetailBinding
+import com.example.capstonec22_ps353.model.ListProductItem
+import com.example.capstonec22_ps353.ui.MainFragmentDirections
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
+import java.text.NumberFormat
+import java.util.*
 
 
 class DetailFragment : Fragment() {
 
-    private var _binding: FragmentDetailBinding?=null
+    private var _binding: FragmentDetailBinding? = null
     private val binding get() = _binding!!
+
+    private val detailViewModel: DetailViewModel by activityViewModels()
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
 //    private lateinit var navController: NavController
 
+
     private val args: DetailFragmentArgs by navArgs()
+
+    private lateinit var product: ListProductItem
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,19 +49,37 @@ class DetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val product = args.product
+        product = args.listProduct
+
+
 
         activity?.let {
             Glide.with(it)
-                .load(product.Image)
+                .load(product.imageUrl)
                 .into(binding.imgDetail)
+        }
+
+        detailViewModel.listCart.observe(viewLifecycleOwner) { listCart ->
+            Toast.makeText(activity, listCart.toString(), Toast.LENGTH_SHORT).show()
         }
 
         setupActionButton()
 
-        binding.tvTittle.text = product.Title
-        binding.tvPrice.text = product.Price
-        binding.tvLokasi.text = "Dikirim dari ${product.Location}"
+        if (product.categoryId > 3) {
+            binding.tvMinimum.visibility = View.GONE
+        }
+
+        val formatter = NumberFormat.getCurrencyInstance(Locale("in"))
+        val currency = formatter.format(product.price)
+
+//        val ribuan = product.price/1000
+//        val puluhan = (product.price%1000)
+
+        binding.tvTittle.text = product.name
+        binding.tvPrice.text = currency
+        binding.tvStok.text = "${product.stock}"
+        binding.tvDeskripsi.text = product.description
+        binding.tvLokasi.text = "Dikirim dari ${product.location}"
 
     }
 
@@ -63,6 +92,21 @@ class DetailFragment : Fragment() {
                     btnBack.setOnClickListener {
                         navController.popBackStack()
                     }
+
+
+
+                    btnAddToCart.setOnClickListener {
+                        val product = args.listProduct
+                        val action =
+                            DetailFragmentDirections.actionDetailFragmentToBottomSheetDetailFragment(
+                                product
+                            )
+                        sharedViewModel.cek.observe(viewLifecycleOwner) { cek ->
+                            Toast.makeText(activity, "Cek : $cek", Toast.LENGTH_SHORT).show()
+                        }
+                        navController.navigate(action)
+                    }
+
                 }
 
 
@@ -75,6 +119,7 @@ class DetailFragment : Fragment() {
 
 
             }
+
         }
     }
 

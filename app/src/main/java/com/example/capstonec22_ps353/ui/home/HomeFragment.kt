@@ -13,17 +13,20 @@ import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.capstonec22_ps353.R
+import com.example.capstonec22_ps353.data.Result
 import com.example.capstonec22_ps353.databinding.FragmentHomeBinding
+import com.example.capstonec22_ps353.model.ListProductItem
 import com.example.capstonec22_ps353.model.Product
 import com.example.capstonec22_ps353.ui.MainFragmentDirections
 import com.example.capstonec22_ps353.ui.adapter.ListProductAdapter
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
 
-
 class HomeFragment : Fragment() {
     private lateinit var rvProduct: RecyclerView
 //    private val list = ArrayList<Product>()
+
+    private val homeViewModel: HomeViewModel by activityViewModels()
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
@@ -49,6 +52,25 @@ class HomeFragment : Fragment() {
         rvProduct = binding.rvProduct
         listProductAdapter = ListProductAdapter()
 
+        homeViewModel.listProduct.observe(viewLifecycleOwner) {
+            listProductAdapter.setListProduct(it)
+        }
+
+//        homeViewModel.getAllProduk().observe(viewLifecycleOwner) { result ->
+//            if (result != null) {
+//                when (result) {
+//                    is Result.Loading -> {
+//
+//                    }
+//                    is Result.Success -> {
+//                        val data = result.data
+//                        listProductAdapter.setListProduct(data)
+//                    }
+//                }
+//            }
+//
+//        }
+
         setupActionButton()
 
         val imageList = ArrayList<SlideModel>()
@@ -66,7 +88,7 @@ class HomeFragment : Fragment() {
     private fun showRecyclerList() {
         rvProduct.layoutManager = GridLayoutManager(activity, 2)
         rvProduct.setHasFixedSize(true)
-        listProductAdapter.setListProduct(listProduct)
+//        listProductAdapter.setListProduct(listProduct)
         rvProduct.adapter = listProductAdapter
     }
 
@@ -91,7 +113,7 @@ class HomeFragment : Fragment() {
 
                 listProductAdapter.setOnItemClickCallback(object :
                     ListProductAdapter.OnItemClickCallback {
-                    override fun onItemClicked(item: Product) {
+                    override fun onItemClicked(item: ListProductItem) {
                         val action = MainFragmentDirections.actionMainFragmentToDetailFragment(item)
                         navController.navigate(action)
                     }
@@ -151,13 +173,6 @@ class HomeFragment : Fragment() {
             }
         }
     }
-
-//    private fun setNav(navController: NavController) {
-//
-//
-//        Toast.makeText(activity, "ADA", Toast.LENGTH_SHORT).show()
-//
-//    }
 
     override fun onDestroy() {
         super.onDestroy()

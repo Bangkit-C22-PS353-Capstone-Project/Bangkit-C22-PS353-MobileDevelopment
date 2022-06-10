@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="140dp"
+    android:layout_height="wrap_content"
     android:elevation="4dp"
     app:cardCornerRadius="8dp">
 
@@ -11,24 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageButton
+        <androidx.appcompat.widget.AppCompatCheckBox
             android:id="@+id/checkbox"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
             android:layout_marginStart="10dp"
-            android:src="@drawable/ic_unchecked"
+            android:button="@drawable/cart_checkbox"
             app:layout_constraintBottom_toBottomOf="@+id/img_product"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/img_product" />
 
-
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_product"
+            android:layout_marginStart="10dp"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:layout_marginStart="50dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/checkbox"
             app:layout_constraintTop_toTopOf="parent"
             tools:src="@tools:sample/avatars" />
 
@@ -37,10 +36,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="10dp"
             android:text="@string/title"
-            android:textAppearance="@style/TextTitleProduct"
-            android:textSize="16sp"
+            android:textAppearance="@style/TextInformation"
             app:layout_constraintStart_toEndOf="@+id/img_product"
             app:layout_constraintTop_toTopOf="@+id/img_product" />
 
@@ -48,54 +46,67 @@
             android:id="@+id/tvCartPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="6dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
             android:text="@string/price"
+            android:textAppearance="@style/TextTitle"
+            app:layout_constraintStart_toEndOf="@+id/img_product"
+            app:layout_constraintTop_toBottomOf="@+id/tvCartTitle" />
+
+        <TextView
+            android:id="@+id/tvCartStock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stok"
             android:textAppearance="@style/TextPriceProduct"
             android:textSize="12sp"
-            app:layout_constraintBottom_toBottomOf="@+id/img_product"
-            app:layout_constraintStart_toStartOf="@+id/tvCartTitle" />
-
-        <!--        <ImageButton-->
-        <!--            android:id="@+id/btnDelete"-->
-        <!--            android:layout_width="wrap_content"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:src="@drawable/ic_trash"-->
-        <!--            app:layout_constraintTop_toTopOf="@+id/tvCartPrice"-->
-        <!--            tools:layout_editor_absoluteX="280dp" />-->
+            app:layout_constraintBottom_toBottomOf="@+id/btn_plus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/btn_plus"
+            app:layout_constraintTop_toTopOf="@+id/btn_plus" />
 
         <ImageButton
             android:id="@+id/btn_minus"
-            android:contentDescription="@string/minus"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:src="@drawable/ic_btn_minus"
+
+            android:background="@drawable/ic_btn_minus"
+            android:contentDescription="@string/minus"
             app:layout_constraintBottom_toBottomOf="@+id/btn_plus"
-            app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
+            app:layout_constraintStart_toStartOf="@+id/tvCartPrice"
             app:layout_constraintTop_toTopOf="@+id/btn_plus" />
 
-
-        <EditText
-            android:id="@+id/editTextNumber"
-            android:layout_width="40dp"
-            android:layout_height="20dp"
-            android:ems="2"
-            android:inputType="number"
-            android:hint="@string/value"
+        <AutoCompleteTextView
+            android:id="@+id/edQty"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:layout_marginStart="8dp"
+            android:labelFor="@id/edQty"
+            android:textAppearance="@style/TextIndicator"
             app:layout_constraintBottom_toBottomOf="@+id/btn_plus"
-            app:layout_constraintEnd_toStartOf="@+id/btn_plus" />
+            app:layout_constraintStart_toEndOf="@+id/btn_minus"
+            app:layout_constraintTop_toTopOf="@+id/btn_plus" />
 
         <ImageButton
             android:id="@+id/btn_plus"
-            android:contentDescription="@string/plus"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginEnd="30dp"
-            android:src="@drawable/ic_btn_plus"
-            app:layout_constraintBottom_toBottomOf="@+id/tvCartPrice"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvCartPrice"
-            app:layout_constraintVertical_bias="0.0" />
+            android:layout_marginStart="8dp"
+            android:background="@drawable/ic_btn_plus"
+            android:contentDescription="@string/plus"
+            app:layout_constraintBottom_toBottomOf="@+id/img_product"
+            app:layout_constraintStart_toEndOf="@+id/edQty" />
 
+        <ImageButton
+            android:id="@+id/btnDelete"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/ic_delete"
+            android:contentDescription="@string/plus"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/tvCartTitle" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

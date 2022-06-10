@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/bottom_sheet_background"
+    tools:context=".ui.detail.BottomSheetDetailFragment">
+
+    <ImageButton
+        android:id="@+id/btnClose"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:background="@drawable/ic_close"
+        app:layout_constraintEnd_toEndOf="@+id/btn_plus"
+        app:layout_constraintTop_toTopOf="@+id/imgProduct" />
+
+    <ImageView
+        android:id="@+id/imgProduct"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_margin="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:src="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvPrice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="2dp"
+        android:text="@string/price"
+        android:textAppearance="@style/TextProfile"
+        app:layout_constraintBottom_toTopOf="@+id/tvStok"
+        app:layout_constraintStart_toStartOf="@+id/tvStok" />
+
+    <TextView
+        android:id="@+id/tvStok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:text="@string/stok"
+        android:textAppearance="@style/TextIndicator"
+        app:layout_constraintBottom_toBottomOf="@+id/imgProduct"
+        app:layout_constraintStart_toEndOf="@+id/imgProduct" />
+
+    <TextView
+        android:id="@+id/tvJumlah"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:text="@string/jumlah"
+        android:textAppearance="@style/TextProfile"
+        app:layout_constraintBottom_toTopOf="@+id/btnAddToCart"
+        app:layout_constraintStart_toStartOf="@+id/imgProduct"
+        app:layout_constraintTop_toBottomOf="@+id/imgProduct" />
+
+    <ImageButton
+        android:id="@+id/btn_minus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="8dp"
+        android:background="@drawable/ic_btn_minus"
+        android:contentDescription="@string/minus"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_plus"
+        app:layout_constraintEnd_toStartOf="@+id/tvQuantity"
+        app:layout_constraintTop_toTopOf="@+id/btn_plus" />
+
+    <AutoCompleteTextView
+        android:id="@+id/tvQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:inputType="none"
+        android:labelFor="@id/tvQuantity"
+        android:textAppearance="@style/TextIndicator"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_plus"
+        app:layout_constraintEnd_toStartOf="@+id/btn_plus"
+        app:layout_constraintTop_toTopOf="@+id/btn_plus" />
+
+    <ImageButton
+        android:id="@+id/btn_plus"
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/ic_btn_plus"
+        android:contentDescription="@string/plus"
+        app:layout_constraintBottom_toBottomOf="@+id/tvJumlah"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvJumlah" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAddToCart"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@color/label_primer"
+        android:text="@string/masukkan_keranjang"
+        android:textAppearance="@style/TextCategory"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

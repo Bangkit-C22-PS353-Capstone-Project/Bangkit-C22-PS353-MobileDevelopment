@@ -8,16 +8,27 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.capstonec22_ps353.databinding.FragmentCartBinding
+import com.example.capstonec22_ps353.model.ListCartItem
+import com.example.capstonec22_ps353.ui.adapter.ListCartAdapter
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
 
 class CartFragment : Fragment() {
 
+    private lateinit var rvCart: RecyclerView
+    private lateinit var listCartAdapter: ListCartAdapter
+
+    private val cartViewModel: CartViewModel by activityViewModels()
+
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
     private var _binding: FragmentCartBinding?=null
     private val binding get() = _binding!!
+
+    private var total = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,6 +47,37 @@ class CartFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        rvCart = binding.rvCart
+        binding
+        listCartAdapter = ListCartAdapter()
+
+
+        listCartAdapter.setOnItemClickCallback(object : ListCartAdapter.OnItemClickCallback {
+            override fun onItemClicked(item: ListCartItem, checked: Boolean, price: Int) {
+                if (checked){
+                    total += price
+                    binding.tvTotalPrice.text = total.toString()
+                } else {
+                    total -= price
+                    binding.tvTotalPrice.text = total.toString()
+                }
+            }
+
+        })
+
+        cartViewModel.getAllCart()
+//            .observe(viewLifecycleOwner) { listCart ->
+//            listCartAdapter.setListCart(listCart)
+//        }
+
+//        cartViewModel.getCartByUser(1)
+
+        cartViewModel.listCart.observe(viewLifecycleOwner) {
+            listCartAdapter.setListCart(it)
+        }
+
+        showRecyclerList()
 
         binding.btnCheckedAll.setOnClickListener {
             binding.tvTotalPrice.text = "10000"
@@ -59,6 +101,17 @@ class CartFragment : Fragment() {
 
 //        binding.btnCheckedAll.drawable = resources.getDrawable(R.drawable.)
 
+    }
+
+    private fun totalPrice(price: Int, checked: Boolean) {
+
+
+    }
+
+    private fun showRecyclerList() {
+        rvCart.layoutManager = LinearLayoutManager(activity)
+        rvCart.setHasFixedSize(true)
+        rvCart.adapter = listCartAdapter
     }
 
     override fun onDestroyView() {

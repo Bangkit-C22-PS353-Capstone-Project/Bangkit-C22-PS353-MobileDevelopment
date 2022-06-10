@@ -1,15 +1,24 @@
 package com.example.capstonec22_ps353.ui
 
+import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.activity.viewModels
+import androidx.datastore.core.DataStore
+import androidx.datastore.preferences.core.Preferences
+import androidx.datastore.preferences.preferencesDataStore
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.ActivityMainBinding
 import com.example.capstonec22_ps353.utils.SharedViewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "market_settings")
+
+@AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
+
 
     private val sharedViewModel by viewModels<SharedViewModel>()
 

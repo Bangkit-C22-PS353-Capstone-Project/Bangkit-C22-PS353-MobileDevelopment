@@ -54,8 +54,24 @@
         android:label="fragment_detail"
         tools:layout="@layout/fragment_detail" >
         <argument
-            android:name="product"
-            app:argType="com.example.capstonec22_ps353.model.Product" />
+            android:name="listProduct"
+            app:argType="com.example.capstonec22_ps353.model.ListProductItem" />
+        <action
+            android:id="@+id/action_detailFragment_to_bottomSheetDetailFragment"
+            app:destination="@id/bottomSheetDetailFragment" />
     </fragment>
+
+    <dialog
+        android:id="@+id/bottomSheetDetailFragment"
+        android:name="com.example.capstonec22_ps353.ui.detail.BottomSheetDetailFragment"
+        android:label="fragment_bottom_sheet_detail"
+        tools:layout="@layout/fragment_bottom_sheet_detail" >
+        <action
+            android:id="@+id/action_bottomSheetDetailFragment_to_detailFragment"
+            app:destination="@id/detailFragment" />
+        <argument
+            android:name="listDetailProduct"
+            app:argType="com.example.capstonec22_ps353.model.ListProductItem" />
+    </dialog>
 
 </navigation>

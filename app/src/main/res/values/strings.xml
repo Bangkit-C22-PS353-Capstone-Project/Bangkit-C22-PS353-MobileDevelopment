@@ -158,7 +158,6 @@
     </integer-array>
 
 
-
     <!--    <array name="dummy_price">-->
     <!--        <item>10500</item>-->
     <!--        <item>10200</item>-->
@@ -187,12 +186,17 @@
     <string name="appname">Bumi Tani</string>
     <string name="deskripsi">Deskripsi</string>
     <string name="lokasi">Lokasi</string>
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus in commodo metus egestas libero adipiscing sit. Nisl magna vel adipiscing elementum morbi duis tempor dictum.</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus in commodo metus egestas libero adipiscing sit.</string>
 
     <!--    History page-->
     <string name="history">Riwayat Pesanan</string>
     <string name="qty">Quantity</string>
     <string name="buy_again">Beli Lagi</string>
     <string name="history_date">Tanggal</string>
+    <string name="stok">Stok</string>
+    <string name="dummy_stock">100</string>
+    <string name="tambah_ke_keranjang">Tambah ke Keranjang</string>
+    <string name="jumlah">Jumlah</string>
+    <string name="masukkan_keranjang">Masukkan Keranjang</string>
 
 </resources>

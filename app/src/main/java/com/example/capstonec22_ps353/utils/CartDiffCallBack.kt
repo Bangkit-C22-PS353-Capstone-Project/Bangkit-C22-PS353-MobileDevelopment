@@ -1,10 +1,9 @@
 package com.example.capstonec22_ps353.utils
 
 import androidx.recyclerview.widget.DiffUtil
-import com.example.capstonec22_ps353.model.ListProductItem
-import com.example.capstonec22_ps353.model.Product
+import com.example.capstonec22_ps353.model.ListCartItem
 
-class ProductDiffCallback(private val mOldNoteList: List<ListProductItem>, private val mNewNoteList: List<ListProductItem>) : DiffUtil.Callback() {
+class CartDiffCallBack(private val mOldNoteList: List<ListCartItem>, private val mNewNoteList: List<ListCartItem>) : DiffUtil.Callback() {
     override fun getOldListSize(): Int {
         return mOldNoteList.size
     }
@@ -22,5 +21,4 @@ class ProductDiffCallback(private val mOldNoteList: List<ListProductItem>, priva
         val newEmployee = mNewNoteList[newItemPosition]
         return oldEmployee.name == newEmployee.name && oldEmployee.price == newEmployee.price
     }
-
 }
