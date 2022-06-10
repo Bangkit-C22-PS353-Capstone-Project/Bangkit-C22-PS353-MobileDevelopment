@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/bottom_sheet_background">
+
+    <TextView
+        android:id="@+id/tvPengiriman"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pengiriman"
+        android:textAlignment="gravity"
+        android:textAppearance="@style/TextSubject"
+        android:textSize="16sp"
+        android:padding="12dp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorDividerView"/>
+
+    <RadioGroup
+        android:id="@+id/rg_pengiriman"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical" >
+
+        <RadioButton
+            android:id="@+id/rb_gojek"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gojek"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/rb_grab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/grab"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/rb_jne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/jne"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/rb_tiki"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/tiki"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"/>
+
+        <RadioButton
+            android:id="@+id/rb_jnt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/jnt"
+            android:fontFamily="@font/poppins_regular"
+            android:textColor="@color/black"/>
+
+    </RadioGroup>
+</LinearLayout>

@@ -199,4 +199,27 @@
     <string name="jumlah">Jumlah</string>
     <string name="masukkan_keranjang">Masukkan Keranjang</string>
 
+    <string name="address">Alamat</string>
+    <string name="full_address">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque facilisis convallis. Sed scelerisque ex erat, quis congue lorem tempor et. Donec et sapien porta, ullamcorper mi nec, interdum nulla. Phasellus sit amet lobortis libero, in fringilla purus. Integer aliquam fermentum eleifend. Suspendisse sit amet congue risus, a rhoncus odio. Mauris ut felis erat.</string>
+    <string name="item">Item</string>
+    <string name="pengiriman">Pengiriman</string>
+    <string name="pembayaran">Pembayaran</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="next">Lanjut</string>
+    <string name="gojek">Gojek</string>
+    <string name="grab">Grab</string>
+    <string name="jne">JNE</string>
+    <string name="tiki">TIKI</string>
+    <string name="jnt">JNT</string>
+    <string name="payment">Pembayaran</string>
+    <string name="total_payment">Total Payment</string>
+    <string name="total_price">*Rp total*</string>
+    <string name="bank_account">BCA Bank Transfer</string>
+    <string name="no_rekening">061 316 8441</string>
+    <string name="account_name">PT. BUMITANI BANGKIT SENTOSA</string>
+    <string name="pay_before">*Bayar sebelum dd-mm-yy-time*</string>
+    <string name="to_home">Kembali ke Beranda</string>
+    <string name="done_transfer">Saya Sudah Transfer</string>
+
+
 </resources>

@@ -47,7 +47,11 @@
         android:id="@+id/cartFragment"
         android:name="com.example.capstonec22_ps353.ui.cart.CartFragment"
         android:label="fragment_cart"
-        tools:layout="@layout/fragment_cart"/>
+        tools:layout="@layout/fragment_cart">
+        <action
+            android:id="@+id/action_cartFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.capstonec22_ps353.ui.detail.DetailFragment"
@@ -73,5 +77,36 @@
             android:name="listDetailProduct"
             app:argType="com.example.capstonec22_ps353.model.ListProductItem" />
     </dialog>
+
+    <fragment
+        android:id="@+id/checkoutFragment"
+        android:name="com.example.capstonec22_ps353.ui.checkout.CheckoutFragment"
+        android:label="fragment_checkout"
+        tools:layout="@layout/fragment_checkout">
+        <action
+            android:id="@+id/action_checkoutFragment_to_paymentFragment"
+            app:destination="@id/paymentFragment" />
+        <action
+            android:id="@+id/action_checkoutFragment_to_bottomSheetDeliveryFragment"
+            app:destination="@id/bottomSheetDeliveryFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/paymentFragment"
+        android:name="com.example.capstonec22_ps353.ui.checkout.PaymentFragment"
+        android:label="fragment_payment"
+        tools:layout="@layout/fragment_payment">
+    </fragment>
+
+    <fragment
+        android:id="@+id/bottomSheetDeliveryFragment"
+        android:name="com.example.capstonec22_ps353.ui.checkout.BottomSheetDeliveryFragment"
+        android:label="fragment_bottom_sheet_delivery"
+        tools:layout="@layout/fragment_bottom_sheet_delivery">
+
+        <action
+            android:id="@+id/action_bottomSheetDeliveryFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+    </fragment>
 
 </navigation>
