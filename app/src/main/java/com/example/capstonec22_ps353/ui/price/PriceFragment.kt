@@ -2,6 +2,8 @@ package com.example.capstonec22_ps353.ui.price
 
 import android.content.Context
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -52,8 +54,13 @@ class PriceFragment : Fragment() {
             setDropdown()
             setupTabLayout()
             Toast.makeText(activity, item, Toast.LENGTH_SHORT).show()
-
         }
+    }
+
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        setupTabLayout()
     }
 
     private fun setupTabLayout() {
@@ -107,9 +114,8 @@ class PriceFragment : Fragment() {
                 getString(R.string.cabaiR2)
             )
 
-
             sharedViewModel.titlePrice.observe(viewLifecycleOwner) {
-                when (it) {
+                when (val category = it) {
                     "Beras" -> {
                         viewPagerCategory.adapter =
                             SectionPagerAdapter(requireActivity(), fragmentBeras)
@@ -123,23 +129,34 @@ class PriceFragment : Fragment() {
 //                                Toast.makeText(activity, tab?.text.toString(), Toast.LENGTH_SHORT).show()
                                 when (tab?.position) {
                                     DetailPriceFragment.BERAS1 -> {
-                                        sharedViewModel.setTitle(getString(R.string.beras1))
+                                        Toast.makeText(activity, category, Toast.LENGTH_SHORT).show()
+//                                        sharedViewModel.setTitle(getString(R.string.beras1))
+                                        sharedViewModel.setTitle(category)
                                     }
 
                                     DetailPriceFragment.BERAS2 -> {
-                                        sharedViewModel.setTitle(getString(R.string.beras2))
+                                        Toast.makeText(activity, category, Toast.LENGTH_SHORT).show()
+
+//                                        sharedViewModel.setTitle(getString(R.string.beras2))
+                                        sharedViewModel.setTitle(category)
                                     }
 
                                     DetailPriceFragment.BERAS3 -> {
-                                        sharedViewModel.setTitle(getString(R.string.beras3))
+//                                        sharedViewModel.setTitle(getString(R.string.beras3))
+                                        sharedViewModel.setTitle(category)
                                     }
                                 }
                             }
 
-                            override fun onTabUnselected(tab: TabLayout.Tab?) {}
-                            override fun onTabReselected(tab: TabLayout.Tab?) {}
+                            override fun onTabUnselected(tab: TabLayout.Tab?) {
+
+                            }
+                            override fun onTabReselected(tab: TabLayout.Tab?) {
+
+                            }
                         })
-                        sharedViewModel.setTitle(getString(R.string.beras1))
+//                        sharedViewModel.setTitle(getString(R.string.beras1))
+                        sharedViewModel.setTitle(category)
                     }
 
                     "Bawang Merah" -> {
@@ -171,15 +188,19 @@ class PriceFragment : Fragment() {
 
                         tbPrice.addOnTabSelectedListener(object :
                             TabLayout.OnTabSelectedListener {
+                            val s = category
                             override fun onTabSelected(tab: TabLayout.Tab?) {
 //                                Toast.makeText(activity, tab?.text.toString(), Toast.LENGTH_SHORT).show()
                                 when (tab?.position) {
                                     DetailPriceFragment.CABAIM1 -> {
-                                        sharedViewModel.setTitle(getString(R.string.cabaiM1))
+//                                        sharedViewModel.setTitle(getString(R.string.cabaiM1))
+                                        sharedViewModel.setTitle(s)
                                     }
 
                                     DetailPriceFragment.CABAIM2 -> {
-                                        sharedViewModel.setTitle(getString(R.string.cabaiM2))
+//                                        val s = category
+//                                        sharedViewModel.setTitle(getString(R.string.cabaiM2))
+                                        sharedViewModel.setTitle(s)
                                     }
                                 }
                             }
@@ -187,7 +208,8 @@ class PriceFragment : Fragment() {
                             override fun onTabUnselected(tab: TabLayout.Tab?) {}
                             override fun onTabReselected(tab: TabLayout.Tab?) {}
                         })
-                        sharedViewModel.setTitle(getString(R.string.cabaiM1))
+//                        sharedViewModel.setTitle(getString(R.string.cabaiM1))
+                        sharedViewModel.setTitle(category)
                     }
 
                     "Cabai Rawit" -> {

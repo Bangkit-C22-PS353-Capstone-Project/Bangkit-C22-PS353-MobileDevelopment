@@ -56,21 +56,6 @@ class HomeFragment : Fragment() {
             listProductAdapter.setListProduct(it)
         }
 
-//        homeViewModel.getAllProduk().observe(viewLifecycleOwner) { result ->
-//            if (result != null) {
-//                when (result) {
-//                    is Result.Loading -> {
-//
-//                    }
-//                    is Result.Success -> {
-//                        val data = result.data
-//                        listProductAdapter.setListProduct(data)
-//                    }
-//                }
-//            }
-//
-//        }
-
         setupActionButton()
 
         val imageList = ArrayList<SlideModel>()
@@ -117,7 +102,6 @@ class HomeFragment : Fragment() {
                         val action = MainFragmentDirections.actionMainFragmentToDetailFragment(item)
                         navController.navigate(action)
                     }
-
                 })
 
                 binding.apply {

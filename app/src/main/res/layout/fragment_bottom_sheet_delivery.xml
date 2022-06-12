@@ -22,23 +22,24 @@
 
     <RadioGroup
         android:id="@+id/rg_pengiriman"
+        android:layout_margin="10dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical" >
 
         <RadioButton
-            android:id="@+id/rb_gojek"
+            android:id="@+id/rb_sicepat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/gojek"
+            android:text="@string/si_cepat"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"/>
 
         <RadioButton
-            android:id="@+id/rb_grab"
+            android:id="@+id/rb_idExpress"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/grab"
+            android:text="@string/id_express"
             android:fontFamily="@font/poppins_regular"
             android:textColor="@color/black"/>
 
@@ -67,4 +68,13 @@
             android:textColor="@color/black"/>
 
     </RadioGroup>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnChooseShipment"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/label_primer"
+        android:text="@string/pilih_pengiriman"
+        android:textAppearance="@style/TextCategory"
+        android:textColor="@color/white" />
 </LinearLayout>

@@ -36,20 +36,24 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:drawableStart="@drawable/ic_location_address"
         android:text="@string/address"
-        android:textAppearance="@style/TextSubject"
-        android:textSize="16sp"
+        android:drawablePadding="4dp"
+        android:textAppearance="@style/TextTitleCheckout"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+        app:layout_constraintTop_toTopOf="@+id/guideline1"
+        app:drawableStartCompat="@drawable/ic_location_address" />
 
     <TextView
         android:id="@+id/tvFullAddress"
-        android:layout_width="350dp"
+        android:layout_width="0dp"
         android:layout_height="100dp"
+        android:layout_marginEnd="20dp"
         android:fontFamily="@font/poppins_regular"
+        android:maxLines="5"
         android:text="@string/full_address"
         android:textColor="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvAddress"
         app:layout_constraintTop_toBottomOf="@+id/tvAddress" />
 
@@ -57,54 +61,188 @@
         android:id="@+id/tvItem"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:drawablePadding="4dp"
         android:text="@string/item"
-        android:textAppearance="@style/TextSubject"
-        android:textSize="16sp"
-        android:drawableStart="@drawable/ic_box"
+        android:textAppearance="@style/TextTitleCheckout"
         app:layout_constraintStart_toStartOf="@+id/tvAddress"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2"
+        app:drawableStartCompat="@drawable/ic_box" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvItemCheckout"
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView2"
         android:layout_width="0dp"
-        android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@id/guideline3"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardCornerRadius="10dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tvItem"
-        app:layout_constraintVertical_bias="0.0"
-        tools:listitem="@layout/item_checkout" />
+        app:layout_constraintTop_toBottomOf="@id/tvItem">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/img_product"
+                android:layout_width="100dp"
+                android:layout_height="100dp"
+                android:layout_marginStart="23dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:src="@tools:sample/avatars" />
+
+            <TextView
+                android:id="@+id/tvTitleProduct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:text="@string/title"
+                android:textAppearance="@style/TextTitleCheckout"
+
+                app:layout_constraintStart_toEndOf="@+id/img_product"
+                app:layout_constraintTop_toTopOf="@+id/img_product" />
+
+            <TextView
+                android:id="@+id/tvQuantity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="16dp"
+                android:text="@string/qty"
+                android:textAppearance="@style/TextPriceProduct"
+                app:layout_constraintBottom_toBottomOf="@+id/tvPrice"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/tvPrice" />
+
+            <TextView
+                android:id="@+id/tvPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/price"
+                android:textAppearance="@style/TextTitle"
+                android:textSize="16sp"
+                app:layout_constraintBottom_toBottomOf="@+id/img_product"
+                app:layout_constraintStart_toStartOf="@+id/tvTitleProduct" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.cardview.widget.CardView>
+
+<!--    <androidx.recyclerview.widget.RecyclerView-->
+<!--        android:id="@+id/rvItemCheckout"-->
+<!--        android:layout_width="0dp"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toTopOf="@id/guideline3"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintHorizontal_bias="1.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@id/tvItem"-->
+<!--        app:layout_constraintVertical_bias="0.0"-->
+<!--        tools:listitem="@layout/item_checkout" />-->
 
     <TextView
-        android:id="@+id/btn_pengiriman"
-        android:layout_width="350dp"
+        android:id="@+id/btnShipment"
+        android:layout_width="0dp"
         android:layout_height="50dp"
         android:layout_marginTop="8dp"
-        android:gravity="fill"
-        android:drawableStart="@drawable/ic_delivery_truck"
-        android:drawableEnd="@drawable/ic_arrow_right"
+        android:drawablePadding="8dp"
         android:background="@drawable/checkout_background"
         android:elevation="4dp"
+        android:gravity="center_vertical"
         android:padding="8dp"
         android:text="@string/pengiriman"
         android:textAppearance="@style/TextSubject"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline3" />
+        app:layout_constraintEnd_toEndOf="@+id/cardView2"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toBottomOf="@id/guideline3"
+        app:drawableStartCompat="@drawable/ic_delivery_truck"
+        app:drawableEndCompat="@drawable/ic_arrow_right" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddToCart"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/label_primer"
-        android:text="@string/next"
+        android:text="@string/melanjutkan_ke_pembayaran"
         android:textAppearance="@style/TextCategory"
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/tvTotalHargaPesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/total_harga_pesanan"
+        android:textAppearance="@style/TextCategory"
+        app:layout_constraintStart_toStartOf="@+id/tvItem"
+        app:layout_constraintTop_toBottomOf="@+id/btnShipment" />
+
+    <TextView
+        android:id="@+id/tvTotalPesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/total_pesanan"
+        android:textAppearance="@style/TextTitle"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalHargaPesanan"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalHargaPesanan" />
+
+    <TextView
+        android:id="@+id/tvTotalHargaKuantitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp 1000"
+        android:layout_marginEnd="20dp"
+        android:textAppearance="@style/TextInfo"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalPesanan" />
+
+    <TextView
+        android:id="@+id/tvTotalPengiriman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_biaya_pengiriman"
+        android:layout_marginTop="8dp"
+        android:textAppearance="@style/TextTitle"
+        android:textSize="14sp"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalHargaPesanan"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPesanan" />
+
+    <TextView
+        android:id="@+id/tvTotalHargaPengiriman"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp 1000"
+        android:textAppearance="@style/TextInfo"
+        app:layout_constraintEnd_toEndOf="@+id/tvTotalHargaKuantitas"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalPengiriman" />
+
+    <TextView
+        android:id="@+id/tvTotalPembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/total_pembayaran"
+        android:layout_marginTop="20dp"
+        android:textAppearance="@style/TextTitleCheckout"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalHargaPesanan"
+        app:layout_constraintTop_toBottomOf="@+id/tvTotalPengiriman" />
+
+    <TextView
+        android:id="@+id/tvTotalHargaPembayaran"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Rp 1000"
+        android:textAppearance="@style/TextTitleCheckout"
+        app:layout_constraintEnd_toEndOf="@+id/tvTotalHargaPengiriman"
+        app:layout_constraintTop_toTopOf="@+id/tvTotalPembayaran" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -125,6 +263,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="481dp" />
+        app:layout_constraintGuide_begin="392dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -5,6 +5,10 @@ import com.google.gson.annotations.SerializedName
 import kotlinx.parcelize.Parcelize
 
 data class MarketResponse(
+
+	@field:SerializedName("loginResult")
+	val loginResult: LoginResult,
+
 	@field:SerializedName("message")
 	val message: String,
 
@@ -13,6 +17,25 @@ data class MarketResponse(
 
 	@field:SerializedName("listProductItem")
 	val listProductItem: List<ListProductItem>
+)
+
+data class LoginResult(
+
+	@field:SerializedName("user_id")
+	val userId: Int,
+
+	@field:SerializedName("email")
+	val email: String,
+
+	@field:SerializedName("username")
+	val username: String,
+
+	@field:SerializedName("no_hp")
+	val no_hp: String,
+
+	@field:SerializedName("address")
+	val address: String,
+
 )
 
 @Parcelize

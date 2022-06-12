@@ -12,8 +12,8 @@ class CartViewModel @Inject constructor(private val marketRepository: MarketRepo
 
     val listCart: LiveData<List<ListCartItem>> = marketRepository.listCart
 
-    fun getCartByUser(userId: Int) = marketRepository.getCartByUser(userId)
+    fun getCartByUserId(userId: Int) = marketRepository.getCartByUserId(userId)
 
-    fun getAllCart() = marketRepository.getAllCart()
+//    fun getAllCart() = marketRepository.getCartByUserId()
 
 }

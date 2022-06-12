@@ -13,6 +13,8 @@
 
     <color name="info">#646465</color>
 
+    <color name="red">#FF0000</color>
+
     <color name="label_primer">#427F15</color>
     <color name="label_green">#27AE60</color>
     <color name="label_grey">#F1F1F1</color>

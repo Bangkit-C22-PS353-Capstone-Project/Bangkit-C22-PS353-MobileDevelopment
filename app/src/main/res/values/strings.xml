@@ -51,9 +51,9 @@
     <string name="riwayat">Riwayat</string>
     <string name="personal">Personal</string>
 
-    <string name="beras1">Beras Kualitas 1</string>
-    <string name="beras2">Beras Kualitas 2</string>
-    <string name="beras3">Beras Kualitas 3</string>
+    <string name="beras1">Beras Kualitas I</string>
+    <string name="beras2">Beras Kualitas II</string>
+    <string name="beras3">Beras Kualitas III</string>
 
     <string name="bawangM">Bawang Merah Ukuran Sedang</string>
 
@@ -149,7 +149,7 @@
 
     <integer-array name="dummy_price">
         <item>10000</item>
-        <item>10500</item>
+        <item>10200</item>
         <item>10200</item>
         <item>12500</item>
         <item>11400</item>
@@ -202,15 +202,13 @@
     <string name="address">Alamat</string>
     <string name="full_address">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam pellentesque facilisis convallis. Sed scelerisque ex erat, quis congue lorem tempor et. Donec et sapien porta, ullamcorper mi nec, interdum nulla. Phasellus sit amet lobortis libero, in fringilla purus. Integer aliquam fermentum eleifend. Suspendisse sit amet congue risus, a rhoncus odio. Mauris ut felis erat.</string>
     <string name="item">Item</string>
-    <string name="pengiriman">Pengiriman</string>
+    <string name="pengiriman">Pilih Pengiriman</string>
     <string name="pembayaran">Pembayaran</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="next">Lanjut</string>
-    <string name="gojek">Gojek</string>
-    <string name="grab">Grab</string>
-    <string name="jne">JNE</string>
-    <string name="tiki">TIKI</string>
-    <string name="jnt">JNT</string>
+    <string name="jne">JNE (Rp 80.000)</string>
+    <string name="tiki">TIKI (Rp 60.000)</string>
+    <string name="jnt">JNT (Rp 90.000)</string>
     <string name="payment">Pembayaran</string>
     <string name="total_payment">Total Payment</string>
     <string name="total_price">*Rp total*</string>
@@ -220,6 +218,19 @@
     <string name="pay_before">*Bayar sebelum dd-mm-yy-time*</string>
     <string name="to_home">Kembali ke Beranda</string>
     <string name="done_transfer">Saya Sudah Transfer</string>
+    <string name="lanjutkan_pemesanan">Lanjutkan Pemesanan</string>
+    <string name="logout">LogOut</string>
+    <string name="keluar">Keluar</string>
+    <string name="konfirmasi_password">Konfirmasi Password</string>
+    <string name="nomor_handphone">Nomor Handphone</string>
+    <string name="total_harga_pesanan">Total Harga Pesanan</string>
+    <string name="melanjutkan_ke_pembayaran">Melanjutkan Ke Pembayaran</string>
+    <string name="total_pesanan">Total Pesanan (1 Kg)</string>
+    <string name="total_biaya_pengiriman">Total Biaya Pengiriman</string>
+    <string name="total_pembayaran">Total Pembayaran</string>
+    <string name="si_cepat">Si Cepat (Rp 70.000)</string>
+    <string name="id_express">ID Express (Rp 65.000)</string>
+    <string name="pilih_pengiriman">Pilih Pengiriman</string>
 
 
 </resources>

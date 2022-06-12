@@ -93,7 +93,7 @@
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnAddToCart"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_height="wrap_content"
         android:background="@color/label_primer"
         android:text="@string/masukkan_keranjang"
         android:textAppearance="@style/TextCategory"

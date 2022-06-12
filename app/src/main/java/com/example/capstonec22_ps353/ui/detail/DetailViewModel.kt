@@ -16,9 +16,13 @@ class DetailViewModel @Inject constructor(private val marketRepository: MarketRe
 
     val resAdd: LiveData<MarketResponse> = marketRepository.resAdd
 
+    val result: LiveData<Boolean> = marketRepository.result
+
     fun addToCart(addCart: AddCart) = marketRepository.addToCart(addCart)
 
-    fun getAllCart() = marketRepository.getAllCart()
+    fun editQty(productId: Int, qty: Int) = marketRepository.editQty(productId, qty)
+
+    fun getCartByUserId(userId: Int) = marketRepository.getCartByUserId(userId)
 
 //
 //    fun getDetailProduct(product_id: Int) = marketRepository.getDetailProduct(product_id)

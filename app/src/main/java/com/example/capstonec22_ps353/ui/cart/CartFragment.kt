@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.capstonec22_ps353.databinding.FragmentCartBinding
 import com.example.capstonec22_ps353.model.ListCartItem
+import com.example.capstonec22_ps353.preferences.PrefViewModel
 import com.example.capstonec22_ps353.ui.adapter.ListCartAdapter
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
@@ -23,13 +24,14 @@ class CartFragment : Fragment() {
     private lateinit var listCartAdapter: ListCartAdapter
 
     private val cartViewModel: CartViewModel by activityViewModels()
-
+    private val prefViewModel: PrefViewModel by activityViewModels()
     private val sharedViewModel: SharedViewModel by activityViewModels()
+
 
     private var _binding: FragmentCartBinding?=null
     private val binding get() = _binding!!
 
-    private var total = 0
+//    private var total = 0
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,12 +42,6 @@ class CartFragment : Fragment() {
         return (binding.root)
     }
 
-    /**
-     todo: dlan gua ga pandai ngasih logic buat tick checkbox, sama bawa data produk
-     yang dipilih user "tambah ke kerangjang" masuk ke dalam cart;_; cardview utk cart udah gua bikin (item_cart.xml),
-     tapi ngga ngerti bikin adapternya. trus btnCart di home, udah gua ganti actionnya ke Cart
-     */
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -54,20 +50,10 @@ class CartFragment : Fragment() {
         listCartAdapter = ListCartAdapter()
         val df = DecimalFormat("#,###")
 
-        listCartAdapter.setOnItemClickCallback(object : ListCartAdapter.OnItemClickCallback {
-            override fun onItemClicked(item: ListCartItem, checked: Boolean, price: Int) {
-                if (checked){
-                    total += price
-                    binding.tvTotalPrice.text = "Rp ${df.format(total)}"
-                } else {
-                    total -= price
-                    binding.tvTotalPrice.text = "Rp ${df.format(total)}"
-                }
-            }
+        prefViewModel.getInfo().observe(viewLifecycleOwner) { user ->
+            cartViewModel.getCartByUserId(user.userId.toInt())
+        }
 
-        })
-
-        cartViewModel.getAllCart()
 //            .observe(viewLifecycleOwner) { listCart ->
 //            listCartAdapter.setListCart(listCart)
 //        }
@@ -80,9 +66,9 @@ class CartFragment : Fragment() {
 
         showRecyclerList()
 
-        binding.btnCheckedAll.setOnClickListener {
-            binding.tvTotalPrice.text = "10000"
-        }
+//        binding.btnCheckedAll.setOnClickListener {
+//            binding.tvTotalPrice.text = "10000"
+//        }
 
         lifecycleScope.launch{
             sharedViewModel.navController.observe(viewLifecycleOwner) {
@@ -92,6 +78,14 @@ class CartFragment : Fragment() {
                         navController.popBackStack()
                     }
                 }
+
+                listCartAdapter.setOnItemClickCallback(object : ListCartAdapter.OnItemClickCallback {
+                    override fun onItemClicked(item: ListCartItem, price: Int, qty: Int) {
+                        val action = CartFragmentDirections.actionCartFragmentToCheckoutFragment(item, qty)
+                        navController.navigate(action)
+                    }
+
+                })
 
                 requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
                 binding.btnBack.setOnClickListener {
@@ -104,15 +98,15 @@ class CartFragment : Fragment() {
 
     }
 
-    private fun totalPrice(price: Int, checked: Boolean) {
-
-
-    }
-
     private fun showRecyclerList() {
         rvCart.layoutManager = LinearLayoutManager(activity)
         rvCart.setHasFixedSize(true)
         rvCart.adapter = listCartAdapter
+    }
+
+    override fun onResume() {
+        super.onResume()
+        showRecyclerList()
     }
 
     override fun onDestroyView() {

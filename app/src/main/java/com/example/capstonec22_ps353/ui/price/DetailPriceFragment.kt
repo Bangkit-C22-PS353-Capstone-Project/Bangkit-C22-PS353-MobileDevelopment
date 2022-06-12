@@ -24,6 +24,7 @@ import com.github.mikephil.charting.data.Entry
 import com.github.mikephil.charting.data.LineData
 import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.formatter.IndexAxisValueFormatter
+import java.text.DecimalFormat
 import kotlin.math.roundToInt
 
 
@@ -84,17 +85,18 @@ class DetailPriceFragment : Fragment() {
             val imgStable = ResourcesCompat.getDrawable(resources, R.drawable.price_stable, null)
 
             val listPriceDate = ArrayList<PriceDate>()
+            val df = DecimalFormat("#,###")
             for (i in 6 downTo 0) {
                 if (i != 0) {
                     if (dataPrice[i] > dataPrice[i - 1]) {
                         val selisih: Float = dataPrice[i] - dataPrice[i - 1].toFloat()
                         val presentase: Int = ((selisih / dataPrice[i]) * 100).roundToInt()
-                        val angka = "%.0f".format(selisih)
+
                         val priceDate = PriceDate(
                             dataTitle[i],
                             dataDate[i],
-                            "Rp ${dataPrice[i]}",
-                            "Rp $angka ($presentase%)",
+                            "Rp ${df.format(dataPrice[i])}",
+                            "Rp ${df.format(selisih)} ($presentase%)",
                             imgUp,
                             i
                         )
@@ -106,9 +108,19 @@ class DetailPriceFragment : Fragment() {
                         val priceDate = PriceDate(
                             dataTitle[i],
                             dataDate[i],
-                            "Rp ${dataPrice[i]}",
-                            "Rp $angka ($presentase%)",
+                            "Rp ${df.format(dataPrice[i])}",
+                            "Rp ${df.format(selisih)} ($presentase%)",
                             imgDown,
+                            i
+                        )
+                        listPriceDate.add(priceDate)
+                    } else if (dataPrice[i] == dataPrice[i - 1]) {
+                        val priceDate = PriceDate(
+                            dataTitle[i],
+                            dataDate[i],
+                            "Rp ${df.format(dataPrice[i])}",
+                            "Harga Stabil",
+                            imgStable,
                             i
                         )
                         listPriceDate.add(priceDate)
@@ -117,18 +129,8 @@ class DetailPriceFragment : Fragment() {
                     val priceDate = PriceDate(
                         dataTitle[i],
                         dataDate[i],
-                        "Rp ${dataPrice[i]}",
+                        "Rp ${df.format(dataPrice[i])}",
                         "Harga Awal",
-                        imgStable,
-                        i
-                    )
-                    listPriceDate.add(priceDate)
-                } else {
-                    val priceDate = PriceDate(
-                        dataTitle[i],
-                        dataDate[i],
-                        "Rp ${dataPrice[i]}",
-                        "Harga Stabil",
                         imgStable,
                         i
                     )
@@ -140,7 +142,7 @@ class DetailPriceFragment : Fragment() {
 
     private fun setupViewmodel() {
         sharedViewModel.title.observe(viewLifecycleOwner) {
-            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, it, Toast.LENGTH_SHORT).show()
             binding.tvtesprice.text = it
         }
     }
@@ -191,7 +193,6 @@ class DetailPriceFragment : Fragment() {
             description = null
 
         }
-
 
         lineChart.legend.isEnabled = false
         lineChart.axisRight.isEnabled = false

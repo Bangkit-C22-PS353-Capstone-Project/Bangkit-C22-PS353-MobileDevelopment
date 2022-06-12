@@ -56,7 +56,7 @@ class CategoryFragment : Fragment() {
 
                 requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
                 binding.tvCategory.setOnClickListener {
-                    navController.navigate(R.id.action_categoryFragment_to_loginFragment)
+//                    navController.navigate(R.id.action_categoryFragment_to_loginFragment)
 //                    navController.navigate(R.id.action_loginFragment_to_mainFragment)
                 }
 

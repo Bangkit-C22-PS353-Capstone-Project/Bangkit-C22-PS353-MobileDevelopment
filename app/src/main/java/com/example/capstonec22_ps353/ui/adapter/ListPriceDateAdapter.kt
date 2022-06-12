@@ -8,6 +8,7 @@ import com.bumptech.glide.Glide
 import com.example.capstonec22_ps353.databinding.ItemPriceListBinding
 import com.example.capstonec22_ps353.model.PriceDate
 import com.example.capstonec22_ps353.utils.PriceDateDiffCallBack
+import java.text.DecimalFormat
 
 class ListPriceDateAdapter : RecyclerView.Adapter<ListPriceDateAdapter.ListViewHolder>()  {
     private val listPriceDate = ArrayList<PriceDate>()
@@ -30,6 +31,8 @@ class ListPriceDateAdapter : RecyclerView.Adapter<ListPriceDateAdapter.ListViewH
     override fun getItemCount(): Int = listPriceDate.size
 
     inner class ListViewHolder(private var binding: ItemPriceListBinding) : RecyclerView.ViewHolder(binding.root) {
+        val df = DecimalFormat("#,###")
+
         fun bind(item: PriceDate) {
             binding.apply {
                 Glide.with(itemView)

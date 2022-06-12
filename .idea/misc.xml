@@ -15,27 +15,6 @@
         <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-2/app/src/main/res/layout/fragment_profile.xml" value="0.20416666666666666" />
         <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-2/app/src/main/res/layout/fragment_register.xml" value="0.20416666666666666" />
         <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-2/app/src/main/res/menu/bottom_nav_menu.xml" value="0.20416666666666666" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/bottom_sheet_background.xml" value="0.153" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/button_bg.xml" value="0.161" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/button_paid.xml" value="0.161" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/checkout_background.xml" value="0.157" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/edit_text_bg.xml" value="0.161" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/ic_box.xml" value="0.157" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/ic_btn_copy.xml" value="0.122" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/ic_btn_lanjut.xml" value="0.157" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/ic_delivery_truck.xml" value="0.157" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/ic_location_address.xml" value="0.157" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/ic_payment.xml" value="0.157" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/search_background.xml" value="0.161" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/tab_background.xml" value="0.161" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/drawable/tab_indicator.xml" value="0.161" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/layout/fragment_bottom_sheet_delivery.xml" value="0.25" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/layout/fragment_bottom_sheet_detail.xml" value="0.1675213675213675" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/layout/fragment_checkout.xml" value="0.25" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/layout/fragment_detail.xml" value="0.1675213675213675" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/layout/fragment_payment.xml" value="0.25" />
-        <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment-5/app/src/main/res/layout/item_checkout.xml" value="0.25" />
         <entry key="..\:/Bangkit-C22-PS353-MobileDevelopment/app/src/main/res/layout/activity_login.xml" value="0.2" />
         <entry key="..\:/fadlan/BANGKIT WOY/Bangkit-C22-PS353-MobileDevelopment/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable-v24/ic_dot.xml" value="0.1885" />
@@ -46,6 +25,7 @@
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/chart_fill_dot.xml" value="0.1" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/chart_outline.xml" value="0.1" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/check_icon.xml" value="0.1" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/checkout_background.xml" value="0.149" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/farm1.xml" value="0.1155" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/home_fill.xml" value="0.1885" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/home_fill_dot.xml" value="0.1" />
@@ -82,21 +62,27 @@
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/drawable/tab_indicator.xml" value="0.1375" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/activity_login.xml" value="0.13425925925925927" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/activity_main.xml" value="0.176" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_bottom_sheet_delivery.xml" value="0.2542372881355932" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_bottom_sheet_detail.xml" value="0.264" />
-        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_cart.xml" value="0.4" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_cart.xml" value="0.2" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_category.xml" value="0.2" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_checkout.xml" value="0.264" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_detail.xml" value="0.176" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_detail_category.xml" value="0.176" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_detail_price.xml" value="0.2" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_history.xml" value="0.264" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_home.xml" value="0.264" />
-        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_login.xml" value="0.2" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_login.xml" value="0.176" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_main.xml" value="0.2" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_payment.xml" value="0.176" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_price.xml" value="0.2" />
-        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_profile.xml" value="0.536" />
-        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_register.xml" value="0.19912280701754387" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_profile.xml" value="0.6" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_register.xml" value="0.176" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/fragment_splash_screen.xml" value="0.19912280701754387" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/item_cart.xml" value="0.4" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/item_checkout.xml" value="0.4" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/item_dropdown.xml" value="0.1445887445887446" />
+        <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/item_history.xml" value="0.264" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/item_price_list.xml" value="0.72" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/layout/item_product.xml" value="0.2" />
         <entry key="..\:/fadlan/BANGKIT WOY/Capstone/app/src/main/res/menu/bottom_nav_menu.xml" value="0.176" />

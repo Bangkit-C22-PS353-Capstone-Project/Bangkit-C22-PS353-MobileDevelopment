@@ -30,71 +30,71 @@
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="@+id/btnBack" />
 
-    <androidx.appcompat.widget.AppCompatCheckBox
-        android:id="@+id/btnCheckedAll"
-        android:contentDescription="@string/checkbox"
-        android:layout_width="25dp"
-        android:layout_height="25dp"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="16dp"
-        android:button="@drawable/cart_checkbox"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline1" />
+<!--    <androidx.appcompat.widget.AppCompatCheckBox-->
+<!--        android:id="@+id/btnCheckedAll"-->
+<!--        android:contentDescription="@string/checkbox"-->
+<!--        android:layout_width="25dp"-->
+<!--        android:layout_height="25dp"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:layout_marginTop="16dp"-->
+<!--        android:button="@drawable/cart_checkbox"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/guideline1" />-->
 
-    <TextView
-        android:id="@+id/tvSelectAll"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="@string/select_all"
-        android:fontFamily="@font/poppins_medium"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toBottomOf="@+id/btnCheckedAll"
-        app:layout_constraintStart_toEndOf="@+id/btnCheckedAll"
-        app:layout_constraintTop_toTopOf="@+id/btnCheckedAll" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvSelectAll"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="10dp"-->
+<!--        android:text="@string/select_all"-->
+<!--        android:fontFamily="@font/poppins_medium"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/btnCheckedAll"-->
+<!--        app:layout_constraintStart_toEndOf="@+id/btnCheckedAll"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/btnCheckedAll" />-->
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvCart"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        app:layout_constraintBottom_toTopOf="@+id/btnCheckout"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/guideline2"
+        app:layout_constraintTop_toBottomOf="@+id/guideline1"
         tools:listitem="@layout/item_cart" />
 
-    <TextView
-        android:id="@+id/tvTotal"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:fontFamily="@font/poppins_medium"
-        android:text="@string/total"
-        android:textColor="@color/black"
-        app:layout_constraintBottom_toTopOf="@+id/tvTotalPrice"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/rvCart" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvTotal"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="8dp"-->
+<!--        android:layout_marginTop="8dp"-->
+<!--        android:fontFamily="@font/poppins_medium"-->
+<!--        android:text="@string/total"-->
+<!--        android:textColor="@color/black"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/tvTotalPrice"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/rvCart" />-->
 
-    <TextView
-        android:id="@+id/tvTotalPrice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_bold"
-        android:text="@string/price"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/tvTotal" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvTotalPrice"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:fontFamily="@font/poppins_bold"-->
+<!--        android:text="@string/price"-->
+<!--        android:textColor="@color/black"-->
+<!--        android:textSize="20sp"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/tvTotal" />-->
 
-    <ImageView
-        android:id="@+id/btnCheckout"
-        android:contentDescription="@string/checkout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_checkout"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+<!--    <ImageView-->
+<!--        android:id="@+id/btnCheckout"-->
+<!--        android:contentDescription="@string/checkout"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:src="@drawable/ic_checkout"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toEndOf="parent" />-->
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline1"
@@ -108,7 +108,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_begin="120dp" />
+        app:layout_constraintGuide_begin="105dp" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline3"

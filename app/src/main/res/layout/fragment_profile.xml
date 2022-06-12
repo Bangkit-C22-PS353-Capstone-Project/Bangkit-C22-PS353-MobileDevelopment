@@ -31,7 +31,7 @@
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
+        android:layout_marginStart="16dp"
         android:text="@string/sample_username"
         android:textAppearance="@style/TextProfile"
         app:layout_constraintBottom_toTopOf="@+id/tvEmail"
@@ -43,7 +43,6 @@
         android:id="@+id/tvEmail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="3dp"
         android:text="@string/sampe_email"
         android:textAppearance="@style/TextLoctProduct"
         app:layout_constraintBottom_toBottomOf="@+id/imgAvatarProfile"
@@ -165,7 +164,18 @@
         app:layout_constraintStart_toStartOf="@+id/imgAvatarProfile"
         app:layout_constraintTop_toBottomOf="@+id/layRiwayat" />
 
-
+    <TextView
+        android:id="@+id/tvLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="24dp"
+        android:gravity="center"
+        android:textColor="@color/red"
+        android:text="@string/keluar"
+        android:textAppearance="@style/TextCategory"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonal" />
 
 
 

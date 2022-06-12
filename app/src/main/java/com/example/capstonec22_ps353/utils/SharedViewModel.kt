@@ -12,8 +12,8 @@ class SharedViewModel : ViewModel() {
     private val _title = MutableLiveData<String>()
     val title: LiveData<String> = _title
 
-    private val _cek = MutableLiveData<Boolean>()
-    val cek: LiveData<Boolean> = _cek
+    private val _shipment = MutableLiveData<String>()
+    val shipment: LiveData<String> = _shipment
 
     private val _titlePrice = MutableLiveData("Beras")
     val titlePrice: LiveData<String> = _titlePrice
@@ -30,8 +30,8 @@ class SharedViewModel : ViewModel() {
         _titlePrice.value = titlePrice
     }
 
-    fun setCek(cek: Boolean) {
-        _cek.value = cek
+    fun setShipment(shipment : String) {
+
     }
 
 //    companion object {

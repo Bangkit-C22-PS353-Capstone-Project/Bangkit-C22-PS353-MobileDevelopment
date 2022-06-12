@@ -2,11 +2,11 @@ package com.example.capstonec22_ps353.ui.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.capstonec22_ps353.databinding.ItemCartBinding
-import com.example.capstonec22_ps353.model.Cart
 import com.example.capstonec22_ps353.model.ListCartItem
 import com.example.capstonec22_ps353.utils.CartDiffCallBack
 import java.text.DecimalFormat
@@ -16,10 +16,12 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
 
     private val listCart = ArrayList<ListCartItem>()
 //    private var isEnable = false
-//    private val priceSelectedList = mutableListOf<Int>()
+//    private val itemSelectedList = mutableListOf<Int>()
 //    private lateinit var cart : MutableList<Cart>
 
-    private val checked = true
+//    private val activityViewModel by viewModels<ActivityViewModel>()
+
+    private var checked = true
 
     private lateinit var onItemClickCallback: OnItemClickCallback
 
@@ -48,22 +50,7 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
         fun bind(item: ListCartItem, position: Int) {
             val df = DecimalFormat("#,###")
 
-//            val itemCart = cart[position]
-
             var qty = item.qty
-//            if (item.categoryId < 4) {
-//                qty = 5
-//            }
-
-//            binding.checkbox.setOnCheckedChangeListener { _, checked ->
-//                binding.checkbox.setOnLongClickListener {
-//
-//
-//                    true
-//                }
-//
-////                binding.checkbox.isChecked = checked
-//            }
 
             binding.edQty.setText("$qty kg")
 
@@ -117,11 +104,20 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
 //                tvCartPrice.text = item.price.toString()
                 tvCartStock.text = "Stok : ${item.stock}"
 
+//                binding.checkbox.isChecked = true
+
+                btnCheckOut.setOnClickListener {
+                    onItemClickCallback.onItemClicked(item, price, qty)
+                }
+
             }
 
-            binding.checkbox.setOnCheckedChangeListener { _, checked ->
-                onItemClickCallback.onItemClicked(item, checked, price)
-            }
+
+
+//            binding.checkbox.setOnCheckedChangeListener { _, checked ->
+//
+////                onItemClickCallback.onItemClicked(item, checked, price, qty)
+//            }
 
 //            binding.checkbox.setOnLongClickListener {
 //                selectItem(binding, itemCart, price)
@@ -148,8 +144,7 @@ class ListCartAdapter : RecyclerView.Adapter<ListCartAdapter.ListViewHolder>() {
 //        itemCart.selected = true
 //    }
 
-
     interface OnItemClickCallback {
-        fun onItemClicked(item: ListCartItem, checked: Boolean, price: Int)
+        fun onItemClicked(item: ListCartItem, price: Int, qty: Int)
     }
 }

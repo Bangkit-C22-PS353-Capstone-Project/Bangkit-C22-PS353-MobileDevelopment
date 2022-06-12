@@ -13,6 +13,7 @@ import com.bumptech.glide.Glide
 import com.example.capstonec22_ps353.databinding.FragmentBottomSheetDetailBinding
 import com.example.capstonec22_ps353.model.AddCart
 import com.example.capstonec22_ps353.model.ListProductItem
+import com.example.capstonec22_ps353.preferences.PrefViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import kotlinx.coroutines.launch
 import java.text.DecimalFormat
@@ -24,8 +25,11 @@ class BottomSheetDetailFragment : BottomSheetDialogFragment() {
     private val binding get() = _binding!!
 
     private val detailViewModel: DetailViewModel by activityViewModels()
+    private val prefViewModel: PrefViewModel by activityViewModels()
 
 
+    private var teks = ""
+    private var qtyBefore = 0
     private val args: BottomSheetDetailFragmentArgs by navArgs()
 
     private lateinit var product: ListProductItem
@@ -44,10 +48,28 @@ class BottomSheetDetailFragment : BottomSheetDialogFragment() {
 
         product = args.listDetailProduct
 
+        prefViewModel.getInfo().observe(viewLifecycleOwner) { user ->
+            detailViewModel.getCartByUserId(user.userId.toInt())
+        }
 
-//        detailViewModel.getAllCart()
+        detailViewModel.listCart.observe(viewLifecycleOwner) { listCart ->
+            var cek = false
 
 
+            for (i in listCart.indices) {
+                if (product.productId == listCart[i].productId) {
+                    cek = true
+                    qtyBefore = listCart[i].qty
+                    break
+                }
+            }
+            if (cek) {
+//                Toast.makeText(activity, "Ada", Toast.LENGTH_SHORT).show()
+                teks = "ada"
+            } else {
+
+            }
+        }
 
         activity?.let {
             Glide.with(it)
@@ -73,7 +95,6 @@ class BottomSheetDetailFragment : BottomSheetDialogFragment() {
     }
 
     private fun setupQuantity() {
-        var cek = false
 
         var qty: Int
         qty = 1
@@ -109,29 +130,39 @@ class BottomSheetDetailFragment : BottomSheetDialogFragment() {
 
         }
 
-        detailViewModel.getAllCart().observe(viewLifecycleOwner) { listCart ->
-            for (i in listCart.indices) {
-                if (product.productId == listCart[i].productId) {
-                    cek = true
-                    break
+        binding.btnAddToCart.setOnClickListener {
+//            val teks = binding.tvJumlah.text.toString()
+            qty += qtyBefore
+            if (teks == "ada") {
+                Toast.makeText(activity, "Udah ada", Toast.LENGTH_SHORT).show()
+                detailViewModel.editQty(product.productId, qty)
+                detailViewModel.result.observe(viewLifecycleOwner) {
+                    if (it) {
+                        Toast.makeText(activity, "ada", Toast.LENGTH_SHORT).show()
+                    }
                 }
+            } else {
+                val addCart = AddCart(
+                    1,
+                    product.productId,
+                    product.name,
+                    product.price,
+                    product.stock,
+                    product.imageUrl,
+                    qty
+                )
+
+                detailViewModel.addToCart(addCart)
+                detailViewModel.result.observe(viewLifecycleOwner) {
+                    if (it) {
+                        Toast.makeText(activity, "ada", Toast.LENGTH_SHORT).show()
+                    }
+                }
+                dismiss()
             }
 
-            if (cek) {
-                binding.tvJumlah.text = "ada"
-            } else {
-                binding.btnAddToCart.setOnClickListener {
-                    val addCart = AddCart(1,product.productId, product.name, product.price, product.stock, product.imageUrl, qty)
-                    detailViewModel.addToCart(addCart)
-                    detailViewModel.resAdd.observe(viewLifecycleOwner) {
-                        Toast.makeText(activity, it.message, Toast.LENGTH_SHORT).show()
-                    }
-                    dismiss()
-                }
-            }
 
         }
-
 
 
     }
