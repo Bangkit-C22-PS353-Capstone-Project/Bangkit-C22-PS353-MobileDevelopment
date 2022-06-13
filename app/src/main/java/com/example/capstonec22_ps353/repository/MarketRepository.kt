@@ -3,11 +3,9 @@ package com.example.capstonec22_ps353.repository
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.liveData
 import com.example.capstonec22_ps353.api.ApiService
 import com.example.capstonec22_ps353.model.*
 import com.example.capstonec22_ps353.preferences.MarketPreferences
-import kotlinx.coroutines.flow.first
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,8 +16,14 @@ class MarketRepository @Inject constructor(private val apiService: ApiService, p
     private val _listProduct = MutableLiveData<List<ListProductItem>>()
     val listProduct: LiveData<List<ListProductItem>> = _listProduct
 
+    private val _listProduct2 = MutableLiveData<List<ListProductItem>>()
+    val listProduct2: LiveData<List<ListProductItem>> = _listProduct2
+
     private val _listCart = MutableLiveData<List<ListCartItem>>()
     val listCart: LiveData<List<ListCartItem>> = _listCart
+
+    private val _listPrice = MutableLiveData<List<ListPriceItem>>()
+    val listPrice: LiveData<List<ListPriceItem>> = _listPrice
 
     private val _resAdd = MutableLiveData<MarketResponse>()
     val resAdd: LiveData<MarketResponse> = _resAdd
@@ -63,6 +67,28 @@ class MarketRepository @Inject constructor(private val apiService: ApiService, p
         })
     }
 
+    fun getProductByCategory(categoryId: Int) {
+        _isLoading.value = true
+        val client = apiService.getProductByCategory(categoryId)
+        client.enqueue(object : Callback<MarketResponse> {
+            override fun onResponse(
+                call: Call<MarketResponse>,
+                response: Response<MarketResponse>
+            ) {
+                _isLoading.value = false
+                if (response.isSuccessful) {
+                    _listProduct2.value = response.body()?.listProductItem
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+            override fun onFailure(call: Call<MarketResponse>, t: Throwable) {
+                _isLoading.value = false
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+        })
+    }
+
     fun loginAccount(email: String, password: String) {
         _isLoading.value = true
         val client = apiService.loginUser(email, password)
@@ -77,6 +103,7 @@ class MarketRepository @Inject constructor(private val apiService: ApiService, p
             }
 
             override fun onFailure(call: Call<MarketResponse>, t: Throwable) {
+                _isLoading.value = false
                 Log.e(TAG, "onFailure: ${t.message}")
             }
         })
@@ -101,6 +128,28 @@ class MarketRepository @Inject constructor(private val apiService: ApiService, p
             }
         })
     }
+
+    fun getPriceByCategory(categoryId: Int) {
+        val client = apiService.getPriceByCategory(categoryId)
+        client.enqueue(object : Callback<MarketResponse> {
+            override fun onResponse(
+                call: Call<MarketResponse>,
+                response: Response<MarketResponse>
+            ) {
+                if (response.isSuccessful) {
+                    _listPrice.value = response.body()?.listPriceItem
+                } else {
+                    Log.e(TAG, "onFailure: ${response.message()}")
+                }
+            }
+
+            override fun onFailure(call: Call<MarketResponse>, t: Throwable) {
+                Log.e(TAG, "onFailure: ${t.message}")
+            }
+        })
+    }
+
+
 
 //    fun getCartByUser(userId: Int) {
 //        val client = apiService.getCartByUser(userId)

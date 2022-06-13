@@ -18,6 +18,9 @@ class SharedViewModel : ViewModel() {
     private val _titlePrice = MutableLiveData("Beras")
     val titlePrice: LiveData<String> = _titlePrice
 
+    private val _totalPayment = MutableLiveData<String>()
+    val totalPayment: LiveData<String> = _totalPayment
+
     fun setNavController(navController2: NavController) {
         _navController.value = navController2
     }
@@ -30,9 +33,11 @@ class SharedViewModel : ViewModel() {
         _titlePrice.value = titlePrice
     }
 
-    fun setShipment(shipment : String) {
+//    fun setTotalPayment
 
-    }
+//    fun setShipment(shipment : String) {
+//
+//    }
 
 //    companion object {
 //        const val TAG = "SharedViewModel"

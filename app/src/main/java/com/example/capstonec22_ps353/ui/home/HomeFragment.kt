@@ -13,12 +13,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.denzcoskun.imageslider.constants.ScaleTypes
 import com.denzcoskun.imageslider.models.SlideModel
 import com.example.capstonec22_ps353.R
-import com.example.capstonec22_ps353.data.Result
 import com.example.capstonec22_ps353.databinding.FragmentHomeBinding
 import com.example.capstonec22_ps353.model.ListProductItem
 import com.example.capstonec22_ps353.model.Product
 import com.example.capstonec22_ps353.ui.MainFragmentDirections
 import com.example.capstonec22_ps353.ui.adapter.ListProductAdapter
+import com.example.capstonec22_ps353.ui.category.CategoryViewModel
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
 
@@ -27,6 +27,8 @@ class HomeFragment : Fragment() {
 //    private val list = ArrayList<Product>()
 
     private val homeViewModel: HomeViewModel by activityViewModels()
+    private val categoryViewModel: CategoryViewModel by activityViewModels()
+
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
 
@@ -49,8 +51,13 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        categoryViewModel.isLoading.observe(viewLifecycleOwner) {
+            showLoading(it)
+        }
+
         rvProduct = binding.rvProduct
         listProductAdapter = ListProductAdapter()
+//        categoryViewModel.getProductByCategory(1)
 
         homeViewModel.listProduct.observe(viewLifecycleOwner) {
             listProductAdapter.setListProduct(it)
@@ -92,7 +99,7 @@ class HomeFragment : Fragment() {
         }
 
     private fun setupActionButton() {
-        lifecycleScope.launch {
+
             sharedViewModel.navController.observe(viewLifecycleOwner) {
                 navController = it
 
@@ -109,53 +116,57 @@ class HomeFragment : Fragment() {
                         navController.navigate(R.id.action_mainFragment_to_cartFragment)
                     }
 
-                    tvBeras.apply {
-                        setOnClickListener {
-                            val text = text.toString()
+                    tvBeras.setOnClickListener {
+                            categoryViewModel.getProductByCategory(1)
+                            val text = tvBeras.text.toString()
                             val action =
                                 MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
-                        }
+
                     }
 
-                    tvBawangMerah.apply {
-                        setOnClickListener {
-                            val text = text.toString()
+                    tvBawangMerah.setOnClickListener {
+                            categoryViewModel.getProductByCategory(4)
+                            val text = tvBawangMerah.text.toString()
                             val action =
                                 MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
-                        }
+
                     }
 
-                    tvBawangPutih.apply {
-                        setOnClickListener {
-                            val text = text.toString()
+                    tvBawangPutih.setOnClickListener {
+                            categoryViewModel.getProductByCategory(5)
+                            val text = tvBawangPutih.text.toString()
                             val action =
                                 MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
-                        }
+
                     }
 
-                    tvCabaiMerah.apply {
-                        setOnClickListener {
-                            val text = text.toString()
+                    tvCabaiMerah.setOnClickListener {
+                            categoryViewModel.getProductByCategory(6)
+                            val text = tvCabaiMerah.text.toString()
                             val action =
                                 MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
-                        }
                     }
 
-                    tvCabaiRawit.apply {
-                        setOnClickListener {
-                            val text = text.toString()
+                    tvCabaiRawit.setOnClickListener {
+                            categoryViewModel.getProductByCategory(8)
+                            val text = tvCabaiRawit.text.toString()
                             val action =
                                 MainFragmentDirections.actionMainFragmentToCategoryFragment(text)
                             navController.navigate(action)
-                        }
+
                     }
                 }
-            }
+
         }
+    }
+
+    private fun showLoading(state: Boolean) {
+        if (state) binding.progressBar.visibility = View.VISIBLE
+        else binding.progressBar.visibility = View.GONE
     }
 
     override fun onDestroy() {

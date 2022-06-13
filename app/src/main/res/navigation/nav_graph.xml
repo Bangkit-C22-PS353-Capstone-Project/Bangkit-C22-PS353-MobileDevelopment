@@ -22,6 +22,12 @@
         <action
             android:id="@+id/action_mainFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_onDevelopFragment"
+            app:destination="@id/onDevelopFragment" />
 
     </fragment>
     <fragment
@@ -109,13 +115,20 @@
             android:name="shipment"
             app:argType="string"
             android:defaultValue="Pilih Pengiriman" />
+        <action
+            android:id="@+id/action_checkoutFragment_to_editProfileFragment"
+            app:destination="@id/editProfileFragment" />
     </fragment>
 
     <fragment
         android:id="@+id/paymentFragment"
-        android:name="com.example.capstonec22_ps353.ui.checkout.PaymentFragment"
+        android:name="com.example.capstonec22_ps353.ui.payment.PaymentFragment"
         android:label="fragment_payment"
         tools:layout="@layout/fragment_payment">
+        <argument
+            android:name="totalPayment"
+            app:argType="string"
+            android:defaultValue="Rp 0" />
     </fragment>
 
     <dialog
@@ -156,5 +169,22 @@
             android:id="@+id/action_registerFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/editProfileFragment"
+        android:name="com.example.capstonec22_ps353.ui.profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_editProfileFragment_to_checkoutFragment"
+            app:destination="@id/checkoutFragment" />
+        <action
+            android:id="@+id/action_editProfileFragment_to_onDevelopFragment"
+            app:destination="@id/onDevelopFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/onDevelopFragment"
+        android:name="com.example.capstonec22_ps353.ui.OnDevelopFragment"
+        android:label="fragment_on_develop"
+        tools:layout="@layout/fragment_on_develop" />
 
 </navigation>

@@ -9,8 +9,13 @@ import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentCategoryBinding
+import com.example.capstonec22_ps353.model.ListProductItem
+import com.example.capstonec22_ps353.ui.MainFragmentDirections
+import com.example.capstonec22_ps353.ui.adapter.ListProductAdapter
 import com.example.capstonec22_ps353.ui.adapter.SectionPagerAdapter
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import com.google.android.material.tabs.TabLayout
@@ -20,11 +25,15 @@ import kotlinx.coroutines.launch
 class CategoryFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val categoryViewModel: CategoryViewModel by activityViewModels()
 
     private val args: CategoryFragmentArgs by navArgs()
 
     private var _binding: FragmentCategoryBinding? = null
     private val binding get() = _binding!!
+    private lateinit var listProductAdapter: ListProductAdapter
+    private lateinit var rvProduct: RecyclerView
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,12 +48,26 @@ class CategoryFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         val category = args.category
 
-        binding.tvCategory.text = category
+        rvProduct = binding.rvProduct
+        listProductAdapter = ListProductAdapter()
 
+        categoryViewModel.listProduct2.observe(viewLifecycleOwner) {
+            listProductAdapter.setListProduct(it)
+        }
+
+        listProductAdapter.setOnItemClickCallback(object :
+            ListProductAdapter.OnItemClickCallback {
+            override fun onItemClicked(item: ListProductItem) {
+//                val action = MainFragmentDirections.actionMainFragmentToDetailFragment(item)
+//                navController.navigate(action)
+            }
+        })
+
+        binding.tvCategory.text = category
+        showRecyclerList()
 //        val args = CategoryFragmentArgs.fromBundle(category)
         setupTabLayout()
 
-        lifecycleScope.launch {
             sharedViewModel.navController.observe(viewLifecycleOwner) {
                 val navController = it
                 val callback = object : OnBackPressedCallback(true) {
@@ -52,6 +75,8 @@ class CategoryFragment : Fragment() {
                         navController.popBackStack()
                     }
                 }
+
+
 //                 navController.previousBackStackEntry
 
                 requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, callback)
@@ -71,16 +96,23 @@ class CategoryFragment : Fragment() {
                     navController.popBackStack()
                 }
             }
-        }
 
+
+    }
+
+    private fun showRecyclerList() {
+        rvProduct.layoutManager = GridLayoutManager(activity, 2)
+        rvProduct.setHasFixedSize(true)
+//        listProductAdapter.setListProduct(listProduct)
+        rvProduct.adapter = listProductAdapter
     }
 
     private fun setupTabLayout() {
         binding.apply {
             val fragmentBeras = mutableListOf<Fragment>(
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS1),
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS3),
                 DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS2),
-                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS3)
+                DetailCategoryFragment.newInstance(DetailCategoryFragment.BERAS1)
             )
 
             val fragmentBawangM = mutableListOf<Fragment>(
@@ -102,9 +134,9 @@ class CategoryFragment : Fragment() {
             )
 
             val fragmentTitleBeras = mutableListOf(
-                getString(R.string.beras1),
+                getString(R.string.beras3),
                 getString(R.string.beras2),
-                getString(R.string.beras3)
+                getString(R.string.beras1),
             )
 
             val fragmentTitleBawangM = mutableListOf(

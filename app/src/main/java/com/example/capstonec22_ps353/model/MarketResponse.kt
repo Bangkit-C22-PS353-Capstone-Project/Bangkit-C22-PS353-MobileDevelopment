@@ -15,8 +15,25 @@ data class MarketResponse(
 	@field:SerializedName("listCartItem")
 	val listCartItem: List<ListCartItem>,
 
+	@field:SerializedName("listPriceItem")
+	val listPriceItem: List<ListPriceItem>,
+
 	@field:SerializedName("listProductItem")
 	val listProductItem: List<ListProductItem>
+)
+
+data class ListPriceItem (
+	@field:SerializedName("price_id")
+	val price_id: Int,
+
+	@field:SerializedName("category_id")
+	val categoryId: Int,
+
+	@field:SerializedName("price")
+	val price: Int,
+
+	@field:SerializedName("month")
+	val month: String,
 )
 
 data class LoginResult(

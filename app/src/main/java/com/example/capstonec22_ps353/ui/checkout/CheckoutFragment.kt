@@ -1,10 +1,13 @@
 package com.example.capstonec22_ps353.ui.checkout
 
+import android.app.AlertDialog
 import android.os.Bundle
+import android.view.Gravity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Lifecycle
@@ -20,7 +23,7 @@ import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
 import java.text.DecimalFormat
 
-var ekspedisi = "Pilih Pengiriman"
+//var ekspedisi = "Pilih Pengiriman"
 class CheckoutFragment : Fragment() {
 
     private var _binding: FragmentCheckoutBinding? = null
@@ -45,9 +48,11 @@ class CheckoutFragment : Fragment() {
         val df = DecimalFormat("#,###")
         val cart = args.listCartItem
         val qty = args.qty
-//        val shipment = args.shipment
-//        binding.btnShipment.text = shipment
-        val dialog = BottomSheetDeliveryFragment()
+
+        val shipmentCost = resources.getIntArray(R.array.dummy_shipment_cost)
+
+
+
 
         activity?.let {
             Glide.with(it)
@@ -57,21 +62,47 @@ class CheckoutFragment : Fragment() {
 
         val total = qty * cart.price
 
+
+
         binding.tvTitleProduct.text = cart.name
         binding.tvPrice.text = "Rp ${df.format(cart.price)}"
         binding.tvQuantity.text = "${qty}Kg"
         binding.tvTotalPesanan.text = "Total Pesanan (${qty}Kg)"
         binding.tvTotalHargaKuantitas.text = "Rp ${df.format(total)}"
 
-//        binding.btnShipment.setOnClickListener {
-//            dialog.show(childFragmentManager, "sheetDelivery")
-////            binding.btnShipment.text = shipment
-//        }
-
         val currentFragment = findNavController().getBackStackEntry(R.id.checkoutFragment)
         val dialogObserver = LifecycleEventObserver { _, event ->
-            if (event == Lifecycle.Event.ON_RESUME && currentFragment.savedStateHandle.contains("shipment")){
+            if (event == Lifecycle.Event.ON_RESUME && currentFragment.savedStateHandle.contains("shipment")) {
                 binding.btnShipment.text = currentFragment.savedStateHandle.get("shipment")
+                val idShipment = binding.btnShipment.text.toString()
+                when (idShipment) {
+                    SICEPAT -> {
+                        val totalPembayaran = total + shipmentCost[0]
+                        binding.tvTotalHargaPengiriman.text = "Rp ${df.format(shipmentCost[0])}"
+                        binding.tvTotalHargaPembayaran.text = "Rp ${df.format(totalPembayaran)}"
+                    }
+                    IDEXPRESS -> {
+                        val totalPembayaran = total + shipmentCost[1]
+                        binding.tvTotalHargaPengiriman.text = "Rp ${df.format(shipmentCost[1])}"
+                        binding.tvTotalHargaPembayaran.text = "Rp ${df.format(totalPembayaran)}"
+                    }
+                    JNE -> {
+                        val totalPembayaran = total + shipmentCost[2]
+                        binding.tvTotalHargaPengiriman.text = "Rp ${df.format(shipmentCost[2])}"
+                        binding.tvTotalHargaPembayaran.text = "Rp ${df.format(totalPembayaran)}"
+                    }
+                    TIKI -> {
+                        val totalPembayaran = total + shipmentCost[3]
+                        binding.tvTotalHargaPengiriman.text = "Rp ${df.format(shipmentCost[3])}"
+                        binding.tvTotalHargaPembayaran.text = "Rp ${df.format(totalPembayaran)}"
+                    }
+                    JNT -> {
+                        val totalPembayaran = total + shipmentCost[4]
+                        binding.tvTotalHargaPengiriman.text = "Rp ${df.format(shipmentCost[4])}"
+                        binding.tvTotalHargaPembayaran.text = "Rp ${df.format(totalPembayaran)}"
+                    }
+                }
+
             }
         }
 
@@ -92,8 +123,51 @@ class CheckoutFragment : Fragment() {
                     }
                 }
 
+                prefViewModel.getInfo().observe(viewLifecycleOwner) { user ->
+                    if (user.address == "") {
+                        binding.tvFullAddress.setOnClickListener {
+                            navController.navigate(R.id.action_checkoutFragment_to_editProfileFragment)
+                        }
+                        binding.tvFullAddress.gravity = Gravity.CENTER
+                        binding.tvFullAddress.textSize = 16f
+
+                    } else {
+                        binding.tvFullAddress.isEnabled = false
+                        binding.tvFullAddress.text =
+                            "${user.username} | (+62) ${user.noHp}\n${user.address}"
+                    }
+                }
+
+                binding.btnNextPayment.setOnClickListener {
+                    val total = binding.tvTotalHargaPembayaran.text.toString()
+                    val priceShipment = binding.tvTotalHargaPengiriman.text.toString()
+                    val action =
+                        CheckoutFragmentDirections.actionCheckoutFragmentToPaymentFragment(total)
+
+                    if (priceShipment == "Rp 0") {
+                        Toast.makeText(
+                            activity,
+                            "Anda harus memilih pengiriman",
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    } else {
+                        AlertDialog.Builder(activity).apply {
+                            setTitle("Tunggu Sebentar!!")
+                            setMessage("Apakah anda sudah memeriksa pesanan anda kembali?")
+                            setPositiveButton("Ya") { _, _ ->
+                                navController.navigate(action)
+                            }
+
+                            setNegativeButton("Tidak") { _, _ -> }
+                            create()
+                            show()
+                        }
+
+                    }
+
+                }
+
                 binding.btnShipment.setOnClickListener {
-//                    val action = CheckoutFragmentDirections.actionCheckoutFragmentToBottomSheetDeliveryFragment(cart, qty)
                     navController.navigate(R.id.action_checkoutFragment_to_bottomSheetDeliveryFragment)
                 }
 
@@ -109,6 +183,14 @@ class CheckoutFragment : Fragment() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
+    }
+
+    companion object {
+        const val SICEPAT = "Si Cepat (Rp 70.000)"
+        const val IDEXPRESS = "ID Express (Rp 65.000)"
+        const val JNE = "JNE (Rp 80.000)"
+        const val TIKI = "TIKI (Rp 60.000)"
+        const val JNT = "JNT (Rp 90.000)"
     }
 
 }

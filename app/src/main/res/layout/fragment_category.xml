@@ -56,7 +56,7 @@
 
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tbCategory"
-        android:layout_width="0dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="18dp"
         android:layout_marginTop="8dp"
@@ -65,10 +65,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvCategory"
-        app:tabIndicator="@color/label_primer"
+        app:tabIndicator="@drawable/tab_indicator"
+        app:tabGravity="fill"
+        app:tabIndicatorColor="@color/label_primer"
+        app:tabIndicatorGravity="stretch"
         app:tabIndicatorAnimationMode="elastic"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/label_primer"
+        app:tabSelectedTextColor="@color/white"
         app:tabTextAppearance="@style/TextIndicator"
         app:tabTextColor="@color/black" />
 
@@ -80,5 +83,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tbCategory" />
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvProduct"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/viewPagerCategory"
+        tools:listitem="@layout/item_product" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

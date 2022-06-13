@@ -118,23 +118,19 @@
     </string-array>
 
     <string-array name="dummy_day_label">
-        <item>Sen</item>
-        <item>Sel</item>
-        <item>Rab</item>
-        <item>Kam</item>
-        <item>Jum</item>
-        <item>Sab</item>
-        <item>Min</item>
+        <item>Jan</item>
+        <item>Feb</item>
+        <item>Mar</item>
+        <item>Apr</item>
+        <item>Mei</item>
     </string-array>
 
     <string-array name="dummy_day">
-        <item>Senin</item>
-        <item>Selasa</item>
-        <item>Rabu</item>
-        <item>Kamis</item>
-        <item>Jumat</item>
-        <item>Sabtu</item>
-        <item>Minggu</item>
+        <item>Januari</item>
+        <item>Februari</item>
+        <item>Maret</item>
+        <item>April</item>
+        <item>Mei</item>
     </string-array>
 
     <string-array name="dummy_date">
@@ -148,13 +144,19 @@
     </string-array>
 
     <integer-array name="dummy_price">
-        <item>10000</item>
-        <item>10200</item>
-        <item>10200</item>
-        <item>12500</item>
-        <item>11400</item>
-        <item>11100</item>
-        <item>12000</item>
+        <item>8450</item>
+        <item>8500</item>
+        <item>8450</item>
+        <item>8350</item>
+        <item>8300</item>
+    </integer-array>
+
+    <integer-array name="dummy_shipment_cost">
+        <item>70000</item>
+        <item>65000</item>
+        <item>80000</item>
+        <item>60000</item>
+        <item>90000</item>
     </integer-array>
 
 
@@ -181,7 +183,7 @@
     <string name="edit">Edit</string>
     <string name="total">Total :</string>
     <string name="value">Jumlah</string>
-    <string name="presentase">1% - Rp500</string>
+    <string name="presentase">1% - Rp1500</string>
     <string name="test">test</string>
     <string name="appname">Bumi Tani</string>
     <string name="deskripsi">Deskripsi</string>
@@ -231,6 +233,18 @@
     <string name="si_cepat">Si Cepat (Rp 70.000)</string>
     <string name="id_express">ID Express (Rp 65.000)</string>
     <string name="pilih_pengiriman">Pilih Pengiriman</string>
+    <string name="harga_awal">Rp 0</string>
+    <string name="alamat_null">Anda Belum memasukkan Alamat (Klik disini untuk memasukkan alamat)</string>
+    <string name="foto_profile">Foto Profile</string>
+    <string name="cancel">Batal</string>
+    <string name="simpan">Simpan</string>
+    <string name="alamat">Alamat</string>
+    <string name="alamat_pengiriman">Alamat Pengiriman</string>
+    <string name="feature_under_development">Feature Under Development</string>
+    <string name="umum">Umum</string>
+    <string name="privasi">Privasi</string>
+    <string name="syarat_dan_ketentuan">Syarat dan Ketentuan</string>
+    <string name="bumitani">BumiTani</string>
 
 
 </resources>

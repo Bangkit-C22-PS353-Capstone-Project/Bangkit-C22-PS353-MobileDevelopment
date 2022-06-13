@@ -17,37 +17,28 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="10dp"
-            android:text="Minggu"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:text="Bulan"
             android:textAppearance="@style/TextTitleDate"
-            app:layout_constraintBottom_toTopOf="@+id/tvDate"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_chainStyle="packed" />
 
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:text="12-12-2002"
-            android:textAppearance="@style/TextIndicator"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/tvTittle"
-            app:layout_constraintTop_toBottomOf="@+id/tvTittle" />
 
         <TextView
             android:id="@+id/tvPrice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="2dp"
             android:layout_marginEnd="20dp"
             android:text="Rp 10.000"
             android:textAppearance="@style/TextInfo"
             android:textColor="@color/black"
+            app:layout_constraintBottom_toTopOf="@id/imgPresentase"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/tvTittle" />
+            app:layout_constraintTop_toTopOf="@+id/tvTittle"
+            app:layout_constraintVertical_chainStyle="packed" />
 
         <TextView
             android:id="@+id/tvPresentase"
@@ -66,7 +57,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:src="@drawable/price_down"
-            app:layout_constraintBottom_toBottomOf="@+id/tvDate"
+            app:layout_constraintBottom_toBottomOf="@+id/tvTittle"
             app:layout_constraintEnd_toEndOf="@+id/tvPrice"
             app:layout_constraintTop_toBottomOf="@+id/tvPrice" />
 

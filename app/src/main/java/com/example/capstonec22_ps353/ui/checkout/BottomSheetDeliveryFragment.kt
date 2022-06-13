@@ -1,18 +1,14 @@
 package com.example.capstonec22_ps353.ui.checkout
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.RadioButton
-import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.fragment.navArgs
-import com.example.capstonec22_ps353.R
 import com.example.capstonec22_ps353.databinding.FragmentBottomSheetDeliveryBinding
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
@@ -46,27 +42,51 @@ class BottomSheetDeliveryFragment : BottomSheetDialogFragment() {
 
         var shipment: RadioButton?
 //        var ekspedisi = ""
-        binding.rgPengiriman.setOnCheckedChangeListener { _, i ->
-            var selected = binding.rgPengiriman.checkedRadioButtonId
 
-            shipment = getView()?.findViewById(selected)
+
+        val sicepat = binding.rbSicepat.text.toString()
+        val idexpress = binding.rbIdExpress.text.toString()
+        val jne = binding.rbJne.text.toString()
+//        val tiki = binding.
+
+
+//        rbSicepat.text = "Si Cepat (Rp ${shipmentCost[0]})"
+//        rbIdExpress.text = "ID Express (Rp ${shipmentCost[1]})"
+//        rbJne.text = "JNE (Rp ${shipmentCost[2]})"
+//        rbTiki.text = "TIKI (Rp ${shipmentCost[3]})"
+//        rbJnt.text = "JNE (Rp ${shipmentCost[4]})"
+        var ekspedisi = ""
+        var selected = 0
+        binding.rgPengiriman.setOnCheckedChangeListener { radio, i ->
+            selected = i
+            shipment = getView()?.findViewById(i)
             ekspedisi = shipment?.text.toString()
-            Toast.makeText(activity, "$i", Toast.LENGTH_SHORT).show()
+//            Toast.makeText(activity, "$i", Toast.LENGTH_SHORT).show()
         }
 
-        lifecycleScope.launch{
+//        binding.apply {
+//            rbSicepat.text = "Si Cepat (Rp ${shipmentCost[0]})"
+//            rbIdExpress.text = "ID Express (Rp ${shipmentCost[1]})"
+//            rbJne.text = "JNE (Rp ${shipmentCost[2]})"
+//            rbTiki.text = "TIKI (Rp ${shipmentCost[3]})"
+//            rbJnt.text = "JNT (Rp ${shipmentCost[4]})"
+//        }
+
+        binding.btnChooseShipment.setOnClickListener {
+//            Toast.makeText(activity, "$selected", Toast.LENGTH_SHORT).show()
+            findNavController().previousBackStackEntry?.savedStateHandle?.set(
+                "shipment",ekspedisi
+            )
+            dismiss()
+        }
+
+
+
+        lifecycleScope.launch {
             sharedViewModel.navController.observe(viewLifecycleOwner) {
                 val navController = it
 
-                binding.btnChooseShipment.setOnClickListener {
-                    Toast.makeText(activity, ekspedisi, Toast.LENGTH_SHORT).show()
-//                    val action = BottomSheetDeliveryFragmentDirections.actionBottomSheetDeliveryFragmentToCheckoutFragment(cart, qty,ekspedisi)
-//                    navController.navigate(action)
-//                    sharedViewModel.setShipment(ekspedisi)
-                    findNavController().previousBackStackEntry?.savedStateHandle?.set("shipment", ekspedisi)
 
-                    dismiss()
-                }
 
             }
         }

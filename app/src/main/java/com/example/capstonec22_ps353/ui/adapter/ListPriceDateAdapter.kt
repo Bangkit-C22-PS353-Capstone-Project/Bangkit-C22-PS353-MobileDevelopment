@@ -6,6 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.capstonec22_ps353.databinding.ItemPriceListBinding
+import com.example.capstonec22_ps353.model.ListPriceItem
 import com.example.capstonec22_ps353.model.PriceDate
 import com.example.capstonec22_ps353.utils.PriceDateDiffCallBack
 import java.text.DecimalFormat
@@ -40,7 +41,6 @@ class ListPriceDateAdapter : RecyclerView.Adapter<ListPriceDateAdapter.ListViewH
                     .into(imgPresentase)
                 tvTittle.text = item.Title
                 tvPrice.text = item.Price
-                tvDate.text = item.Date
                 tvPresentase.text = item.Presentase
             }
         }

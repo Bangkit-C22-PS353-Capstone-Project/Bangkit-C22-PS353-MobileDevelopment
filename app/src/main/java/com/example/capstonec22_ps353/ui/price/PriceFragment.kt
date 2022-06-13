@@ -23,6 +23,7 @@ import com.google.android.material.tabs.TabLayoutMediator
 class PriceFragment : Fragment() {
 
     private val sharedViewModel: SharedViewModel by activityViewModels()
+    private val priceViewModel: PriceViewModel by activityViewModels()
 
     //    private lateinit var lineChart: LineChart
 //    private var priceList = ArrayList<PriceList>()
@@ -44,7 +45,6 @@ class PriceFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         setDropdown()
 
         setupTabLayout()
@@ -57,19 +57,18 @@ class PriceFragment : Fragment() {
         }
     }
 
-
-    override fun onViewStateRestored(savedInstanceState: Bundle?) {
-        super.onViewStateRestored(savedInstanceState)
-        setupTabLayout()
-    }
+//    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+//        super.onViewStateRestored(savedInstanceState)
+//        setupTabLayout()
+//    }
 
     private fun setupTabLayout() {
         binding.apply {
 
             val fragmentBeras = mutableListOf<Fragment>(
-                DetailPriceFragment.newInstance(DetailPriceFragment.BERAS1),
+                DetailPriceFragment.newInstance(DetailPriceFragment.BERAS3),
                 DetailPriceFragment.newInstance(DetailPriceFragment.BERAS2),
-                DetailPriceFragment.newInstance(DetailPriceFragment.BERAS3)
+                DetailPriceFragment.newInstance(DetailPriceFragment.BERAS1),
             )
 
             val fragmentBawangM = mutableListOf<Fragment>(
@@ -91,10 +90,11 @@ class PriceFragment : Fragment() {
             )
 
             val fragmentTitleBeras = mutableListOf(
-                getString(R.string.beras1),
+                getString(R.string.beras3),
                 getString(R.string.beras2),
-                getString(R.string.beras3)
-            )
+                getString(R.string.beras1),
+
+                )
 
             val fragmentTitleBawangM = mutableListOf(
                 getString(R.string.bawangM)
@@ -128,29 +128,32 @@ class PriceFragment : Fragment() {
                             override fun onTabSelected(tab: TabLayout.Tab?) {
 //                                Toast.makeText(activity, tab?.text.toString(), Toast.LENGTH_SHORT).show()
                                 when (tab?.position) {
-                                    DetailPriceFragment.BERAS1 -> {
-                                        Toast.makeText(activity, category, Toast.LENGTH_SHORT).show()
-//                                        sharedViewModel.setTitle(getString(R.string.beras1))
-                                        sharedViewModel.setTitle(category)
-                                    }
-
-                                    DetailPriceFragment.BERAS2 -> {
-                                        Toast.makeText(activity, category, Toast.LENGTH_SHORT).show()
-
-//                                        sharedViewModel.setTitle(getString(R.string.beras2))
-                                        sharedViewModel.setTitle(category)
-                                    }
-
                                     DetailPriceFragment.BERAS3 -> {
 //                                        sharedViewModel.setTitle(getString(R.string.beras3))
                                         sharedViewModel.setTitle(category)
                                     }
+
+                                    DetailPriceFragment.BERAS2 -> {
+                                        Toast.makeText(activity, category, Toast.LENGTH_SHORT)
+                                            .show()
+//                                        sharedViewModel.setTitle(getString(R.string.beras2))
+                                        sharedViewModel.setTitle(category)
+                                    }
+
+                                    DetailPriceFragment.BERAS1 -> {
+                                        Toast.makeText(activity, category, Toast.LENGTH_SHORT)
+                                            .show()
+//                                        sharedViewModel.setTitle(getString(R.string.beras1))
+                                        sharedViewModel.setTitle(category)
+                                    }
+
                                 }
                             }
 
                             override fun onTabUnselected(tab: TabLayout.Tab?) {
 
                             }
+
                             override fun onTabReselected(tab: TabLayout.Tab?) {
 
                             }

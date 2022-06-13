@@ -30,28 +30,39 @@
         app:layout_constraintStart_toEndOf="@+id/btnBack"
         app:layout_constraintTop_toTopOf="@+id/btnBack" />
 
+    <ImageView
+        android:id="@+id/iconAlamat"
+        android:layout_width="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_location_address"
+        app:layout_constraintBottom_toBottomOf="@+id/tvAddress"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvAddress" />
+
     <TextView
         android:id="@+id/tvAddress"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
         android:layout_marginTop="8dp"
-        android:text="@string/address"
+        android:layout_marginStart="4dp"
         android:drawablePadding="4dp"
+        android:text="@string/alamat_pengiriman"
         android:textAppearance="@style/TextTitleCheckout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline1"
-        app:drawableStartCompat="@drawable/ic_location_address" />
+        app:layout_constraintStart_toEndOf="@+id/iconAlamat"
+        app:layout_constraintTop_toTopOf="@+id/guideline1" />
 
     <TextView
         android:id="@+id/tvFullAddress"
         android:layout_width="0dp"
-        android:layout_height="100dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="10dp"
         android:layout_marginEnd="20dp"
         android:fontFamily="@font/poppins_regular"
         android:maxLines="5"
-        android:text="@string/full_address"
+        android:text="@string/alamat_null"
         android:textColor="@color/black"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@id/tvAddress"
@@ -65,9 +76,9 @@
         android:drawablePadding="4dp"
         android:text="@string/item"
         android:textAppearance="@style/TextTitleCheckout"
-        app:layout_constraintStart_toStartOf="@+id/tvAddress"
-        app:layout_constraintTop_toTopOf="@+id/guideline2"
-        app:drawableStartCompat="@drawable/ic_box" />
+        app:drawableStartCompat="@drawable/ic_box"
+        app:layout_constraintStart_toStartOf="@+id/cardView2"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView2"
@@ -163,7 +174,7 @@
         app:drawableEndCompat="@drawable/ic_arrow_right" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btnAddToCart"
+        android:id="@+id/btnNextPayment"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="@color/label_primer"
@@ -172,6 +183,7 @@
         android:textColor="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -199,7 +211,7 @@
         android:id="@+id/tvTotalHargaKuantitas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp 1000"
+        android:text="@string/harga_awal"
         android:layout_marginEnd="20dp"
         android:textAppearance="@style/TextInfo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -220,7 +232,7 @@
         android:id="@+id/tvTotalHargaPengiriman"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp 1000"
+        android:text="@string/harga_awal"
         android:textAppearance="@style/TextInfo"
         app:layout_constraintEnd_toEndOf="@+id/tvTotalHargaKuantitas"
         app:layout_constraintTop_toTopOf="@+id/tvTotalPengiriman" />
@@ -239,7 +251,7 @@
         android:id="@+id/tvTotalHargaPembayaran"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Rp 1000"
+        android:text="@string/harga_awal"
         android:textAppearance="@style/TextTitleCheckout"
         app:layout_constraintEnd_toEndOf="@+id/tvTotalHargaPengiriman"
         app:layout_constraintTop_toTopOf="@+id/tvTotalPembayaran" />

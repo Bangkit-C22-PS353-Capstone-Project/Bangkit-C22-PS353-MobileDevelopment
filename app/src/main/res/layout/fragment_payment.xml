@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.checkout.PaymentFragment">
+    tools:context=".ui.payment.PaymentFragment">
 
     <ImageView
         android:id="@+id/btnBack"
@@ -47,41 +47,51 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:text="@string/total_price"
-        android:textSize="18sp"
         android:fontFamily="@font/poppins_bold"
+        android:text="@string/total_price"
         android:textColor="@color/colorRekening"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline1" />
 
+
+
     <androidx.cardview.widget.CardView
         android:id="@+id/cvBankAccount"
-        android:layout_width="352dp"
-        android:layout_height="130dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:elevation="4dp"
         app:cardCornerRadius="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tvTotalPrice"
+        app:layout_constraintStart_toStartOf="@+id/tvTotalPayment"
         app:layout_constraintTop_toBottomOf="@id/tvTotalPayment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
+            <ImageView
+                android:src="@drawable/bca"
+                android:id="@+id/imageView"
+                android:layout_width="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_height="40dp"
+                app:layout_constraintStart_toStartOf="@+id/tvBankName"
+                app:layout_constraintTop_toTopOf="parent" />
+
             <TextView
                 android:id="@+id/tvBankName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="12dp"
-                android:layout_marginTop="12dp"
                 android:fontFamily="@font/poppins_regular"
                 android:padding="4dp"
                 android:text="@string/bank_account"
                 android:textColor="@color/black"
                 android:textStyle="bold"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toBottomOf="@+id/imageView" />
 
             <TextView
                 android:id="@+id/tvAccountName"
@@ -101,10 +111,12 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/poppins_medium"
                 android:padding="4dp"
+                android:layout_marginBottom="12dp"
                 android:text="@string/no_rekening"
                 android:textColor="@color/colorRekening"
                 android:textSize="20sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="@+id/tvBankName"
                 app:layout_constraintTop_toBottomOf="@+id/tvAccountName" />
 
@@ -119,32 +131,31 @@
                 app:layout_constraintTop_toTopOf="@+id/tvBankAccount" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </androidx.cardview.widget.CardView>
 
     <TextView
         android:id="@+id/tvPaymentTime"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
+        android:fontFamily="@font/poppins_medium"
         android:gravity="center"
         android:text="@string/pay_before"
-        android:textSize="16sp"
-        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/cvBankAccount"
+        app:layout_constraintStart_toStartOf="@+id/cvBankAccount"
         app:layout_constraintTop_toBottomOf="@+id/cvBankAccount" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:background="@drawable/button_paid"
         android:id="@+id/btnDoneTransfer"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginBottom="20dp"
+        android:background="@drawable/button_paid"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/done_transfer"
         android:textAllCaps="false"
-        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/label_primer"
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/btnToHome"
@@ -152,14 +163,14 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
-        android:background="@drawable/button_bg"
         android:id="@+id/btnToHome"
         android:layout_width="350dp"
         android:layout_height="50dp"
         android:layout_marginBottom="100dp"
+        android:background="@drawable/button_bg"
+        android:fontFamily="@font/poppins_medium"
         android:text="@string/to_home"
         android:textAllCaps="false"
-        android:fontFamily="@font/poppins_medium"
         android:textColor="@color/white"
         android:textSize="14sp"
         app:layout_constraintBottom_toBottomOf="parent"

@@ -10,12 +10,22 @@ interface ApiService {
     @GET("product.php")
     fun getAllProduct(): Call<MarketResponse>
 
+    @GET("getProductByCategory.php")
+    fun getProductByCategory(
+        @Query("category_id") category_id: Int,
+    ): Call<MarketResponse>
+
     @GET("getAllCart.php")
     fun getAllCart(): Call<MarketResponse>
 
     @GET("getCartByUser.php")
     fun getCartByUser(
         @Query("user_id") user_id: Int,
+    ): Call<MarketResponse>
+
+    @GET("getPriceByCategory.php")
+    fun getPriceByCategory(
+        @Query("category_id") category_id: Int,
     ): Call<MarketResponse>
 
 

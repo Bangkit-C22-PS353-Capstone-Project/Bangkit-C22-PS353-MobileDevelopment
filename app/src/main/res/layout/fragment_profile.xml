@@ -28,6 +28,16 @@
         tools:src="@tools:sample/avatars" />
 
     <TextView
+        android:id="@+id/tvEditProfile"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit"
+        android:textSize="12sp"
+        android:textAppearance="@style/TextLoctProduct"
+        app:layout_constraintEnd_toEndOf="@+id/layPengaturan"
+        app:layout_constraintTop_toTopOf="@+id/imgAvatarProfile" />
+
+    <TextView
         android:id="@+id/tvUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -54,7 +64,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="@string/general"
+        android:text="@string/umum"
         android:textAppearance="@style/TextInfo"
         android:textColor="@color/info"
         app:layout_constraintStart_toStartOf="@+id/imgAvatarProfile"
@@ -70,8 +80,7 @@
         android:orientation="horizontal"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="@+id/tvGeneral"
-        app:layout_constraintTop_toBottomOf="@+id/tvGeneral"
-        tools:ignore="UseCompoundDrawables">
+        app:layout_constraintTop_toBottomOf="@+id/tvGeneral">
 
         <ImageView
             android:id="@+id/imgSetting"
@@ -104,7 +113,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -125,7 +133,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/pengaturan"
-            android:src="@drawable/ic_setting"
+            android:src="@drawable/ic_history"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -164,19 +172,108 @@
         app:layout_constraintStart_toStartOf="@+id/imgAvatarProfile"
         app:layout_constraintTop_toBottomOf="@+id/layRiwayat" />
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layPrivasi"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="24dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPersonal"
+        app:layout_constraintTop_toBottomOf="@+id/tvPersonal">
+
+        <ImageView
+            android:id="@+id/imgPrivasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/pengaturan"
+            android:src="@drawable/ic_lock"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvPrivasi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/privasi"
+            android:textAppearance="@style/TextInfo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgPrivasi"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgRight3"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/layTerms"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="24dp"
+        android:layout_marginTop="16dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/tvPersonal"
+        app:layout_constraintTop_toBottomOf="@+id/layPrivasi">
+
+        <ImageView
+            android:id="@+id/imgTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="@string/pengaturan"
+            android:src="@drawable/ic_information"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvTerms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="20dp"
+            android:text="@string/syarat_dan_ketentuan"
+            android:textAppearance="@style/TextInfo"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imgTerms"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgRight4"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:contentDescription="@string/arrow_right"
+            android:src="@drawable/ic_arrow_right"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <TextView
         android:id="@+id/tvLogout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="24dp"
         android:gravity="center"
-        android:textColor="@color/red"
         android:text="@string/keluar"
         android:textAppearance="@style/TextCategory"
+        android:textColor="@color/red"
+        app:layout_constraintTop_toBottomOf="@id/layTerms"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPersonal" />
-
-
+        tools:layout_editor_absoluteY="700dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

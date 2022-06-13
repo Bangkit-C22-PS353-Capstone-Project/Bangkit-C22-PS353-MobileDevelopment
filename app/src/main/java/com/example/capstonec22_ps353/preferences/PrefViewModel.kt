@@ -21,6 +21,16 @@ class PrefViewModel @Inject constructor(private val pref: MarketPreferences) : V
         }
     }
 
+//    suspend fun getTotal(): LiveData<String> {
+//        return pref.getTotal()
+//    }
+
+    fun putTotal(total: String) {
+        viewModelScope.launch {
+            pref.putTotalPayment(total)
+        }
+    }
+
     fun logout() {
         viewModelScope.launch {
             pref.logout()

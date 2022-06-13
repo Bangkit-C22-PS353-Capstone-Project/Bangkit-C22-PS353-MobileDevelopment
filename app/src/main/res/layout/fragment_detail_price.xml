@@ -6,31 +6,32 @@
     android:layout_height="match_parent"
     tools:context=".ui.price.DetailPriceFragment">
 
-    <TextView
-        android:id="@+id/tvtesprice"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/test"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+<!--    <TextView-->
+<!--        android:id="@+id/tvtesprice"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:text="@string/test"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
 
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/lineChart"
+        android:layout_marginTop="8dp"
         android:layout_width="350dp"
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvtesprice" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="0dp"
         android:layout_height="35dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginStart="25dp"
-        android:layout_marginEnd="25dp"
-        android:backgroundTint="@color/label_green"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:cardBackgroundColor="@color/label_green"
         app:cardCornerRadius="5dp"
         app:layout_constraintEnd_toEndOf="@+id/lineChart"
         app:layout_constraintStart_toStartOf="@+id/lineChart"
@@ -47,18 +48,18 @@
                 android:layout_gravity="center_vertical"
                 android:layout_marginStart="16dp"
                 android:gravity="center"
-                android:text="@string/prediksi_harga_esok"
+                android:text="Prediksi harga Bulan Depan"
                 android:textAppearance="@style/TextTitle"
                 android:textColor="@color/white"
                 app:layout_constraintBottom_toBottomOf="@+id/imgDown"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgDown" />
+                app:layout_constraintTop_toTopOf="@+id/imgArrow" />
 
             <ImageView
-                android:id="@+id/imgDown"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
+                android:id="@+id/imgArrow"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="8dp"
                 android:src="@drawable/ic_arrow_down"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/tvPresentase"
@@ -72,9 +73,9 @@
                 android:text="@string/presentase"
                 android:textAppearance="@style/TextTitle"
                 android:textColor="@color/white"
-                app:layout_constraintBottom_toBottomOf="@+id/imgDown"
+                app:layout_constraintBottom_toBottomOf="@+id/imgArrow"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@+id/imgDown" />
+                app:layout_constraintTop_toTopOf="@+id/imgArrow" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

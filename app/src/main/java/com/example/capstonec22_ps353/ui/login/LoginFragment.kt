@@ -17,6 +17,7 @@ import com.example.capstonec22_ps353.model.UserModel
 import com.example.capstonec22_ps353.preferences.PrefViewModel
 import com.example.capstonec22_ps353.utils.SharedViewModel
 import kotlinx.coroutines.launch
+import kotlin.math.log
 
 class LoginFragment : Fragment() {
 
@@ -113,15 +114,31 @@ class LoginFragment : Fragment() {
 
     private fun setupLoginResult(navController: NavController) {
         loginViewModel.loginResult.observe(viewLifecycleOwner) { loginResult ->
-            prefViewModel.saveInfo(
-                UserModel(
-                    loginResult.userId.toString(),
-                    loginResult.username,
-                    "",
-                    "",
-                    true
+            Toast.makeText(activity, loginResult.no_hp, Toast.LENGTH_SHORT).show()
+            if (loginResult.address.isNullOrEmpty()) {
+                prefViewModel.saveInfo(
+                    UserModel(
+                        loginResult.userId.toString(),
+                        loginResult.email,
+                        loginResult.username,
+                        loginResult.no_hp,
+                        "",
+                        true
+                    )
                 )
-            )
+            } else {
+                prefViewModel.saveInfo(
+                    UserModel(
+                        loginResult.userId.toString(),
+                        loginResult.email,
+                        loginResult.username,
+                        loginResult.no_hp,
+                        loginResult.address,
+                        true
+                    )
+                )
+            }
+
 
             navController.navigate(R.id.action_loginFragment_to_mainFragment)
 
